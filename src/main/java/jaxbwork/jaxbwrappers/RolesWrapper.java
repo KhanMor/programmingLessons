@@ -1,0 +1,32 @@
+package jaxbwork.jaxbwrappers;
+
+import jaxbwork.XmlConverter;
+import models.Role;
+import models.User;
+
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import java.util.List;
+
+/**
+ * Created by Mordr on 19.02.2017.
+ */
+@XmlRootElement(name = "roles")
+public class RolesWrapper extends WrapperSuper<Role> {
+    public RolesWrapper() {
+        super();
+    }
+
+    public RolesWrapper(List<Role> objects) {
+        super(objects);
+    }
+
+    public List<Role> getObjects() {
+        return objects;
+    }
+
+    @XmlElement(name="role")
+    public void setObjects(List<Role> objects) {
+        this.objects = objects;
+    }
+}
