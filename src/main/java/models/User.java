@@ -11,7 +11,7 @@ import java.util.List;
  * Created by Mordr on 16.02.2017.
  */
 @XmlRootElement
-@XmlType(propOrder = {"id", "firstName", "surname", "patronymic", "birthday", "sex", "email", "password", "userRoles"})
+@XmlType(propOrder = {"id", "firstName", "surname", "patronymic", "birthday", "sex", "email", "password"})
 public class User {
     private Integer id;
     private String firstName;
@@ -115,8 +115,7 @@ public class User {
         return userRoles;
     }
 
-    @XmlElementWrapper
-    @XmlElement(name = "userRole")
+    @XmlTransient
     public void setUserRoles(List<UserRole> userRoles) {
         this.userRoles = userRoles;
     }
@@ -131,18 +130,32 @@ public class User {
     }
 
     @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", surname='" + surname + '\'' +
-                ", patronymic='" + patronymic + '\'' +
-                ", birthday=" + birthday +
-                ", sex='" + sex + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", coursesAuthor=" + coursesAuthor +
-                ", userRoles=" + userRoles +
-                '}';
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        User user = (User) o;
+
+        if (!id.equals(user.id)) return false;
+        if (firstName != null ? !firstName.equals(user.firstName) : user.firstName != null) return false;
+        if (surname != null ? !surname.equals(user.surname) : user.surname != null) return false;
+        if (patronymic != null ? !patronymic.equals(user.patronymic) : user.patronymic != null) return false;
+        if (birthday != null ? !birthday.equals(user.birthday) : user.birthday != null) return false;
+        if (sex != null ? !sex.equals(user.sex) : user.sex != null) return false;
+        if (!email.equals(user.email)) return false;
+        return password.equals(user.password);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id.hashCode();
+        result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
+        result = 31 * result + (surname != null ? surname.hashCode() : 0);
+        result = 31 * result + (patronymic != null ? patronymic.hashCode() : 0);
+        result = 31 * result + (birthday != null ? birthday.hashCode() : 0);
+        result = 31 * result + (sex != null ? sex.hashCode() : 0);
+        result = 31 * result + email.hashCode();
+        result = 31 * result + password.hashCode();
+        return result;
     }
 }

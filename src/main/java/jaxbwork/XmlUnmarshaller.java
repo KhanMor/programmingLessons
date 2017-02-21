@@ -37,6 +37,14 @@ public class XmlUnmarshaller<T> {
                 superDAO.insert(role);
             }
         } else
+        if(t instanceof UserRole) {
+            UserRolesWrapper userRolesWrapper = new UserRolesWrapper(superDAO.list());
+            userRolesWrapper = (UserRolesWrapper)userRolesWrapper.xmlUnmarshall(filename);
+            List<UserRole> userRoles = userRolesWrapper.getObjects();
+            for(UserRole userRole:userRoles) {
+                superDAO.insert(userRole);
+            }
+        } else
         if(t instanceof Course) {
             CoursesWrapper coursesWrapper = new CoursesWrapper(superDAO.list());
             coursesWrapper = (CoursesWrapper)coursesWrapper.xmlUnmarshall(filename);

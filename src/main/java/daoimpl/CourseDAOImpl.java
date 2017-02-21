@@ -3,7 +3,7 @@ package daoimpl;
 import boxer.EntityBoxer;
 import dao.SuperDAO;
 import models.Course;
-import models.Lesson;
+import org.apache.log4j.Logger;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -14,6 +14,7 @@ import java.util.List;
  */
 public class CourseDAOImpl implements SuperDAO<Course> {
     private final Connection conn;
+    private static final Logger logger = Logger.getLogger(CourseDAOImpl.class);
 
     public CourseDAOImpl(Connection conn) {
         this.conn = conn;
@@ -31,7 +32,7 @@ public class CourseDAOImpl implements SuperDAO<Course> {
             }
             return courses;
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
         return null;
     }
@@ -47,7 +48,7 @@ public class CourseDAOImpl implements SuperDAO<Course> {
                 return course;
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
         return null;
     }
@@ -73,22 +74,12 @@ public class CourseDAOImpl implements SuperDAO<Course> {
             try (ResultSet generatedKeys = preparedStatement.getGeneratedKeys()) {
                 if (generatedKeys.next()) {
                     course.setId(generatedKeys.getInt(1));
-                    SuperDAO lessonDAO = new LessonDAOImpl(conn);
-                    if (course.getId() != null) {
-                        List<Lesson> lessons = course.getLessons();
-                        if (lessons != null) {
-                            for (Lesson lesson : lessons) {
-                                lesson.setCourse(course);
-                                lessonDAO.insert(lesson);
-                            }
-                        }
-                    }
                 } else {
                     throw new SQLException("Creating course failed, no ID.");
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
     }
 
@@ -104,7 +95,7 @@ public class CourseDAOImpl implements SuperDAO<Course> {
             preparedStatement.setInt(1, course.getId());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
     }
 
@@ -114,13 +105,13 @@ public class CourseDAOImpl implements SuperDAO<Course> {
         try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
         sql = "ALTER TABLE course AUTO_INCREMENT = 1;";
         try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
     }
 }

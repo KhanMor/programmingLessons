@@ -3,6 +3,7 @@ package daoimpl;
 import boxer.EntityBoxer;
 import dao.SuperDAO;
 import models.LessonTest;
+import org.apache.log4j.Logger;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -13,6 +14,7 @@ import java.util.List;
  */
 public class LessonTestDAOImpl implements SuperDAO<LessonTest> {
     private final Connection conn;
+    private static final Logger logger = Logger.getLogger(LessonTestDAOImpl.class);
 
     public LessonTestDAOImpl(Connection conn) {
         this.conn = conn;
@@ -30,7 +32,7 @@ public class LessonTestDAOImpl implements SuperDAO<LessonTest> {
             }
             return lessonTests;
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
         return null;
     }
@@ -46,7 +48,7 @@ public class LessonTestDAOImpl implements SuperDAO<LessonTest> {
                 return lessonTest;
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
         return null;
     }
@@ -78,7 +80,7 @@ public class LessonTestDAOImpl implements SuperDAO<LessonTest> {
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
     }
 
@@ -94,7 +96,7 @@ public class LessonTestDAOImpl implements SuperDAO<LessonTest> {
             preparedStatement.setInt(1, lessonTest.getId());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
     }
 
@@ -110,7 +112,7 @@ public class LessonTestDAOImpl implements SuperDAO<LessonTest> {
         try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
     }
 }

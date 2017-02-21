@@ -68,4 +68,28 @@ public class LessonTestResult {
     public void setScore(Integer score) {
         this.score = score;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        LessonTestResult that = (LessonTestResult) o;
+
+        if (!id.equals(that.id)) return false;
+        if (!lessonTest.equals(that.lessonTest)) return false;
+        if (!user.equals(that.user)) return false;
+        if (!testDateTime.equals(that.testDateTime)) return false;
+        return score.equals(that.score);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id.hashCode();
+        result = 31 * result + lessonTest.hashCode();
+        result = 31 * result + user.hashCode();
+        result = 31 * result + testDateTime.hashCode();
+        result = 31 * result + score.hashCode();
+        return result;
+    }
 }

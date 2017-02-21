@@ -10,7 +10,7 @@ import java.util.List;
  * Created by Mordr on 18.02.2017.
  */
 @XmlRootElement
-@XmlType(propOrder = {"id", "orderNum", "question", "answer", "points"})
+@XmlType(propOrder = {"id", "lesson", "orderNum", "question", "answer", "points"})
 public class LessonTest {
     private Integer id;
     private Lesson lesson;
@@ -36,7 +36,7 @@ public class LessonTest {
         return lesson;
     }
 
-    @XmlTransient
+    @XmlElement
     public void setLesson(Lesson lesson) {
         this.lesson = lesson;
     }
@@ -84,5 +84,31 @@ public class LessonTest {
     @XmlTransient
     public void setLessonTestResults(List<LessonTestResult> lessonTestResults) {
         this.lessonTestResults = lessonTestResults;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        LessonTest that = (LessonTest) o;
+
+        if (!id.equals(that.id)) return false;
+        if (!lesson.equals(that.lesson)) return false;
+        if (!orderNum.equals(that.orderNum)) return false;
+        if (!question.equals(that.question)) return false;
+        if (!answer.equals(that.answer)) return false;
+        return points != null ? points.equals(that.points) : that.points == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id.hashCode();
+        result = 31 * result + lesson.hashCode();
+        result = 31 * result + orderNum.hashCode();
+        result = 31 * result + question.hashCode();
+        result = 31 * result + answer.hashCode();
+        result = 31 * result + (points != null ? points.hashCode() : 0);
+        return result;
     }
 }

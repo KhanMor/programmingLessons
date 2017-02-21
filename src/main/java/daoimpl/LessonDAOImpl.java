@@ -4,6 +4,7 @@ import boxer.EntityBoxer;
 import dao.SuperDAO;
 import models.Lesson;
 import models.LessonTest;
+import org.apache.log4j.Logger;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -14,6 +15,7 @@ import java.util.List;
  */
 public class LessonDAOImpl implements SuperDAO<Lesson> {
     private final Connection conn;
+    private static final Logger logger = Logger.getLogger(LessonDAOImpl.class);
 
     public LessonDAOImpl(Connection conn) {
         this.conn = conn;
@@ -31,7 +33,7 @@ public class LessonDAOImpl implements SuperDAO<Lesson> {
             }
             return lessons;
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
         return null;
     }
@@ -47,7 +49,7 @@ public class LessonDAOImpl implements SuperDAO<Lesson> {
                 return lesson;
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
         return null;
     }
@@ -75,22 +77,12 @@ public class LessonDAOImpl implements SuperDAO<Lesson> {
             try (ResultSet generatedKeys = preparedStatement.getGeneratedKeys()) {
                 if (generatedKeys.next()) {
                     lesson.setId(generatedKeys.getInt(1));
-                    if (lesson.getId() != null) {
-                        List<LessonTest> lessonTests = lesson.getLessonTests();
-                        if(lessonTests != null) {
-                            SuperDAO lessonTestDAO = new LessonTestDAOImpl(conn);
-                            for (LessonTest lessonTest : lessonTests) {
-                                lessonTest.setLesson(lesson);
-                                lessonTestDAO.insert(lessonTest);
-                            }
-                        }
-                    }
                 } else {
                     throw new SQLException("Creating lesson failed, no ID.");
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
     }
 
@@ -106,7 +98,7 @@ public class LessonDAOImpl implements SuperDAO<Lesson> {
             preparedStatement.setInt(1, lesson.getId());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
     }
 
@@ -116,13 +108,13 @@ public class LessonDAOImpl implements SuperDAO<Lesson> {
         try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
         sql = "ALTER TABLE lesson AUTO_INCREMENT = 1;";
         try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
     }
 }

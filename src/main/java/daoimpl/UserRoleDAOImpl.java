@@ -1,56 +1,90 @@
 package daoimpl;
 
 import boxer.EntityBoxer;
-import dao.UserRoleDAO;
-import models.Role;
-import models.User;
+import dao.SuperDAO;
+import models.UserRole;
+import org.apache.log4j.Logger;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Mordr on 18.02.2017.
  */
-public class UserRoleDAOImpl implements UserRoleDAO {
+public class UserRoleDAOImpl implements SuperDAO<UserRole> {
     private final Connection conn;
+    private static final Logger logger = Logger.getLogger(UserRoleDAOImpl.class);
 
     public UserRoleDAOImpl(Connection conn) {
         this.conn = conn;
     }
 
     @Override
-    public void addUserRole(User user, Role role) {
+    public List<UserRole> list() {
+        String sql = "select * from userrole";
+        try (Statement statement = conn.createStatement()) {
+            ResultSet resultSet = statement.executeQuery(sql);
+            List<UserRole> userRoles = new ArrayList<>();
+            while (resultSet.next()) {
+                UserRole userRole = EntityBoxer.packUserRole(resultSet, conn);
+                userRoles.add(userRole);
+            }
+            return userRoles;
+        } catch (SQLException e) {
+            logger.error(e.getMessage());
+        }
+        return null;
+    }
+
+    @Override
+    public UserRole get(Integer id) {
+        String sql = "select * from userRole where id=?";
+        try (PreparedStatement preparedStatement = conn.prepareStatement(sql);) {
+            preparedStatement.setInt(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                UserRole course = EntityBoxer.packUserRole(resultSet, conn);
+                return course;
+            }
+        } catch (SQLException e) {
+            logger.error(e.getMessage());
+        }
+        return null;
+    }
+
+    @Override
+    public void insert(UserRole userRole) {
         String sql = "insert into userrole (user_id, role_id) values (?, ?)";
         try (PreparedStatement preparedStatement =
                      conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-            preparedStatement.setInt(1, user.getId());
-            preparedStatement.setInt(2, role.getId());
+            preparedStatement.setInt(1, userRole.getUser().getId());
+            preparedStatement.setInt(2, userRole.getRole().getId());
             int insertedRows = preparedStatement.executeUpdate();
             if (insertedRows == 0) {
                 throw new SQLException("No user's role inserted");
             }
             try (ResultSet generatedKeys = preparedStatement.getGeneratedKeys()) {
                 if (generatedKeys.next()) {
-                    user.setId(generatedKeys.getInt(1));
+                    userRole.setId(generatedKeys.getInt(1));
                 }
                 else {
                     throw new SQLException("Creating user's role failed, no ID.");
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
     }
 
     @Override
-    public void removeUserRole(User user, Role role) {
-        String sql = "delete from userrole where user_id = ? and role_id = ?";
-        try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
-            preparedStatement.setInt(1, user.getId());
-            preparedStatement.setInt(2, role.getId());
-            preparedStatement.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+    public void update(UserRole userRole) {
+
+    }
+
+    @Override
+    public void delete(UserRole userRole) {
+
     }
 
     @Override
@@ -65,23 +99,7 @@ public class UserRoleDAOImpl implements UserRoleDAO {
         try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
-    }
-
-    @Override
-    public Role getRoleByName(String rolename) {
-        String sql = "select * from role where role = ?";
-        try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
-            preparedStatement.setString(1, rolename);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()) {
-                Role role = EntityBoxer.packRole(resultSet, conn);
-                return role;
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 }

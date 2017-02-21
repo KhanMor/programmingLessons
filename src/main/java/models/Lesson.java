@@ -7,7 +7,7 @@ import java.util.List;
  * Created by Mordr on 18.02.2017.
  */
 @XmlRootElement
-@XmlType(propOrder = {"id", "orderNum", "theme", "duration", "content", "scoreToPass", "lessonTests"})
+@XmlType(propOrder = {"id", "course", "orderNum", "theme", "duration", "content", "scoreToPass"})
 public class Lesson {
     private Integer id;
     private Course course;
@@ -35,7 +35,7 @@ public class Lesson {
         return course;
     }
 
-    @XmlTransient
+    @XmlElement
     public void setCourse(Course course) {
         this.course = course;
     }
@@ -89,9 +89,36 @@ public class Lesson {
         return lessonTests;
     }
 
-    @XmlElementWrapper
-    @XmlElement(name = "lessonTest")
+    @XmlTransient
     public void setLessonTests(List<LessonTest> lessonTests) {
         this.lessonTests = lessonTests;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Lesson)) return false;
+
+        Lesson lesson = (Lesson) o;
+
+        if (!id.equals(lesson.id)) return false;
+        if (!course.equals(lesson.course)) return false;
+        if (!orderNum.equals(lesson.orderNum)) return false;
+        if (!theme.equals(lesson.theme)) return false;
+        if (duration != null ? !duration.equals(lesson.duration) : lesson.duration != null) return false;
+        if (content != null ? !content.equals(lesson.content) : lesson.content != null) return false;
+        return scoreToPass.equals(lesson.scoreToPass);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id.hashCode();
+        result = 31 * result + course.hashCode();
+        result = 31 * result + orderNum.hashCode();
+        result = 31 * result + theme.hashCode();
+        result = 31 * result + (duration != null ? duration.hashCode() : 0);
+        result = 31 * result + (content != null ? content.hashCode() : 0);
+        result = 31 * result + scoreToPass.hashCode();
+        return result;
     }
 }

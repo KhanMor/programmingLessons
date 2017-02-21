@@ -12,26 +12,20 @@ import java.util.List;
  * Created by Mordr on 17.02.2017.
  */
 public final class EntityBoxer {
-    public static List<UserRole> packUserRole(User user, Connection conn) throws SQLException {
-        String sql = "select * from userrole where user_id = ?";
-        try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
-            preparedStatement.setInt(1, user.getId());
-            ResultSet resultSet = preparedStatement.executeQuery();
-            List<UserRole> userRoles = new ArrayList<>();
-            SuperDAO<Role> roleDAO = new RoleDAOImpl(conn);
-            while (resultSet.next()) {
-                UserRole userRole = new UserRole();
-                userRole.setId(resultSet.getInt("id"));
-                userRole.setUser(user);
-                Role role = roleDAO.get(resultSet.getInt("role_id"));
-                userRole.setRole(role);
-                userRoles.add(userRole);
-            }
-            return userRoles;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return null;
+    public static UserRole packUserRole(ResultSet resultSet, Connection conn) throws SQLException {
+        Integer id = resultSet.getInt("id");
+        Integer user_id = resultSet.getInt("user_id");
+        Integer role_id = resultSet.getInt("role_id");
+
+        UserRole userRole = new UserRole();
+        SuperDAO<User> userDAO = new UserDAOImpl(conn);
+        User user = userDAO.get(user_id);
+        SuperDAO<Role> roleDAO = new RoleDAOImpl(conn);
+        Role role = roleDAO.get(role_id);
+        userRole.setId(id);
+        userRole.setUser(user);
+        userRole.setRole(role);
+        return userRole;
     }
 
     public static User packUser(ResultSet resultSet, Connection conn) throws SQLException {
@@ -53,7 +47,6 @@ public final class EntityBoxer {
         user.setSex(sex);
         user.setEmail(email);
         user.setPassword(password);
-        user.setUserRoles(packUserRole(user, conn));
 
         return user;
     }

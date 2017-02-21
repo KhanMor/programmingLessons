@@ -3,6 +3,7 @@ package daoimpl;
 import boxer.EntityBoxer;
 import dao.SuperDAO;
 import models.Role;
+import org.apache.log4j.Logger;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -13,6 +14,7 @@ import java.util.List;
  */
 public class RoleDAOImpl implements SuperDAO<Role> {
     private final Connection conn;
+    private static final Logger logger = Logger.getLogger(RoleDAOImpl.class);
 
     public RoleDAOImpl(Connection conn) {
         this.conn = conn;
@@ -30,7 +32,7 @@ public class RoleDAOImpl implements SuperDAO<Role> {
             }
             return roles;
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
         return null;
     }
@@ -46,7 +48,7 @@ public class RoleDAOImpl implements SuperDAO<Role> {
                 return role;
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
         return null;
     }
@@ -75,7 +77,7 @@ public class RoleDAOImpl implements SuperDAO<Role> {
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
     }
 
@@ -91,7 +93,7 @@ public class RoleDAOImpl implements SuperDAO<Role> {
             preparedStatement.setInt(1, role.getId());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
     }
 
@@ -101,13 +103,13 @@ public class RoleDAOImpl implements SuperDAO<Role> {
         try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
         sql = "ALTER TABLE role AUTO_INCREMENT = 1;";
         try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
     }
 }

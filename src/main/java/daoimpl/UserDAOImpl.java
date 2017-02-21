@@ -2,10 +2,8 @@ package daoimpl;
 
 import boxer.EntityBoxer;
 import dao.SuperDAO;
-import dao.UserRoleDAO;
-import models.Role;
 import models.User;
-import models.UserRole;
+import org.apache.log4j.Logger;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -16,6 +14,7 @@ import java.util.List;
  */
 public class UserDAOImpl implements SuperDAO<User> {
     private final Connection conn;
+    private static final Logger logger = Logger.getLogger(UserDAOImpl.class);
 
     public UserDAOImpl(Connection conn) {
         this.conn = conn;
@@ -43,7 +42,7 @@ public class UserDAOImpl implements SuperDAO<User> {
             }
             return users;
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
         return null;
     }
@@ -59,7 +58,7 @@ public class UserDAOImpl implements SuperDAO<User> {
                 return student;
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
         return null;
     }
@@ -78,24 +77,12 @@ public class UserDAOImpl implements SuperDAO<User> {
             try (ResultSet generatedKeys = preparedStatement.getGeneratedKeys()) {
                 if (generatedKeys.next()) {
                     user.setId(generatedKeys.getInt(1));
-                    if (user.getId() != null) {
-                        List<UserRole> userRoles = user.getUserRoles();
-                        UserRoleDAO userRoleDAO = new UserRoleDAOImpl(conn);
-                        SuperDAO roleDAO = new RoleDAOImpl(conn);
-                        for (UserRole userRole : userRoles) {
-                            Role role = userRoleDAO.getRoleByName(userRole.getRole().getRole());
-                            if (role == null) {
-                                roleDAO.insert(role);
-                            }
-                            userRoleDAO.addUserRole(user, role);
-                        }
-                    }
                 } else {
                     throw new SQLException("Creating user failed, no ID.");
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
     }
 
@@ -110,7 +97,7 @@ public class UserDAOImpl implements SuperDAO<User> {
             preparedStatement.setInt(1, user.getId());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
     }
 
@@ -122,7 +109,7 @@ public class UserDAOImpl implements SuperDAO<User> {
             preparedStatement.setInt(1, user.getId());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
     }
 
@@ -132,13 +119,13 @@ public class UserDAOImpl implements SuperDAO<User> {
         try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
         sql = "ALTER TABLE user AUTO_INCREMENT = 1;";
         try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
     }
 }
