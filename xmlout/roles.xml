@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<roles>
+    <role>
+        <id>1</id>
+        <role>student</role>
+        <description>Студент</description>
+    </role>
+    <role>
+        <id>2</id>
+        <role>author</role>
+        <description>Автор</description>
+    </role>
+</roles>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<courses>
+    <course>
+        <id>1</id>
+        <author>
+            <id>6</id>
+            <firstName>Galileo</firstName>
+            <surname>Galiley</surname>
+            <patronymic></patronymic>
+            <birthday>1564-02-15</birthday>
+            <sex>m</sex>
+            <email>galileo@mail.ru</email>
+            <password>123</password>
+        </author>
+        <name>Java developer</name>
+        <duration>300.0</duration>
+        <price>100000.0</price>
+        <certified>true</certified>
+    </course>
+</courses>

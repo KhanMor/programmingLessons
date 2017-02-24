@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<lessonTestResults>
+    <lessonTestResult>
+        <id>1</id>
+        <lessonTest>
+            <id>1</id>
+            <lesson>
+                <id>1</id>
+                <course>
+                    <id>1</id>
+                    <author>
+                        <id>6</id>
+                        <firstName>Galileo</firstName>
+                        <surname>Galiley</surname>
+                        <patronymic></patronymic>
+                        <birthday>1564-02-15</birthday>
+                        <sex>m</sex>
+                        <email>galileo@mail.ru</email>
+                        <password>123</password>
+                    </author>
+                    <name>Java developer</name>
+                    <duration>300.0</duration>
+                    <price>100000.0</price>
+                    <certified>true</certified>
+                </course>
+                <orderNum>0</orderNum>
+                <theme>Java basics 2</theme>
+                <duration>4.0</duration>
+                <content>adxzczsessdgsdgsdgsdgsdg</content>
+                <scoreToPass>65</scoreToPass>
+            </lesson>
+            <orderNum>0</orderNum>
+            <question>Ыть?</question>
+            <answer>Ыть</answer>
+            <points>100</points>
+        </lessonTest>
+        <user>
+            <id>1</id>
+            <firstName>Andrey</firstName>
+            <surname>Kharkhanov</surname>
+            <patronymic>Sergeevich</patronymic>
+            <birthday>1989-11-30</birthday>
+            <sex>m</sex>
+            <email>kharkhanov@mail.ru</email>
+            <password>123</password>
+        </user>
+        <testDateTime>2017-02-19 21:36:06</testDateTime>
+        <score>100</score>
+    </lessonTestResult>
+    <lessonTestResult>
+        <id>2</id>
+        <lessonTest>
+            <id>2</id>
+            <lesson>
+                <id>2</id>
+                <course>
+                    <id>1</id>
+                    <author>
+                        <id>6</id>
+                        <firstName>Galileo</firstName>
+                        <surname>Galiley</surname>
+                        <patronymic></patronymic>
+                        <birthday>1564-02-15</birthday>
+                        <sex>m</sex>
+                        <email>galileo@mail.ru</email>
+                        <password>123</password>
+                    </author>
+                    <name>Java developer</name>
+                    <duration>300.0</duration>
+                    <price>100000.0</price>
+                    <certified>true</certified>
+                </course>
+                <orderNum>1</orderNum>
+                <theme>Java basics 3</theme>
+                <duration>3.0</duration>
+                <content>aaaaaaaaaaaaaaaaaaaaaa</content>
+                <scoreToPass>75</scoreToPass>
+            </lesson>
+            <orderNum>0</orderNum>
+            <question>Ыть ыть?</question>
+            <answer>Ыть ыть</answer>
+            <points>100</points>
+        </lessonTest>
+        <user>
+            <id>2</id>
+            <firstName>Dmitiy</firstName>
+            <surname>Naraikin</surname>
+            <patronymic>Mikhailovich</patronymic>
+            <birthday>1990-01-01</birthday>
+            <sex>m</sex>
+            <email>naraikin@mail.ru</email>
+            <password>123</password>
+        </user>
+        <testDateTime>2017-02-19 21:36:06</testDateTime>
+        <score>100</score>
+    </lessonTestResult>
+    <lessonTestResult>
+        <id>3</id>
+        <lessonTest>
+            <id>1</id>
+            <lesson>
+                <id>1</id>
+                <course>
+                    <id>1</id>
+                    <author>
+                        <id>6</id>
+                        <firstName>Galileo</firstName>
+                        <surname>Galiley</surname>
+                        <patronymic></patronymic>
+                        <birthday>1564-02-15</birthday>
+                        <sex>m</sex>
+                        <email>galileo@mail.ru</email>
+                        <password>123</password>
+                    </author>
+                    <name>Java developer</name>
+                    <duration>300.0</duration>
+                    <price>100000.0</price>
+                    <certified>true</certified>
+                </course>
+                <orderNum>0</orderNum>
+                <theme>Java basics 2</theme>
+                <duration>4.0</duration>
+                <content>adxzczsessdgsdgsdgsdgsdg</content>
+                <scoreToPass>65</scoreToPass>
+            </lesson>
+            <orderNum>0</orderNum>
+            <question>Ыть?</question>
+            <answer>Ыть</answer>
+            <points>100</points>
+        </lessonTest>
+        <user>
+            <id>3</id>
+            <firstName>Sergey</firstName>
+            <surname>Lobanov</surname>
+            <patronymic>Andreevich</patronymic>
+            <birthday>1866-01-01</birthday>
+            <sex>m</sex>
+            <email>lobanov@mail.ru</email>
+            <password>123</password>
+        </user>
+        <testDateTime>2017-02-19 21:36:06</testDateTime>
+        <score>100</score>
+    </lessonTestResult>
+</lessonTestResults>

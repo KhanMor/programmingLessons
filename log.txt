@@ -1,0 +1,496 @@
+TRACE   2017-02-21 16:41:29,030 [main] main.Main  - delete all from database...
+TRACE   2017-02-21 17:45:39,094 [main] main.Main  - insert to database from xml files
+TRACE   2017-02-21 17:45:39,104 [Thread-0] jaxbwork.XmlUnmarshallerRunnable  - thread started for xmlout/roles.xml
+TRACE   2017-02-21 17:45:39,106 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - thread started for xmlout/users.xml
+TRACE   2017-02-21 17:45:39,118 [Thread-2] jaxbwork.XmlUnmarshallerRunnable  - thread started for xmlout/userRoles.xml
+TRACE   2017-02-21 17:45:39,126 [Thread-3] jaxbwork.XmlUnmarshallerRunnable  - thread started for xmlout/courses.xml
+TRACE   2017-02-21 17:45:39,129 [Thread-4] jaxbwork.XmlUnmarshallerRunnable  - thread started for xmlout/lessons.xml
+TRACE   2017-02-21 17:45:39,130 [Thread-5] jaxbwork.XmlUnmarshallerRunnable  - thread started for xmlout/lessontests.xml
+TRACE   2017-02-21 17:45:39,153 [Thread-6] jaxbwork.XmlUnmarshallerRunnable  - thread started for xmlout/lessontestsresult.xml
+ERROR   2017-02-21 17:45:39,791 [Thread-0] models.daoimpl.RoleDAOImpl  - Duplicate entry 'student' for key 'role_UNIQUE'
+TRACE   2017-02-21 17:45:39,792 [Thread-0] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.Role@5c7661ee
+ERROR   2017-02-21 17:45:39,881 [Thread-0] models.daoimpl.RoleDAOImpl  - Duplicate entry 'author' for key 'role_UNIQUE'
+TRACE   2017-02-21 17:45:39,881 [Thread-0] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.Role@14af4d79
+ERROR   2017-02-21 17:45:39,989 [Thread-1] models.daoimpl.UserDAOImpl  - Duplicate entry 'kharkhanov@mail.ru' for key 'email_UNIQUE'
+TRACE   2017-02-21 17:45:39,989 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@2a5ca662
+ERROR   2017-02-21 17:45:40,063 [Thread-1] models.daoimpl.UserDAOImpl  - Duplicate entry 'naraikin@mail.ru' for key 'email_UNIQUE'
+TRACE   2017-02-21 17:45:40,064 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@d4d94f9f
+ERROR   2017-02-21 17:45:40,187 [Thread-1] models.daoimpl.UserDAOImpl  - Duplicate entry 'lobanov@mail.ru' for key 'email_UNIQUE'
+TRACE   2017-02-21 17:45:40,187 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@5db5f927
+ERROR   2017-02-21 17:45:40,222 [Thread-1] models.daoimpl.UserDAOImpl  - Duplicate entry 'penykov@mail.ru' for key 'email_UNIQUE'
+TRACE   2017-02-21 17:45:40,223 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@e58b2033
+ERROR   2017-02-21 17:45:40,262 [Thread-1] models.daoimpl.UserDAOImpl  - Duplicate entry 'kochanovskiy@mail.ru' for key 'email_UNIQUE'
+TRACE   2017-02-21 17:45:40,262 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@21a6b5c9
+ERROR   2017-02-21 17:45:40,344 [Thread-1] models.daoimpl.UserDAOImpl  - Duplicate entry 'galileo@mail.ru' for key 'email_UNIQUE'
+TRACE   2017-02-21 17:45:40,345 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@ba626d7c
+TRACE   2017-02-21 17:47:14,150 [main] main.Main  - delete all from database...
+TRACE   2017-02-21 17:47:27,803 [main] main.Main  - insert to database from xml files
+TRACE   2017-02-21 17:47:27,814 [Thread-0] jaxbwork.XmlUnmarshallerRunnable  - thread started for xmlout/roles.xml
+TRACE   2017-02-21 17:47:27,817 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - thread started for xmlout/users.xml
+TRACE   2017-02-21 17:47:27,830 [Thread-2] jaxbwork.XmlUnmarshallerRunnable  - thread started for xmlout/userRoles.xml
+TRACE   2017-02-21 17:47:27,831 [Thread-3] jaxbwork.XmlUnmarshallerRunnable  - thread started for xmlout/courses.xml
+TRACE   2017-02-21 17:47:27,834 [Thread-4] jaxbwork.XmlUnmarshallerRunnable  - thread started for xmlout/lessons.xml
+TRACE   2017-02-21 17:47:27,836 [Thread-5] jaxbwork.XmlUnmarshallerRunnable  - thread started for xmlout/lessontests.xml
+TRACE   2017-02-21 17:47:27,837 [Thread-6] jaxbwork.XmlUnmarshallerRunnable  - thread started for xmlout/lessontestsresult.xml
+TRACE   2017-02-21 17:47:28,565 [Thread-0] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.Role@5c7661ee
+TRACE   2017-02-21 17:47:28,624 [Thread-0] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.Role@14af4d79
+TRACE   2017-02-21 17:47:28,756 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@2a5ca662
+TRACE   2017-02-21 17:47:28,797 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@d4d94f9f
+TRACE   2017-02-21 17:47:28,891 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@5db5f927
+TRACE   2017-02-21 17:47:28,968 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@e58b2033
+TRACE   2017-02-21 17:47:29,032 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@21a6b5c9
+TRACE   2017-02-21 17:47:29,092 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@ba626d7c
+TRACE   2017-02-21 17:47:59,629 [main] main.Main  - delete all from database...
+TRACE   2017-02-21 17:49:40,864 [main] main.Main  - insert to database from xml files
+TRACE   2017-02-21 17:49:40,875 [Thread-0] jaxbwork.XmlUnmarshallerRunnable  - thread started for xmlout/roles.xml
+TRACE   2017-02-21 17:49:40,877 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - thread started for xmlout/users.xml
+TRACE   2017-02-21 17:49:40,911 [Thread-2] jaxbwork.XmlUnmarshallerRunnable  - thread started for xmlout/userRoles.xml
+TRACE   2017-02-21 17:49:40,924 [Thread-3] jaxbwork.XmlUnmarshallerRunnable  - thread started for xmlout/courses.xml
+TRACE   2017-02-21 17:49:40,924 [Thread-4] jaxbwork.XmlUnmarshallerRunnable  - thread started for xmlout/lessons.xml
+TRACE   2017-02-21 17:49:40,930 [Thread-5] jaxbwork.XmlUnmarshallerRunnable  - thread started for xmlout/lessontests.xml
+TRACE   2017-02-21 17:49:40,933 [Thread-6] jaxbwork.XmlUnmarshallerRunnable  - thread started for xmlout/lessontestsresult.xml
+TRACE   2017-02-21 17:49:41,531 [Thread-0] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.Role@5c7661ee
+TRACE   2017-02-21 17:49:41,597 [Thread-0] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.Role@14af4d79
+TRACE   2017-02-21 17:49:41,839 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@2a5ca662
+TRACE   2017-02-21 17:49:41,865 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@d4d94f9f
+TRACE   2017-02-21 17:49:41,932 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@5db5f927
+TRACE   2017-02-21 17:49:42,043 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@e58b2033
+TRACE   2017-02-21 17:49:42,080 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@21a6b5c9
+TRACE   2017-02-21 17:49:42,122 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@ba626d7c
+TRACE   2017-02-21 17:50:21,375 [main] main.Main  - delete all from database...
+TRACE   2017-02-21 17:51:08,745 [main] main.Main  - insert to database from xml files
+TRACE   2017-02-21 17:51:08,837 [Thread-0] jaxbwork.XmlUnmarshallerRunnable  - thread started for xmlout/roles.xml
+TRACE   2017-02-21 17:51:08,956 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - thread started for xmlout/users.xml
+TRACE   2017-02-21 17:51:09,007 [Thread-2] jaxbwork.XmlUnmarshallerRunnable  - thread started for xmlout/userRoles.xml
+TRACE   2017-02-21 17:51:16,322 [Thread-5] jaxbwork.XmlUnmarshallerRunnable  - thread started for xmlout/lessontests.xml
+TRACE   2017-02-21 17:51:16,322 [Thread-4] jaxbwork.XmlUnmarshallerRunnable  - thread started for xmlout/lessons.xml
+TRACE   2017-02-21 17:51:16,322 [Thread-6] jaxbwork.XmlUnmarshallerRunnable  - thread started for xmlout/lessontestsresult.xml
+TRACE   2017-02-21 17:51:16,328 [Thread-3] jaxbwork.XmlUnmarshallerRunnable  - thread started for xmlout/courses.xml
+TRACE   2017-02-21 17:51:59,675 [Thread-0] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.Role@5c7661ee
+TRACE   2017-02-21 17:51:59,718 [Thread-0] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.Role@14af4d79
+TRACE   2017-02-21 17:52:04,010 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@2a5ca662
+TRACE   2017-02-21 17:52:04,526 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@d4d94f9f
+TRACE   2017-02-21 17:52:05,090 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@5db5f927
+TRACE   2017-02-21 17:52:05,146 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@e58b2033
+TRACE   2017-02-21 17:52:05,187 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@21a6b5c9
+TRACE   2017-02-21 17:52:05,224 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@ba626d7c
+TRACE   2017-02-21 18:00:08,650 [main] main.Main  - delete all from database...
+TRACE   2017-02-21 18:00:26,109 [main] main.Main  - insert to database from xml files
+TRACE   2017-02-21 18:00:26,120 [Thread-0] jaxbwork.XmlUnmarshallerRunnable  - thread started for xmlout/roles.xml
+TRACE   2017-02-21 18:00:26,121 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - thread started for xmlout/users.xml
+TRACE   2017-02-21 18:00:26,125 [Thread-2] jaxbwork.XmlUnmarshallerRunnable  - thread started for xmlout/userRoles.xml
+TRACE   2017-02-21 18:00:26,565 [Thread-0] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.Role@5c7661ee
+TRACE   2017-02-21 18:00:26,638 [Thread-0] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.Role@14af4d79
+TRACE   2017-02-21 18:00:26,784 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@2a5ca662
+TRACE   2017-02-21 18:00:26,865 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@d4d94f9f
+TRACE   2017-02-21 18:00:26,954 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@5db5f927
+TRACE   2017-02-21 18:00:27,032 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@e58b2033
+TRACE   2017-02-21 18:00:27,076 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@21a6b5c9
+TRACE   2017-02-21 18:00:27,106 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@ba626d7c
+TRACE   2017-02-21 18:00:27,164 [Thread-2] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.UserRole@7dae8b8d
+TRACE   2017-02-21 18:31:22,935 [main] main.Main  - delete all from database...
+TRACE   2017-02-21 18:31:25,576 [main] main.Main  - insert to database from xml files
+TRACE   2017-02-21 18:31:25,586 [Thread-0] jaxbwork.XmlUnmarshallerRunnable  - thread started for xmlout/roles.xml
+TRACE   2017-02-21 18:31:25,591 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - thread started for xmlout/users.xml
+TRACE   2017-02-21 18:31:25,592 [Thread-2] jaxbwork.XmlUnmarshallerRunnable  - thread started for xmlout/userRoles.xml
+TRACE   2017-02-21 18:31:27,565 [Thread-0] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.Role@5c7661ee
+TRACE   2017-02-21 18:31:27,704 [Thread-0] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.Role@14af4d79
+TRACE   2017-02-21 18:31:27,825 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@2a5ca662
+TRACE   2017-02-21 18:31:27,870 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@d4d94f9f
+TRACE   2017-02-21 18:31:28,278 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@5db5f927
+TRACE   2017-02-21 18:31:28,334 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@e58b2033
+TRACE   2017-02-21 18:31:28,370 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@21a6b5c9
+TRACE   2017-02-21 18:31:28,422 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@ba626d7c
+TRACE   2017-02-21 18:35:02,709 [main] main.Main  - delete all from database...
+TRACE   2017-02-21 18:35:05,142 [main] main.Main  - insert to database from xml files
+TRACE   2017-02-21 18:35:05,150 [Thread-0] jaxbwork.XmlUnmarshallerRunnable  - thread started for xmlout/roles.xml
+TRACE   2017-02-21 18:35:05,154 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - thread started for xmlout/users.xml
+TRACE   2017-02-21 18:35:05,155 [Thread-2] jaxbwork.XmlUnmarshallerRunnable  - thread started for xmlout/userRoles.xml
+TRACE   2017-02-21 18:35:05,601 [Thread-0] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.Role@5c7661ee
+TRACE   2017-02-21 18:35:05,705 [Thread-0] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.Role@14af4d79
+TRACE   2017-02-21 18:35:05,707 [Thread-2] jaxbwork.InsertedWrapper  - Search object models.pojo.User@2a5ca662 in [] result: false
+TRACE   2017-02-21 18:35:05,772 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@2a5ca662
+TRACE   2017-02-21 18:35:05,832 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@d4d94f9f
+TRACE   2017-02-21 18:35:05,894 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@5db5f927
+TRACE   2017-02-21 18:35:05,994 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@e58b2033
+TRACE   2017-02-21 18:35:06,035 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@21a6b5c9
+TRACE   2017-02-21 18:35:06,102 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@ba626d7c
+TRACE   2017-02-21 18:35:06,102 [Thread-2] jaxbwork.InsertedWrapper  - Search object models.pojo.User@2a5ca662 in [] result: false
+TRACE   2017-02-21 18:40:59,616 [main] main.Main  - delete all from database...
+TRACE   2017-02-21 18:41:00,911 [main] main.Main  - insert to database from xml files
+TRACE   2017-02-21 18:41:00,923 [Thread-0] jaxbwork.XmlUnmarshallerRunnable  - thread started for xmlout/roles.xml
+TRACE   2017-02-21 18:41:00,926 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - thread started for xmlout/users.xml
+TRACE   2017-02-21 18:41:00,928 [Thread-2] jaxbwork.XmlUnmarshallerRunnable  - thread started for xmlout/userRoles.xml
+TRACE   2017-02-21 18:41:01,352 [Thread-0] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.Role@5c7661ee
+TRACE   2017-02-21 18:41:01,388 [Thread-0] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.Role@14af4d79
+TRACE   2017-02-21 18:41:01,388 [Thread-2] jaxbwork.InsertedWrapper  - Search object models.pojo.User@2a5ca662 in [] result: false
+TRACE   2017-02-21 18:41:01,388 [Thread-2] jaxbwork.XmlUnmarshallerRunnable  - User models.pojo.User@2a5ca662 or role models.pojo.Role@5c7661ee not founded, waiting inserts...
+TRACE   2017-02-21 18:41:01,432 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@2a5ca662
+TRACE   2017-02-21 18:41:01,462 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@d4d94f9f
+TRACE   2017-02-21 18:41:01,498 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@5db5f927
+TRACE   2017-02-21 18:41:01,529 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@e58b2033
+TRACE   2017-02-21 18:41:01,565 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@21a6b5c9
+TRACE   2017-02-21 18:41:01,595 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@ba626d7c
+TRACE   2017-02-21 18:41:01,596 [Thread-2] jaxbwork.InsertedWrapper  - Search object models.pojo.User@2a5ca662 in [] result: false
+TRACE   2017-02-21 18:41:01,596 [Thread-2] jaxbwork.XmlUnmarshallerRunnable  - User models.pojo.User@2a5ca662 or role models.pojo.Role@5c7661ee not founded, waiting inserts...
+TRACE   2017-02-21 18:43:47,125 [main] main.Main  - delete all from database...
+TRACE   2017-02-21 18:43:48,843 [main] main.Main  - insert to database from xml files
+TRACE   2017-02-21 18:43:48,852 [Thread-0] jaxbwork.XmlUnmarshallerRunnable  - thread started for xmlout/roles.xml
+TRACE   2017-02-21 18:43:48,855 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - thread started for xmlout/users.xml
+TRACE   2017-02-21 18:43:48,857 [Thread-2] jaxbwork.XmlUnmarshallerRunnable  - thread started for xmlout/userRoles.xml
+TRACE   2017-02-21 18:43:49,183 [Thread-0] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.Role@5c7661ee
+TRACE   2017-02-21 18:43:49,213 [Thread-0] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.Role@14af4d79
+TRACE   2017-02-21 18:43:49,284 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@2a5ca662
+TRACE   2017-02-21 18:43:49,353 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@d4d94f9f
+TRACE   2017-02-21 18:43:49,416 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@5db5f927
+TRACE   2017-02-21 18:43:49,489 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@e58b2033
+TRACE   2017-02-21 18:43:49,556 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@21a6b5c9
+TRACE   2017-02-21 18:43:49,644 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@ba626d7c
+TRACE   2017-02-21 18:43:49,645 [Thread-2] jaxbwork.InsertedWrapper  - Search object models.pojo.User@2a5ca662 in [models.pojo.User@5db5f927, models.pojo.Role@14af4d79, models.pojo.User@d4d94f9f, models.pojo.Role@5c7661ee, models.pojo.User@e58b2033, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c, models.pojo.User@21a6b5c9] result: true
+TRACE   2017-02-21 18:43:49,645 [Thread-2] jaxbwork.InsertedWrapper  - Search object models.pojo.Role@5c7661ee in [models.pojo.User@5db5f927, models.pojo.Role@14af4d79, models.pojo.User@d4d94f9f, models.pojo.Role@5c7661ee, models.pojo.User@e58b2033, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c, models.pojo.User@21a6b5c9] result: true
+TRACE   2017-02-21 18:43:49,645 [Thread-2] jaxbwork.XmlUnmarshallerRunnable  - wake up!
+TRACE   2017-02-21 18:43:49,704 [Thread-2] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.UserRole@7dae8b8d
+TRACE   2017-02-21 18:43:49,705 [Thread-2] jaxbwork.InsertedWrapper  - Search object models.pojo.User@d4d94f9f in [models.pojo.User@5db5f927, models.pojo.UserRole@7dae8b8d, models.pojo.Role@14af4d79, models.pojo.User@d4d94f9f, models.pojo.Role@5c7661ee, models.pojo.User@e58b2033, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c, models.pojo.User@21a6b5c9] result: true
+TRACE   2017-02-21 18:43:49,705 [Thread-2] jaxbwork.InsertedWrapper  - Search object models.pojo.Role@5c7661ee in [models.pojo.User@5db5f927, models.pojo.UserRole@7dae8b8d, models.pojo.Role@14af4d79, models.pojo.User@d4d94f9f, models.pojo.Role@5c7661ee, models.pojo.User@e58b2033, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c, models.pojo.User@21a6b5c9] result: true
+TRACE   2017-02-21 18:43:49,705 [Thread-2] jaxbwork.XmlUnmarshallerRunnable  - wake up!
+TRACE   2017-02-21 18:43:49,735 [Thread-2] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.UserRole@22c70db1
+TRACE   2017-02-21 18:43:49,735 [Thread-2] jaxbwork.InsertedWrapper  - Search object models.pojo.User@5db5f927 in [models.pojo.User@5db5f927, models.pojo.UserRole@7dae8b8d, models.pojo.Role@14af4d79, models.pojo.User@d4d94f9f, models.pojo.UserRole@22c70db1, models.pojo.Role@5c7661ee, models.pojo.User@e58b2033, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c, models.pojo.User@21a6b5c9] result: true
+TRACE   2017-02-21 18:43:49,735 [Thread-2] jaxbwork.InsertedWrapper  - Search object models.pojo.Role@5c7661ee in [models.pojo.User@5db5f927, models.pojo.UserRole@7dae8b8d, models.pojo.Role@14af4d79, models.pojo.User@d4d94f9f, models.pojo.UserRole@22c70db1, models.pojo.Role@5c7661ee, models.pojo.User@e58b2033, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c, models.pojo.User@21a6b5c9] result: true
+TRACE   2017-02-21 18:43:49,735 [Thread-2] jaxbwork.XmlUnmarshallerRunnable  - wake up!
+TRACE   2017-02-21 18:43:49,771 [Thread-2] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.UserRole@b57f98ea
+TRACE   2017-02-21 18:43:49,771 [Thread-2] jaxbwork.InsertedWrapper  - Search object models.pojo.User@e58b2033 in [models.pojo.User@5db5f927, models.pojo.UserRole@7dae8b8d, models.pojo.UserRole@b57f98ea, models.pojo.Role@14af4d79, models.pojo.User@d4d94f9f, models.pojo.UserRole@22c70db1, models.pojo.Role@5c7661ee, models.pojo.User@e58b2033, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c, models.pojo.User@21a6b5c9] result: true
+TRACE   2017-02-21 18:43:49,771 [Thread-2] jaxbwork.InsertedWrapper  - Search object models.pojo.Role@5c7661ee in [models.pojo.User@5db5f927, models.pojo.UserRole@7dae8b8d, models.pojo.UserRole@b57f98ea, models.pojo.Role@14af4d79, models.pojo.User@d4d94f9f, models.pojo.UserRole@22c70db1, models.pojo.Role@5c7661ee, models.pojo.User@e58b2033, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c, models.pojo.User@21a6b5c9] result: true
+TRACE   2017-02-21 18:43:49,771 [Thread-2] jaxbwork.XmlUnmarshallerRunnable  - wake up!
+TRACE   2017-02-21 18:43:49,801 [Thread-2] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.UserRole@284f571f
+TRACE   2017-02-21 18:43:49,801 [Thread-2] jaxbwork.InsertedWrapper  - Search object models.pojo.User@21a6b5c9 in [models.pojo.UserRole@284f571f, models.pojo.User@5db5f927, models.pojo.UserRole@7dae8b8d, models.pojo.UserRole@b57f98ea, models.pojo.Role@14af4d79, models.pojo.User@d4d94f9f, models.pojo.UserRole@22c70db1, models.pojo.Role@5c7661ee, models.pojo.User@e58b2033, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c, models.pojo.User@21a6b5c9] result: true
+TRACE   2017-02-21 18:43:49,802 [Thread-2] jaxbwork.InsertedWrapper  - Search object models.pojo.Role@5c7661ee in [models.pojo.UserRole@284f571f, models.pojo.User@5db5f927, models.pojo.UserRole@7dae8b8d, models.pojo.UserRole@b57f98ea, models.pojo.Role@14af4d79, models.pojo.User@d4d94f9f, models.pojo.UserRole@22c70db1, models.pojo.Role@5c7661ee, models.pojo.User@e58b2033, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c, models.pojo.User@21a6b5c9] result: true
+TRACE   2017-02-21 18:43:49,802 [Thread-2] jaxbwork.XmlUnmarshallerRunnable  - wake up!
+TRACE   2017-02-21 18:43:49,838 [Thread-2] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.UserRole@6fa6780a
+TRACE   2017-02-21 18:43:49,838 [Thread-2] jaxbwork.InsertedWrapper  - Search object models.pojo.User@ba626d7c in [models.pojo.UserRole@7dae8b8d, models.pojo.User@d4d94f9f, models.pojo.UserRole@6fa6780a, models.pojo.User@21a6b5c9, models.pojo.UserRole@284f571f, models.pojo.User@5db5f927, models.pojo.UserRole@b57f98ea, models.pojo.Role@14af4d79, models.pojo.UserRole@22c70db1, models.pojo.Role@5c7661ee, models.pojo.User@e58b2033, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c] result: true
+TRACE   2017-02-21 18:43:49,839 [Thread-2] jaxbwork.InsertedWrapper  - Search object models.pojo.Role@14af4d79 in [models.pojo.UserRole@7dae8b8d, models.pojo.User@d4d94f9f, models.pojo.UserRole@6fa6780a, models.pojo.User@21a6b5c9, models.pojo.UserRole@284f571f, models.pojo.User@5db5f927, models.pojo.UserRole@b57f98ea, models.pojo.Role@14af4d79, models.pojo.UserRole@22c70db1, models.pojo.Role@5c7661ee, models.pojo.User@e58b2033, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c] result: true
+TRACE   2017-02-21 18:43:49,839 [Thread-2] jaxbwork.XmlUnmarshallerRunnable  - wake up!
+TRACE   2017-02-21 18:43:49,868 [Thread-2] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.UserRole@a69aa603
+TRACE   2017-02-21 18:44:19,652 [main] main.Main  - delete all from database...
+TRACE   2017-02-21 18:44:24,412 [main] main.Main  - insert to database from xml files
+TRACE   2017-02-21 18:44:24,420 [Thread-0] jaxbwork.XmlUnmarshallerRunnable  - thread started for xmlout/roles.xml
+TRACE   2017-02-21 18:44:24,422 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - thread started for xmlout/users.xml
+TRACE   2017-02-21 18:44:24,424 [Thread-2] jaxbwork.XmlUnmarshallerRunnable  - thread started for xmlout/userRoles.xml
+TRACE   2017-02-21 18:44:24,427 [Thread-3] jaxbwork.XmlUnmarshallerRunnable  - thread started for xmlout/courses.xml
+TRACE   2017-02-21 18:44:24,428 [Thread-4] jaxbwork.XmlUnmarshallerRunnable  - thread started for xmlout/lessons.xml
+TRACE   2017-02-21 18:44:24,434 [Thread-6] jaxbwork.XmlUnmarshallerRunnable  - thread started for xmlout/lessontestsresult.xml
+TRACE   2017-02-21 18:44:24,434 [Thread-5] jaxbwork.XmlUnmarshallerRunnable  - thread started for xmlout/lessontests.xml
+TRACE   2017-02-21 18:44:24,989 [Thread-0] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.Role@5c7661ee
+TRACE   2017-02-21 18:44:25,186 [Thread-0] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.Role@14af4d79
+TRACE   2017-02-21 18:44:25,187 [Thread-5] jaxbwork.InsertedWrapper  - Search object models.pojo.Lesson@e81a2d2d in [models.pojo.Role@14af4d79, models.pojo.Role@5c7661ee] result: false
+TRACE   2017-02-21 18:44:25,188 [Thread-6] jaxbwork.InsertedWrapper  - Search object models.pojo.LessonTest@26181745 in [models.pojo.Role@14af4d79, models.pojo.Role@5c7661ee] result: false
+TRACE   2017-02-21 18:44:25,188 [Thread-4] jaxbwork.InsertedWrapper  - Search object models.pojo.Course@5c9d60ef in [models.pojo.Role@14af4d79, models.pojo.Role@5c7661ee] result: false
+TRACE   2017-02-21 18:44:25,188 [Thread-3] jaxbwork.InsertedWrapper  - Search object models.pojo.User@ba626d7c in [models.pojo.Role@14af4d79, models.pojo.Role@5c7661ee] result: false
+TRACE   2017-02-21 18:44:25,189 [Thread-2] jaxbwork.InsertedWrapper  - Search object models.pojo.User@2a5ca662 in [models.pojo.Role@14af4d79, models.pojo.Role@5c7661ee] result: false
+TRACE   2017-02-21 18:44:25,189 [Thread-2] jaxbwork.XmlUnmarshallerRunnable  - User models.pojo.User@2a5ca662 or role models.pojo.Role@5c7661ee not founded, waiting inserts...
+TRACE   2017-02-21 18:44:25,321 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@2a5ca662
+TRACE   2017-02-21 18:44:25,387 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@d4d94f9f
+TRACE   2017-02-21 18:44:25,519 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@5db5f927
+TRACE   2017-02-21 18:44:25,598 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@e58b2033
+TRACE   2017-02-21 18:44:25,709 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@21a6b5c9
+TRACE   2017-02-21 18:44:25,764 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@ba626d7c
+TRACE   2017-02-21 18:44:25,765 [Thread-2] jaxbwork.InsertedWrapper  - Search object models.pojo.User@2a5ca662 in [models.pojo.User@5db5f927, models.pojo.Role@14af4d79, models.pojo.User@d4d94f9f, models.pojo.Role@5c7661ee, models.pojo.User@e58b2033, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c, models.pojo.User@21a6b5c9] result: true
+TRACE   2017-02-21 18:44:25,765 [Thread-2] jaxbwork.InsertedWrapper  - Search object models.pojo.Role@5c7661ee in [models.pojo.User@5db5f927, models.pojo.Role@14af4d79, models.pojo.User@d4d94f9f, models.pojo.Role@5c7661ee, models.pojo.User@e58b2033, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c, models.pojo.User@21a6b5c9] result: true
+TRACE   2017-02-21 18:44:25,765 [Thread-2] jaxbwork.XmlUnmarshallerRunnable  - wake up!
+TRACE   2017-02-21 18:44:25,844 [Thread-2] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.UserRole@7dae8b8d
+TRACE   2017-02-21 18:44:25,844 [Thread-2] jaxbwork.InsertedWrapper  - Search object models.pojo.User@d4d94f9f in [models.pojo.User@5db5f927, models.pojo.UserRole@7dae8b8d, models.pojo.Role@14af4d79, models.pojo.User@d4d94f9f, models.pojo.Role@5c7661ee, models.pojo.User@e58b2033, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c, models.pojo.User@21a6b5c9] result: true
+TRACE   2017-02-21 18:44:25,844 [Thread-2] jaxbwork.InsertedWrapper  - Search object models.pojo.Role@5c7661ee in [models.pojo.User@5db5f927, models.pojo.UserRole@7dae8b8d, models.pojo.Role@14af4d79, models.pojo.User@d4d94f9f, models.pojo.Role@5c7661ee, models.pojo.User@e58b2033, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c, models.pojo.User@21a6b5c9] result: true
+TRACE   2017-02-21 18:44:25,844 [Thread-2] jaxbwork.XmlUnmarshallerRunnable  - wake up!
+TRACE   2017-02-21 18:44:25,919 [Thread-2] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.UserRole@22c70db1
+TRACE   2017-02-21 18:44:25,919 [Thread-2] jaxbwork.InsertedWrapper  - Search object models.pojo.User@5db5f927 in [models.pojo.User@5db5f927, models.pojo.UserRole@7dae8b8d, models.pojo.Role@14af4d79, models.pojo.User@d4d94f9f, models.pojo.UserRole@22c70db1, models.pojo.Role@5c7661ee, models.pojo.User@e58b2033, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c, models.pojo.User@21a6b5c9] result: true
+TRACE   2017-02-21 18:44:25,919 [Thread-2] jaxbwork.InsertedWrapper  - Search object models.pojo.Role@5c7661ee in [models.pojo.User@5db5f927, models.pojo.UserRole@7dae8b8d, models.pojo.Role@14af4d79, models.pojo.User@d4d94f9f, models.pojo.UserRole@22c70db1, models.pojo.Role@5c7661ee, models.pojo.User@e58b2033, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c, models.pojo.User@21a6b5c9] result: true
+TRACE   2017-02-21 18:44:25,919 [Thread-2] jaxbwork.XmlUnmarshallerRunnable  - wake up!
+TRACE   2017-02-21 18:44:25,989 [Thread-2] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.UserRole@b57f98ea
+TRACE   2017-02-21 18:44:25,990 [Thread-2] jaxbwork.InsertedWrapper  - Search object models.pojo.User@e58b2033 in [models.pojo.User@5db5f927, models.pojo.UserRole@7dae8b8d, models.pojo.UserRole@b57f98ea, models.pojo.Role@14af4d79, models.pojo.User@d4d94f9f, models.pojo.UserRole@22c70db1, models.pojo.Role@5c7661ee, models.pojo.User@e58b2033, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c, models.pojo.User@21a6b5c9] result: true
+TRACE   2017-02-21 18:44:25,990 [Thread-2] jaxbwork.InsertedWrapper  - Search object models.pojo.Role@5c7661ee in [models.pojo.User@5db5f927, models.pojo.UserRole@7dae8b8d, models.pojo.UserRole@b57f98ea, models.pojo.Role@14af4d79, models.pojo.User@d4d94f9f, models.pojo.UserRole@22c70db1, models.pojo.Role@5c7661ee, models.pojo.User@e58b2033, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c, models.pojo.User@21a6b5c9] result: true
+TRACE   2017-02-21 18:44:25,990 [Thread-2] jaxbwork.XmlUnmarshallerRunnable  - wake up!
+TRACE   2017-02-21 18:44:26,017 [Thread-2] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.UserRole@284f571f
+TRACE   2017-02-21 18:44:26,017 [Thread-2] jaxbwork.InsertedWrapper  - Search object models.pojo.User@21a6b5c9 in [models.pojo.UserRole@284f571f, models.pojo.User@5db5f927, models.pojo.UserRole@7dae8b8d, models.pojo.UserRole@b57f98ea, models.pojo.Role@14af4d79, models.pojo.User@d4d94f9f, models.pojo.UserRole@22c70db1, models.pojo.Role@5c7661ee, models.pojo.User@e58b2033, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c, models.pojo.User@21a6b5c9] result: true
+TRACE   2017-02-21 18:44:26,018 [Thread-2] jaxbwork.InsertedWrapper  - Search object models.pojo.Role@5c7661ee in [models.pojo.UserRole@284f571f, models.pojo.User@5db5f927, models.pojo.UserRole@7dae8b8d, models.pojo.UserRole@b57f98ea, models.pojo.Role@14af4d79, models.pojo.User@d4d94f9f, models.pojo.UserRole@22c70db1, models.pojo.Role@5c7661ee, models.pojo.User@e58b2033, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c, models.pojo.User@21a6b5c9] result: true
+TRACE   2017-02-21 18:44:26,018 [Thread-2] jaxbwork.XmlUnmarshallerRunnable  - wake up!
+TRACE   2017-02-21 18:44:26,053 [Thread-2] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.UserRole@6fa6780a
+TRACE   2017-02-21 18:44:26,054 [Thread-2] jaxbwork.InsertedWrapper  - Search object models.pojo.User@ba626d7c in [models.pojo.UserRole@7dae8b8d, models.pojo.User@d4d94f9f, models.pojo.UserRole@6fa6780a, models.pojo.User@21a6b5c9, models.pojo.UserRole@284f571f, models.pojo.User@5db5f927, models.pojo.UserRole@b57f98ea, models.pojo.Role@14af4d79, models.pojo.UserRole@22c70db1, models.pojo.Role@5c7661ee, models.pojo.User@e58b2033, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c] result: true
+TRACE   2017-02-21 18:44:26,054 [Thread-2] jaxbwork.InsertedWrapper  - Search object models.pojo.Role@14af4d79 in [models.pojo.UserRole@7dae8b8d, models.pojo.User@d4d94f9f, models.pojo.UserRole@6fa6780a, models.pojo.User@21a6b5c9, models.pojo.UserRole@284f571f, models.pojo.User@5db5f927, models.pojo.UserRole@b57f98ea, models.pojo.Role@14af4d79, models.pojo.UserRole@22c70db1, models.pojo.Role@5c7661ee, models.pojo.User@e58b2033, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c] result: true
+TRACE   2017-02-21 18:44:26,054 [Thread-2] jaxbwork.XmlUnmarshallerRunnable  - wake up!
+TRACE   2017-02-21 18:44:26,094 [Thread-2] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.UserRole@a69aa603
+TRACE   2017-02-21 18:44:26,095 [Thread-3] jaxbwork.InsertedWrapper  - Search object models.pojo.User@ba626d7c in [models.pojo.UserRole@7dae8b8d, models.pojo.User@d4d94f9f, models.pojo.UserRole@6fa6780a, models.pojo.User@21a6b5c9, models.pojo.UserRole@284f571f, models.pojo.User@5db5f927, models.pojo.UserRole@b57f98ea, models.pojo.Role@14af4d79, models.pojo.UserRole@22c70db1, models.pojo.Role@5c7661ee, models.pojo.User@e58b2033, models.pojo.UserRole@a69aa603, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c] result: true
+TRACE   2017-02-21 18:44:26,131 [Thread-3] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.Course@5c9d60ef
+TRACE   2017-02-21 18:44:26,131 [Thread-4] jaxbwork.InsertedWrapper  - Search object models.pojo.Course@5c9d60ef in [models.pojo.UserRole@7dae8b8d, models.pojo.User@d4d94f9f, models.pojo.UserRole@6fa6780a, models.pojo.User@21a6b5c9, models.pojo.UserRole@284f571f, models.pojo.User@5db5f927, models.pojo.Course@5c9d60ef, models.pojo.UserRole@b57f98ea, models.pojo.Role@14af4d79, models.pojo.UserRole@22c70db1, models.pojo.Role@5c7661ee, models.pojo.User@e58b2033, models.pojo.UserRole@a69aa603, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c] result: true
+TRACE   2017-02-21 18:44:26,186 [Thread-4] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.Lesson@e81a2d2d
+TRACE   2017-02-21 18:44:26,187 [Thread-4] jaxbwork.InsertedWrapper  - Search object models.pojo.Course@5c9d60ef in [models.pojo.UserRole@7dae8b8d, models.pojo.User@d4d94f9f, models.pojo.UserRole@6fa6780a, models.pojo.User@21a6b5c9, models.pojo.UserRole@284f571f, models.pojo.User@5db5f927, models.pojo.Course@5c9d60ef, models.pojo.UserRole@b57f98ea, models.pojo.Role@14af4d79, models.pojo.UserRole@22c70db1, models.pojo.Lesson@e81a2d2d, models.pojo.Role@5c7661ee, models.pojo.User@e58b2033, models.pojo.UserRole@a69aa603, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c] result: true
+TRACE   2017-02-21 18:44:26,217 [Thread-4] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.Lesson@18ce28a9
+TRACE   2017-02-21 18:44:26,218 [Thread-6] jaxbwork.InsertedWrapper  - Search object models.pojo.LessonTest@26181745 in [models.pojo.UserRole@7dae8b8d, models.pojo.User@d4d94f9f, models.pojo.Lesson@18ce28a9, models.pojo.UserRole@6fa6780a, models.pojo.User@21a6b5c9, models.pojo.UserRole@284f571f, models.pojo.User@5db5f927, models.pojo.Course@5c9d60ef, models.pojo.UserRole@b57f98ea, models.pojo.Role@14af4d79, models.pojo.UserRole@22c70db1, models.pojo.Lesson@e81a2d2d, models.pojo.Role@5c7661ee, models.pojo.User@e58b2033, models.pojo.UserRole@a69aa603, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c] result: false
+TRACE   2017-02-21 18:44:26,218 [Thread-5] jaxbwork.InsertedWrapper  - Search object models.pojo.Lesson@e81a2d2d in [models.pojo.UserRole@7dae8b8d, models.pojo.User@d4d94f9f, models.pojo.Lesson@18ce28a9, models.pojo.UserRole@6fa6780a, models.pojo.User@21a6b5c9, models.pojo.UserRole@284f571f, models.pojo.User@5db5f927, models.pojo.Course@5c9d60ef, models.pojo.UserRole@b57f98ea, models.pojo.Role@14af4d79, models.pojo.UserRole@22c70db1, models.pojo.Lesson@e81a2d2d, models.pojo.Role@5c7661ee, models.pojo.User@e58b2033, models.pojo.UserRole@a69aa603, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c] result: true
+TRACE   2017-02-21 18:44:26,402 [Thread-5] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.LessonTest@26181745
+TRACE   2017-02-21 18:44:26,402 [Thread-5] jaxbwork.InsertedWrapper  - Search object models.pojo.Lesson@18ce28a9 in [models.pojo.UserRole@7dae8b8d, models.pojo.User@d4d94f9f, models.pojo.Lesson@18ce28a9, models.pojo.UserRole@6fa6780a, models.pojo.User@21a6b5c9, models.pojo.UserRole@284f571f, models.pojo.User@5db5f927, models.pojo.Course@5c9d60ef, models.pojo.UserRole@b57f98ea, models.pojo.Role@14af4d79, models.pojo.UserRole@22c70db1, models.pojo.Lesson@e81a2d2d, models.pojo.Role@5c7661ee, models.pojo.User@e58b2033, models.pojo.UserRole@a69aa603, models.pojo.LessonTest@26181745, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c] result: true
+TRACE   2017-02-21 18:44:26,438 [Thread-5] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.LessonTest@d1fbcd76
+TRACE   2017-02-21 18:44:26,439 [Thread-6] jaxbwork.InsertedWrapper  - Search object models.pojo.LessonTest@26181745 in [models.pojo.UserRole@7dae8b8d, models.pojo.User@d4d94f9f, models.pojo.Lesson@18ce28a9, models.pojo.UserRole@6fa6780a, models.pojo.LessonTest@d1fbcd76, models.pojo.User@21a6b5c9, models.pojo.UserRole@284f571f, models.pojo.User@5db5f927, models.pojo.Course@5c9d60ef, models.pojo.UserRole@b57f98ea, models.pojo.Role@14af4d79, models.pojo.UserRole@22c70db1, models.pojo.Lesson@e81a2d2d, models.pojo.Role@5c7661ee, models.pojo.User@e58b2033, models.pojo.UserRole@a69aa603, models.pojo.LessonTest@26181745, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c] result: true
+TRACE   2017-02-21 18:44:26,439 [Thread-6] jaxbwork.InsertedWrapper  - Search object models.pojo.User@2a5ca662 in [models.pojo.UserRole@7dae8b8d, models.pojo.User@d4d94f9f, models.pojo.Lesson@18ce28a9, models.pojo.UserRole@6fa6780a, models.pojo.LessonTest@d1fbcd76, models.pojo.User@21a6b5c9, models.pojo.UserRole@284f571f, models.pojo.User@5db5f927, models.pojo.Course@5c9d60ef, models.pojo.UserRole@b57f98ea, models.pojo.Role@14af4d79, models.pojo.UserRole@22c70db1, models.pojo.Lesson@e81a2d2d, models.pojo.Role@5c7661ee, models.pojo.User@e58b2033, models.pojo.UserRole@a69aa603, models.pojo.LessonTest@26181745, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c] result: true
+TRACE   2017-02-21 18:44:26,594 [Thread-6] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.LessonTestResult@b0c7d8f8
+TRACE   2017-02-21 18:44:26,594 [Thread-6] jaxbwork.InsertedWrapper  - Search object models.pojo.LessonTest@d1fbcd76 in [models.pojo.UserRole@7dae8b8d, models.pojo.User@d4d94f9f, models.pojo.Lesson@18ce28a9, models.pojo.UserRole@6fa6780a, models.pojo.LessonTest@d1fbcd76, models.pojo.User@21a6b5c9, models.pojo.UserRole@284f571f, models.pojo.User@5db5f927, models.pojo.Course@5c9d60ef, models.pojo.UserRole@b57f98ea, models.pojo.Role@14af4d79, models.pojo.UserRole@22c70db1, models.pojo.Lesson@e81a2d2d, models.pojo.Role@5c7661ee, models.pojo.User@e58b2033, models.pojo.UserRole@a69aa603, models.pojo.LessonTest@26181745, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c, models.pojo.LessonTestResult@b0c7d8f8] result: true
+TRACE   2017-02-21 18:44:26,594 [Thread-6] jaxbwork.InsertedWrapper  - Search object models.pojo.User@d4d94f9f in [models.pojo.UserRole@7dae8b8d, models.pojo.User@d4d94f9f, models.pojo.Lesson@18ce28a9, models.pojo.UserRole@6fa6780a, models.pojo.LessonTest@d1fbcd76, models.pojo.User@21a6b5c9, models.pojo.UserRole@284f571f, models.pojo.User@5db5f927, models.pojo.Course@5c9d60ef, models.pojo.UserRole@b57f98ea, models.pojo.Role@14af4d79, models.pojo.UserRole@22c70db1, models.pojo.Lesson@e81a2d2d, models.pojo.Role@5c7661ee, models.pojo.User@e58b2033, models.pojo.UserRole@a69aa603, models.pojo.LessonTest@26181745, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c, models.pojo.LessonTestResult@b0c7d8f8] result: true
+TRACE   2017-02-21 18:44:26,629 [Thread-6] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.LessonTestResult@a6dc0ea5
+TRACE   2017-02-21 18:44:26,630 [Thread-6] jaxbwork.InsertedWrapper  - Search object models.pojo.LessonTest@26181745 in [models.pojo.UserRole@7dae8b8d, models.pojo.User@d4d94f9f, models.pojo.Lesson@18ce28a9, models.pojo.UserRole@6fa6780a, models.pojo.LessonTest@d1fbcd76, models.pojo.User@21a6b5c9, models.pojo.UserRole@284f571f, models.pojo.User@5db5f927, models.pojo.Course@5c9d60ef, models.pojo.UserRole@b57f98ea, models.pojo.Role@14af4d79, models.pojo.UserRole@22c70db1, models.pojo.Lesson@e81a2d2d, models.pojo.Role@5c7661ee, models.pojo.User@e58b2033, models.pojo.UserRole@a69aa603, models.pojo.LessonTestResult@a6dc0ea5, models.pojo.LessonTest@26181745, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c, models.pojo.LessonTestResult@b0c7d8f8] result: true
+TRACE   2017-02-21 18:44:26,630 [Thread-6] jaxbwork.InsertedWrapper  - Search object models.pojo.User@5db5f927 in [models.pojo.UserRole@7dae8b8d, models.pojo.User@d4d94f9f, models.pojo.Lesson@18ce28a9, models.pojo.UserRole@6fa6780a, models.pojo.LessonTest@d1fbcd76, models.pojo.User@21a6b5c9, models.pojo.UserRole@284f571f, models.pojo.User@5db5f927, models.pojo.Course@5c9d60ef, models.pojo.UserRole@b57f98ea, models.pojo.Role@14af4d79, models.pojo.UserRole@22c70db1, models.pojo.Lesson@e81a2d2d, models.pojo.Role@5c7661ee, models.pojo.User@e58b2033, models.pojo.UserRole@a69aa603, models.pojo.LessonTestResult@a6dc0ea5, models.pojo.LessonTest@26181745, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c, models.pojo.LessonTestResult@b0c7d8f8] result: true
+TRACE   2017-02-21 18:44:26,660 [Thread-6] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.LessonTestResult@7333bd7f
+TRACE   2017-02-21 22:48:50,009 [main] main.Main  - database export to xml files
+TRACE   2017-02-21 22:48:50,052 [Thread-0] jaxbwork.XmlMarshallerRunnable  - thread started for xmlout/users.xml
+TRACE   2017-02-21 22:48:50,054 [Thread-1] jaxbwork.XmlMarshallerRunnable  - thread started for xmlout/roles.xml
+TRACE   2017-02-21 22:48:50,057 [Thread-2] jaxbwork.XmlMarshallerRunnable  - thread started for xmlout/userRoles.xml
+TRACE   2017-02-21 22:48:50,059 [Thread-3] jaxbwork.XmlMarshallerRunnable  - thread started for xmlout/courses.xml
+TRACE   2017-02-21 22:48:50,061 [Thread-4] jaxbwork.XmlMarshallerRunnable  - thread started for xmlout/lessons.xml
+TRACE   2017-02-21 22:48:50,065 [Thread-5] jaxbwork.XmlMarshallerRunnable  - thread started for xmlout/lessontests.xml
+TRACE   2017-02-21 22:48:50,067 [Thread-6] jaxbwork.XmlMarshallerRunnable  - thread started for xmlout/lessontestsresult.xml
+TRACE   2017-02-21 22:53:33,350 [main] main.Main  - database export to xml files
+TRACE   2017-02-21 22:53:33,372 [Thread-0] jaxbwork.XmlMarshallerRunnable  - started export to xmlout/users.xml
+TRACE   2017-02-21 22:53:33,376 [Thread-1] jaxbwork.XmlMarshallerRunnable  - started export to xmlout/roles.xml
+TRACE   2017-02-21 22:53:33,393 [Thread-2] jaxbwork.XmlMarshallerRunnable  - started export to xmlout/userRoles.xml
+TRACE   2017-02-21 22:53:33,416 [Thread-3] jaxbwork.XmlMarshallerRunnable  - started export to xmlout/courses.xml
+TRACE   2017-02-21 22:53:33,445 [Thread-4] jaxbwork.XmlMarshallerRunnable  - started export to xmlout/lessons.xml
+TRACE   2017-02-21 22:53:33,448 [Thread-5] jaxbwork.XmlMarshallerRunnable  - started export to xmlout/lessontests.xml
+TRACE   2017-02-21 22:53:33,450 [Thread-6] jaxbwork.XmlMarshallerRunnable  - started export to xmlout/lessontestsresult.xml
+ERROR   2017-02-21 22:53:34,012 [Thread-5] jaxbwork.XmlConverter  - 
+ERROR   2017-02-21 22:53:34,012 [Thread-2] jaxbwork.XmlConverter  - 
+TRACE   2017-02-21 22:53:34,012 [Thread-2] jaxbwork.XmlMarshallerRunnable  - finished export to xmlout/userRoles.xml
+ERROR   2017-02-21 22:53:34,013 [Thread-4] jaxbwork.XmlConverter  - 
+TRACE   2017-02-21 22:53:34,014 [Thread-4] jaxbwork.XmlMarshallerRunnable  - finished export to xmlout/lessons.xml
+ERROR   2017-02-21 22:53:34,014 [Thread-1] jaxbwork.XmlConverter  - 
+TRACE   2017-02-21 22:53:34,014 [Thread-1] jaxbwork.XmlMarshallerRunnable  - finished export to xmlout/roles.xml
+ERROR   2017-02-21 22:53:34,014 [Thread-3] jaxbwork.XmlConverter  - 
+TRACE   2017-02-21 22:53:34,014 [Thread-3] jaxbwork.XmlMarshallerRunnable  - finished export to xmlout/courses.xml
+TRACE   2017-02-21 22:53:34,012 [Thread-5] jaxbwork.XmlMarshallerRunnable  - finished export to xmlout/lessontests.xml
+ERROR   2017-02-21 22:53:34,012 [Thread-6] jaxbwork.XmlConverter  - 
+TRACE   2017-02-21 22:53:34,015 [Thread-6] jaxbwork.XmlMarshallerRunnable  - finished export to xmlout/lessontestsresult.xml
+ERROR   2017-02-21 22:53:34,013 [Thread-0] jaxbwork.XmlConverter  - 
+TRACE   2017-02-21 22:53:34,016 [Thread-0] jaxbwork.XmlMarshallerRunnable  - finished export to xmlout/users.xml
+TRACE   2017-02-21 22:54:00,061 [main] main.Main  - database export to xml files
+TRACE   2017-02-21 22:54:00,071 [Thread-0] jaxbwork.XmlMarshallerRunnable  - started export to xmlout/users.xml
+TRACE   2017-02-21 22:54:00,082 [Thread-1] jaxbwork.XmlMarshallerRunnable  - started export to xmlout/roles.xml
+TRACE   2017-02-21 22:54:00,084 [Thread-4] jaxbwork.XmlMarshallerRunnable  - started export to xmlout/lessons.xml
+TRACE   2017-02-21 22:54:00,083 [Thread-3] jaxbwork.XmlMarshallerRunnable  - started export to xmlout/courses.xml
+TRACE   2017-02-21 22:54:00,083 [Thread-2] jaxbwork.XmlMarshallerRunnable  - started export to xmlout/userRoles.xml
+TRACE   2017-02-21 22:54:00,086 [Thread-5] jaxbwork.XmlMarshallerRunnable  - started export to xmlout/lessontests.xml
+TRACE   2017-02-21 22:54:00,087 [Thread-6] jaxbwork.XmlMarshallerRunnable  - started export to xmlout/lessontestsresult.xml
+ERROR   2017-02-21 22:54:00,422 [Thread-4] jaxbwork.XmlConverter  - 
+TRACE   2017-02-21 22:54:00,422 [Thread-4] jaxbwork.XmlMarshallerRunnable  - finished export to xmlout/lessons.xml
+ERROR   2017-02-21 22:54:00,423 [Thread-1] jaxbwork.XmlConverter  - 
+ERROR   2017-02-21 22:54:00,423 [Thread-3] jaxbwork.XmlConverter  - 
+TRACE   2017-02-21 22:54:00,424 [Thread-3] jaxbwork.XmlMarshallerRunnable  - finished export to xmlout/courses.xml
+ERROR   2017-02-21 22:54:00,424 [Thread-5] jaxbwork.XmlConverter  - 
+TRACE   2017-02-21 22:54:00,425 [Thread-5] jaxbwork.XmlMarshallerRunnable  - finished export to xmlout/lessontests.xml
+ERROR   2017-02-21 22:54:00,423 [Thread-2] jaxbwork.XmlConverter  - 
+TRACE   2017-02-21 22:54:00,425 [Thread-2] jaxbwork.XmlMarshallerRunnable  - finished export to xmlout/userRoles.xml
+TRACE   2017-02-21 22:54:00,424 [Thread-1] jaxbwork.XmlMarshallerRunnable  - finished export to xmlout/roles.xml
+ERROR   2017-02-21 22:54:00,436 [Thread-6] jaxbwork.XmlConverter  - 
+ERROR   2017-02-21 22:54:00,436 [Thread-0] jaxbwork.XmlConverter  - 
+TRACE   2017-02-21 22:54:00,437 [Thread-6] jaxbwork.XmlMarshallerRunnable  - finished export to xmlout/lessontestsresult.xml
+TRACE   2017-02-21 22:54:00,437 [Thread-0] jaxbwork.XmlMarshallerRunnable  - finished export to xmlout/users.xml
+TRACE   2017-02-21 22:56:26,419 [main] main.Main  - database export to xml files
+TRACE   2017-02-21 22:56:26,432 [Thread-0] jaxbwork.XmlMarshallerRunnable  - started export to xmlout/users.xml
+TRACE   2017-02-21 22:56:26,434 [Thread-1] jaxbwork.XmlMarshallerRunnable  - started export to xmlout/roles.xml
+TRACE   2017-02-21 22:56:26,436 [Thread-2] jaxbwork.XmlMarshallerRunnable  - started export to xmlout/userRoles.xml
+TRACE   2017-02-21 22:56:26,439 [Thread-3] jaxbwork.XmlMarshallerRunnable  - started export to xmlout/courses.xml
+TRACE   2017-02-21 22:56:26,440 [Thread-4] jaxbwork.XmlMarshallerRunnable  - started export to xmlout/lessons.xml
+TRACE   2017-02-21 22:56:26,442 [Thread-5] jaxbwork.XmlMarshallerRunnable  - started export to xmlout/lessontests.xml
+TRACE   2017-02-21 22:56:26,445 [Thread-6] jaxbwork.XmlMarshallerRunnable  - started export to xmlout/lessontestsresult.xml
+ERROR   2017-02-21 22:56:26,988 [Thread-3] jaxbwork.XmlConverter  - 
+TRACE   2017-02-21 22:56:26,988 [Thread-3] jaxbwork.XmlMarshallerRunnable  - finished export to xmlout/courses.xml
+ERROR   2017-02-21 22:56:26,988 [Thread-1] jaxbwork.XmlConverter  - 
+TRACE   2017-02-21 22:56:26,989 [Thread-1] jaxbwork.XmlMarshallerRunnable  - finished export to xmlout/roles.xml
+ERROR   2017-02-21 22:56:26,989 [Thread-6] jaxbwork.XmlConverter  - 
+TRACE   2017-02-21 22:56:26,989 [Thread-6] jaxbwork.XmlMarshallerRunnable  - finished export to xmlout/lessontestsresult.xml
+ERROR   2017-02-21 22:56:26,989 [Thread-5] jaxbwork.XmlConverter  - 
+TRACE   2017-02-21 22:56:26,990 [Thread-5] jaxbwork.XmlMarshallerRunnable  - finished export to xmlout/lessontests.xml
+ERROR   2017-02-21 22:56:26,991 [Thread-4] jaxbwork.XmlConverter  - 
+TRACE   2017-02-21 22:56:26,991 [Thread-4] jaxbwork.XmlMarshallerRunnable  - finished export to xmlout/lessons.xml
+ERROR   2017-02-21 22:56:26,992 [Thread-0] jaxbwork.XmlConverter  - 
+TRACE   2017-02-21 22:56:26,992 [Thread-0] jaxbwork.XmlMarshallerRunnable  - finished export to xmlout/users.xml
+ERROR   2017-02-21 22:56:26,993 [Thread-2] jaxbwork.XmlConverter  - 
+TRACE   2017-02-21 22:56:26,993 [Thread-2] jaxbwork.XmlMarshallerRunnable  - finished export to xmlout/userRoles.xml
+TRACE   2017-02-21 22:59:35,348 [main] main.Main  - started database export to xml files
+TRACE   2017-02-21 22:59:35,356 [Thread-0] jaxbwork.XmlMarshallerRunnable  - started export to xmlout/users.xml
+TRACE   2017-02-21 22:59:35,358 [Thread-1] jaxbwork.XmlMarshallerRunnable  - started export to xmlout/roles.xml
+TRACE   2017-02-21 22:59:35,364 [Thread-2] jaxbwork.XmlMarshallerRunnable  - started export to xmlout/userRoles.xml
+TRACE   2017-02-21 22:59:35,366 [Thread-3] jaxbwork.XmlMarshallerRunnable  - started export to xmlout/courses.xml
+TRACE   2017-02-21 22:59:35,369 [main] main.Main  - finished database export to xml files
+TRACE   2017-02-21 22:59:35,371 [Thread-4] jaxbwork.XmlMarshallerRunnable  - started export to xmlout/lessons.xml
+TRACE   2017-02-21 22:59:35,371 [Thread-5] jaxbwork.XmlMarshallerRunnable  - started export to xmlout/lessontests.xml
+TRACE   2017-02-21 22:59:35,372 [Thread-6] jaxbwork.XmlMarshallerRunnable  - started export to xmlout/lessontestsresult.xml
+TRACE   2017-02-21 22:59:35,971 [Thread-1] jaxbwork.XmlMarshallerRunnable  - finished export to xmlout/roles.xml
+TRACE   2017-02-21 22:59:36,089 [Thread-3] jaxbwork.XmlMarshallerRunnable  - finished export to xmlout/courses.xml
+TRACE   2017-02-21 22:59:36,091 [Thread-0] jaxbwork.XmlMarshallerRunnable  - finished export to xmlout/users.xml
+TRACE   2017-02-21 22:59:36,102 [Thread-2] jaxbwork.XmlMarshallerRunnable  - finished export to xmlout/userRoles.xml
+TRACE   2017-02-21 22:59:36,150 [Thread-4] jaxbwork.XmlMarshallerRunnable  - finished export to xmlout/lessons.xml
+TRACE   2017-02-21 22:59:36,159 [Thread-5] jaxbwork.XmlMarshallerRunnable  - finished export to xmlout/lessontests.xml
+TRACE   2017-02-21 22:59:36,172 [Thread-6] jaxbwork.XmlMarshallerRunnable  - finished export to xmlout/lessontestsresult.xml
+TRACE   2017-02-21 23:04:19,449 [main] main.Main  - started database export to xml files
+TRACE   2017-02-21 23:04:19,476 [Thread-0] jaxbwork.XmlMarshallerRunnable  - started export to xmlout/users.xml
+TRACE   2017-02-21 23:04:20,290 [Thread-0] jaxbwork.XmlMarshallerRunnable  - finished export to xmlout/users.xml
+TRACE   2017-02-21 23:04:20,293 [Thread-2] jaxbwork.XmlMarshallerRunnable  - started export to xmlout/roles.xml
+TRACE   2017-02-21 23:04:20,349 [Thread-2] jaxbwork.XmlMarshallerRunnable  - finished export to xmlout/roles.xml
+TRACE   2017-02-21 23:04:20,350 [Thread-3] jaxbwork.XmlMarshallerRunnable  - started export to xmlout/userRoles.xml
+TRACE   2017-02-21 23:04:20,473 [Thread-3] jaxbwork.XmlMarshallerRunnable  - finished export to xmlout/userRoles.xml
+TRACE   2017-02-21 23:04:20,477 [Thread-4] jaxbwork.XmlMarshallerRunnable  - started export to xmlout/courses.xml
+TRACE   2017-02-21 23:04:20,684 [Thread-4] jaxbwork.XmlMarshallerRunnable  - finished export to xmlout/courses.xml
+TRACE   2017-02-21 23:04:20,686 [Thread-5] jaxbwork.XmlMarshallerRunnable  - started export to xmlout/lessons.xml
+TRACE   2017-02-21 23:04:20,780 [Thread-5] jaxbwork.XmlMarshallerRunnable  - finished export to xmlout/lessons.xml
+TRACE   2017-02-21 23:04:20,781 [Thread-6] jaxbwork.XmlMarshallerRunnable  - started export to xmlout/lessontests.xml
+TRACE   2017-02-21 23:04:20,908 [Thread-6] jaxbwork.XmlMarshallerRunnable  - finished export to xmlout/lessontests.xml
+TRACE   2017-02-21 23:04:20,910 [Thread-7] jaxbwork.XmlMarshallerRunnable  - started export to xmlout/lessontestsresult.xml
+TRACE   2017-02-21 23:04:21,054 [Thread-7] jaxbwork.XmlMarshallerRunnable  - finished export to xmlout/lessontestsresult.xml
+TRACE   2017-02-21 23:04:21,054 [main] main.Main  - finished database export to xml files
+TRACE   2017-02-21 23:04:21,054 [main] main.Main  - delete all from database...
+TRACE   2017-02-21 23:04:29,579 [main] main.Main  - insert to database from xml files
+TRACE   2017-02-21 23:04:29,584 [Thread-8] jaxbwork.XmlUnmarshallerRunnable  - thread started for xmlout/roles.xml
+TRACE   2017-02-21 23:04:29,584 [Thread-12] jaxbwork.XmlUnmarshallerRunnable  - thread started for xmlout/lessons.xml
+TRACE   2017-02-21 23:04:29,585 [Thread-13] jaxbwork.XmlUnmarshallerRunnable  - thread started for xmlout/lessontests.xml
+TRACE   2017-02-21 23:04:29,585 [Thread-14] jaxbwork.XmlUnmarshallerRunnable  - thread started for xmlout/lessontestsresult.xml
+TRACE   2017-02-21 23:04:29,584 [Thread-9] jaxbwork.XmlUnmarshallerRunnable  - thread started for xmlout/users.xml
+TRACE   2017-02-21 23:04:29,584 [Thread-10] jaxbwork.XmlUnmarshallerRunnable  - thread started for xmlout/userRoles.xml
+TRACE   2017-02-21 23:04:29,584 [Thread-11] jaxbwork.XmlUnmarshallerRunnable  - thread started for xmlout/courses.xml
+TRACE   2017-02-21 23:04:30,756 [Thread-8] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.Role@5c7661ee inserted
+TRACE   2017-02-21 23:04:30,981 [Thread-8] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.Role@14af4d79 inserted
+TRACE   2017-02-21 23:04:30,982 [Thread-14] jaxbwork.InsertedWrapper  - Search object models.pojo.LessonTest@26181745 in [models.pojo.Role@14af4d79, models.pojo.Role@5c7661ee] result: false
+TRACE   2017-02-21 23:04:30,982 [Thread-13] jaxbwork.InsertedWrapper  - Search object models.pojo.Lesson@e81a2d2d in [models.pojo.Role@14af4d79, models.pojo.Role@5c7661ee] result: false
+TRACE   2017-02-21 23:04:30,983 [Thread-10] jaxbwork.InsertedWrapper  - Search object models.pojo.User@2a5ca662 in [models.pojo.Role@14af4d79, models.pojo.Role@5c7661ee] result: false
+TRACE   2017-02-21 23:04:30,983 [Thread-10] jaxbwork.XmlUnmarshallerRunnable  - User models.pojo.User@2a5ca662 or role models.pojo.Role@5c7661ee not founded, waiting inserts...
+TRACE   2017-02-21 23:04:31,369 [Thread-9] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@2a5ca662 inserted
+TRACE   2017-02-21 23:04:31,547 [Thread-9] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@d4d94f9f inserted
+TRACE   2017-02-21 23:04:31,701 [Thread-9] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@5db5f927 inserted
+TRACE   2017-02-21 23:04:31,864 [Thread-9] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@e58b2033 inserted
+TRACE   2017-02-21 23:04:31,865 [Thread-12] jaxbwork.InsertedWrapper  - Search object models.pojo.Course@5c9d60ef in [models.pojo.User@5db5f927, models.pojo.Role@14af4d79, models.pojo.User@d4d94f9f, models.pojo.Role@5c7661ee, models.pojo.User@e58b2033, models.pojo.User@2a5ca662] result: false
+TRACE   2017-02-21 23:04:31,865 [Thread-11] jaxbwork.InsertedWrapper  - Search object models.pojo.User@ba626d7c in [models.pojo.User@5db5f927, models.pojo.Role@14af4d79, models.pojo.User@d4d94f9f, models.pojo.Role@5c7661ee, models.pojo.User@e58b2033, models.pojo.User@2a5ca662] result: false
+TRACE   2017-02-21 23:04:32,007 [Thread-9] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@21a6b5c9 inserted
+TRACE   2017-02-21 23:04:32,167 [Thread-9] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@ba626d7c inserted
+TRACE   2017-02-21 23:04:32,168 [Thread-10] jaxbwork.InsertedWrapper  - Search object models.pojo.User@2a5ca662 in [models.pojo.User@5db5f927, models.pojo.Role@14af4d79, models.pojo.User@d4d94f9f, models.pojo.Role@5c7661ee, models.pojo.User@e58b2033, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c, models.pojo.User@21a6b5c9] result: true
+TRACE   2017-02-21 23:04:32,168 [Thread-10] jaxbwork.InsertedWrapper  - Search object models.pojo.Role@5c7661ee in [models.pojo.User@5db5f927, models.pojo.Role@14af4d79, models.pojo.User@d4d94f9f, models.pojo.Role@5c7661ee, models.pojo.User@e58b2033, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c, models.pojo.User@21a6b5c9] result: true
+TRACE   2017-02-21 23:04:32,168 [Thread-10] jaxbwork.XmlUnmarshallerRunnable  - wake up!
+TRACE   2017-02-21 23:04:32,305 [Thread-10] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.UserRole@7dae8b8d inserted
+TRACE   2017-02-21 23:04:32,306 [Thread-13] jaxbwork.InsertedWrapper  - Search object models.pojo.Lesson@e81a2d2d in [models.pojo.User@5db5f927, models.pojo.UserRole@7dae8b8d, models.pojo.Role@14af4d79, models.pojo.User@d4d94f9f, models.pojo.Role@5c7661ee, models.pojo.User@e58b2033, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c, models.pojo.User@21a6b5c9] result: false
+TRACE   2017-02-21 23:04:32,306 [Thread-14] jaxbwork.InsertedWrapper  - Search object models.pojo.LessonTest@26181745 in [models.pojo.User@5db5f927, models.pojo.UserRole@7dae8b8d, models.pojo.Role@14af4d79, models.pojo.User@d4d94f9f, models.pojo.Role@5c7661ee, models.pojo.User@e58b2033, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c, models.pojo.User@21a6b5c9] result: false
+TRACE   2017-02-21 23:04:32,307 [Thread-10] jaxbwork.InsertedWrapper  - Search object models.pojo.User@d4d94f9f in [models.pojo.User@5db5f927, models.pojo.UserRole@7dae8b8d, models.pojo.Role@14af4d79, models.pojo.User@d4d94f9f, models.pojo.Role@5c7661ee, models.pojo.User@e58b2033, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c, models.pojo.User@21a6b5c9] result: true
+TRACE   2017-02-21 23:04:32,307 [Thread-10] jaxbwork.InsertedWrapper  - Search object models.pojo.Role@5c7661ee in [models.pojo.User@5db5f927, models.pojo.UserRole@7dae8b8d, models.pojo.Role@14af4d79, models.pojo.User@d4d94f9f, models.pojo.Role@5c7661ee, models.pojo.User@e58b2033, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c, models.pojo.User@21a6b5c9] result: true
+TRACE   2017-02-21 23:04:32,307 [Thread-10] jaxbwork.XmlUnmarshallerRunnable  - wake up!
+TRACE   2017-02-21 23:04:32,633 [Thread-10] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.UserRole@22c70db1 inserted
+TRACE   2017-02-21 23:04:32,633 [Thread-10] jaxbwork.InsertedWrapper  - Search object models.pojo.User@5db5f927 in [models.pojo.User@5db5f927, models.pojo.UserRole@7dae8b8d, models.pojo.Role@14af4d79, models.pojo.User@d4d94f9f, models.pojo.UserRole@22c70db1, models.pojo.Role@5c7661ee, models.pojo.User@e58b2033, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c, models.pojo.User@21a6b5c9] result: true
+TRACE   2017-02-21 23:04:32,633 [Thread-10] jaxbwork.InsertedWrapper  - Search object models.pojo.Role@5c7661ee in [models.pojo.User@5db5f927, models.pojo.UserRole@7dae8b8d, models.pojo.Role@14af4d79, models.pojo.User@d4d94f9f, models.pojo.UserRole@22c70db1, models.pojo.Role@5c7661ee, models.pojo.User@e58b2033, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c, models.pojo.User@21a6b5c9] result: true
+TRACE   2017-02-21 23:04:32,633 [Thread-10] jaxbwork.XmlUnmarshallerRunnable  - wake up!
+TRACE   2017-02-21 23:04:32,814 [Thread-10] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.UserRole@b57f98ea inserted
+TRACE   2017-02-21 23:04:32,814 [Thread-10] jaxbwork.InsertedWrapper  - Search object models.pojo.User@e58b2033 in [models.pojo.User@5db5f927, models.pojo.UserRole@7dae8b8d, models.pojo.UserRole@b57f98ea, models.pojo.Role@14af4d79, models.pojo.User@d4d94f9f, models.pojo.UserRole@22c70db1, models.pojo.Role@5c7661ee, models.pojo.User@e58b2033, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c, models.pojo.User@21a6b5c9] result: true
+TRACE   2017-02-21 23:04:32,814 [Thread-10] jaxbwork.InsertedWrapper  - Search object models.pojo.Role@5c7661ee in [models.pojo.User@5db5f927, models.pojo.UserRole@7dae8b8d, models.pojo.UserRole@b57f98ea, models.pojo.Role@14af4d79, models.pojo.User@d4d94f9f, models.pojo.UserRole@22c70db1, models.pojo.Role@5c7661ee, models.pojo.User@e58b2033, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c, models.pojo.User@21a6b5c9] result: true
+TRACE   2017-02-21 23:04:32,814 [Thread-10] jaxbwork.XmlUnmarshallerRunnable  - wake up!
+TRACE   2017-02-21 23:04:32,961 [Thread-10] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.UserRole@284f571f inserted
+TRACE   2017-02-21 23:04:32,962 [Thread-10] jaxbwork.InsertedWrapper  - Search object models.pojo.User@21a6b5c9 in [models.pojo.UserRole@284f571f, models.pojo.User@5db5f927, models.pojo.UserRole@7dae8b8d, models.pojo.UserRole@b57f98ea, models.pojo.Role@14af4d79, models.pojo.User@d4d94f9f, models.pojo.UserRole@22c70db1, models.pojo.Role@5c7661ee, models.pojo.User@e58b2033, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c, models.pojo.User@21a6b5c9] result: true
+TRACE   2017-02-21 23:04:32,962 [Thread-10] jaxbwork.InsertedWrapper  - Search object models.pojo.Role@5c7661ee in [models.pojo.UserRole@284f571f, models.pojo.User@5db5f927, models.pojo.UserRole@7dae8b8d, models.pojo.UserRole@b57f98ea, models.pojo.Role@14af4d79, models.pojo.User@d4d94f9f, models.pojo.UserRole@22c70db1, models.pojo.Role@5c7661ee, models.pojo.User@e58b2033, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c, models.pojo.User@21a6b5c9] result: true
+TRACE   2017-02-21 23:04:32,962 [Thread-10] jaxbwork.XmlUnmarshallerRunnable  - wake up!
+TRACE   2017-02-21 23:04:33,127 [Thread-10] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.UserRole@6fa6780a inserted
+TRACE   2017-02-21 23:04:33,128 [Thread-10] jaxbwork.InsertedWrapper  - Search object models.pojo.User@ba626d7c in [models.pojo.UserRole@7dae8b8d, models.pojo.User@d4d94f9f, models.pojo.UserRole@6fa6780a, models.pojo.User@21a6b5c9, models.pojo.UserRole@284f571f, models.pojo.User@5db5f927, models.pojo.UserRole@b57f98ea, models.pojo.Role@14af4d79, models.pojo.UserRole@22c70db1, models.pojo.Role@5c7661ee, models.pojo.User@e58b2033, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c] result: true
+TRACE   2017-02-21 23:04:33,128 [Thread-10] jaxbwork.InsertedWrapper  - Search object models.pojo.Role@14af4d79 in [models.pojo.UserRole@7dae8b8d, models.pojo.User@d4d94f9f, models.pojo.UserRole@6fa6780a, models.pojo.User@21a6b5c9, models.pojo.UserRole@284f571f, models.pojo.User@5db5f927, models.pojo.UserRole@b57f98ea, models.pojo.Role@14af4d79, models.pojo.UserRole@22c70db1, models.pojo.Role@5c7661ee, models.pojo.User@e58b2033, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c] result: true
+TRACE   2017-02-21 23:04:33,128 [Thread-10] jaxbwork.XmlUnmarshallerRunnable  - wake up!
+TRACE   2017-02-21 23:04:33,268 [Thread-10] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.UserRole@a69aa603 inserted
+TRACE   2017-02-21 23:04:33,268 [Thread-11] jaxbwork.InsertedWrapper  - Search object models.pojo.User@ba626d7c in [models.pojo.UserRole@7dae8b8d, models.pojo.User@d4d94f9f, models.pojo.UserRole@6fa6780a, models.pojo.User@21a6b5c9, models.pojo.UserRole@284f571f, models.pojo.User@5db5f927, models.pojo.UserRole@b57f98ea, models.pojo.Role@14af4d79, models.pojo.UserRole@22c70db1, models.pojo.Role@5c7661ee, models.pojo.User@e58b2033, models.pojo.UserRole@a69aa603, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c] result: true
+TRACE   2017-02-21 23:04:33,380 [Thread-11] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.Course@5c9d60ef inserted
+TRACE   2017-02-21 23:04:33,381 [Thread-12] jaxbwork.InsertedWrapper  - Search object models.pojo.Course@5c9d60ef in [models.pojo.UserRole@7dae8b8d, models.pojo.User@d4d94f9f, models.pojo.UserRole@6fa6780a, models.pojo.User@21a6b5c9, models.pojo.UserRole@284f571f, models.pojo.User@5db5f927, models.pojo.Course@5c9d60ef, models.pojo.UserRole@b57f98ea, models.pojo.Role@14af4d79, models.pojo.UserRole@22c70db1, models.pojo.Role@5c7661ee, models.pojo.User@e58b2033, models.pojo.UserRole@a69aa603, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c] result: true
+TRACE   2017-02-21 23:04:33,511 [Thread-12] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.Lesson@e81a2d2d inserted
+TRACE   2017-02-21 23:04:33,511 [Thread-12] jaxbwork.InsertedWrapper  - Search object models.pojo.Course@5c9d60ef in [models.pojo.UserRole@7dae8b8d, models.pojo.User@d4d94f9f, models.pojo.UserRole@6fa6780a, models.pojo.User@21a6b5c9, models.pojo.UserRole@284f571f, models.pojo.User@5db5f927, models.pojo.Course@5c9d60ef, models.pojo.UserRole@b57f98ea, models.pojo.Role@14af4d79, models.pojo.UserRole@22c70db1, models.pojo.Lesson@e81a2d2d, models.pojo.Role@5c7661ee, models.pojo.User@e58b2033, models.pojo.UserRole@a69aa603, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c] result: true
+TRACE   2017-02-21 23:04:33,738 [Thread-12] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.Lesson@18ce28a9 inserted
+TRACE   2017-02-21 23:04:33,739 [Thread-14] jaxbwork.InsertedWrapper  - Search object models.pojo.LessonTest@26181745 in [models.pojo.UserRole@7dae8b8d, models.pojo.User@d4d94f9f, models.pojo.Lesson@18ce28a9, models.pojo.UserRole@6fa6780a, models.pojo.User@21a6b5c9, models.pojo.UserRole@284f571f, models.pojo.User@5db5f927, models.pojo.Course@5c9d60ef, models.pojo.UserRole@b57f98ea, models.pojo.Role@14af4d79, models.pojo.UserRole@22c70db1, models.pojo.Lesson@e81a2d2d, models.pojo.Role@5c7661ee, models.pojo.User@e58b2033, models.pojo.UserRole@a69aa603, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c] result: false
+TRACE   2017-02-21 23:04:33,739 [Thread-13] jaxbwork.InsertedWrapper  - Search object models.pojo.Lesson@e81a2d2d in [models.pojo.UserRole@7dae8b8d, models.pojo.User@d4d94f9f, models.pojo.Lesson@18ce28a9, models.pojo.UserRole@6fa6780a, models.pojo.User@21a6b5c9, models.pojo.UserRole@284f571f, models.pojo.User@5db5f927, models.pojo.Course@5c9d60ef, models.pojo.UserRole@b57f98ea, models.pojo.Role@14af4d79, models.pojo.UserRole@22c70db1, models.pojo.Lesson@e81a2d2d, models.pojo.Role@5c7661ee, models.pojo.User@e58b2033, models.pojo.UserRole@a69aa603, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c] result: true
+TRACE   2017-02-21 23:04:34,290 [Thread-13] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.LessonTest@26181745 inserted
+TRACE   2017-02-21 23:04:34,290 [Thread-13] jaxbwork.InsertedWrapper  - Search object models.pojo.Lesson@18ce28a9 in [models.pojo.UserRole@7dae8b8d, models.pojo.User@d4d94f9f, models.pojo.Lesson@18ce28a9, models.pojo.UserRole@6fa6780a, models.pojo.User@21a6b5c9, models.pojo.UserRole@284f571f, models.pojo.User@5db5f927, models.pojo.Course@5c9d60ef, models.pojo.UserRole@b57f98ea, models.pojo.Role@14af4d79, models.pojo.UserRole@22c70db1, models.pojo.Lesson@e81a2d2d, models.pojo.Role@5c7661ee, models.pojo.User@e58b2033, models.pojo.UserRole@a69aa603, models.pojo.LessonTest@26181745, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c] result: true
+TRACE   2017-02-21 23:04:34,321 [Thread-13] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.LessonTest@d1fbcd76 inserted
+TRACE   2017-02-21 23:04:34,322 [Thread-14] jaxbwork.InsertedWrapper  - Search object models.pojo.LessonTest@26181745 in [models.pojo.UserRole@7dae8b8d, models.pojo.User@d4d94f9f, models.pojo.Lesson@18ce28a9, models.pojo.UserRole@6fa6780a, models.pojo.LessonTest@d1fbcd76, models.pojo.User@21a6b5c9, models.pojo.UserRole@284f571f, models.pojo.User@5db5f927, models.pojo.Course@5c9d60ef, models.pojo.UserRole@b57f98ea, models.pojo.Role@14af4d79, models.pojo.UserRole@22c70db1, models.pojo.Lesson@e81a2d2d, models.pojo.Role@5c7661ee, models.pojo.User@e58b2033, models.pojo.UserRole@a69aa603, models.pojo.LessonTest@26181745, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c] result: true
+TRACE   2017-02-21 23:04:34,322 [Thread-14] jaxbwork.InsertedWrapper  - Search object models.pojo.User@2a5ca662 in [models.pojo.UserRole@7dae8b8d, models.pojo.User@d4d94f9f, models.pojo.Lesson@18ce28a9, models.pojo.UserRole@6fa6780a, models.pojo.LessonTest@d1fbcd76, models.pojo.User@21a6b5c9, models.pojo.UserRole@284f571f, models.pojo.User@5db5f927, models.pojo.Course@5c9d60ef, models.pojo.UserRole@b57f98ea, models.pojo.Role@14af4d79, models.pojo.UserRole@22c70db1, models.pojo.Lesson@e81a2d2d, models.pojo.Role@5c7661ee, models.pojo.User@e58b2033, models.pojo.UserRole@a69aa603, models.pojo.LessonTest@26181745, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c] result: true
+TRACE   2017-02-21 23:04:34,357 [Thread-14] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.LessonTestResult@b0c7d8f8 inserted
+TRACE   2017-02-21 23:04:34,358 [Thread-14] jaxbwork.InsertedWrapper  - Search object models.pojo.LessonTest@d1fbcd76 in [models.pojo.UserRole@7dae8b8d, models.pojo.User@d4d94f9f, models.pojo.Lesson@18ce28a9, models.pojo.UserRole@6fa6780a, models.pojo.LessonTest@d1fbcd76, models.pojo.User@21a6b5c9, models.pojo.UserRole@284f571f, models.pojo.User@5db5f927, models.pojo.Course@5c9d60ef, models.pojo.UserRole@b57f98ea, models.pojo.Role@14af4d79, models.pojo.UserRole@22c70db1, models.pojo.Lesson@e81a2d2d, models.pojo.Role@5c7661ee, models.pojo.User@e58b2033, models.pojo.UserRole@a69aa603, models.pojo.LessonTest@26181745, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c, models.pojo.LessonTestResult@b0c7d8f8] result: true
+TRACE   2017-02-21 23:04:34,358 [Thread-14] jaxbwork.InsertedWrapper  - Search object models.pojo.User@d4d94f9f in [models.pojo.UserRole@7dae8b8d, models.pojo.User@d4d94f9f, models.pojo.Lesson@18ce28a9, models.pojo.UserRole@6fa6780a, models.pojo.LessonTest@d1fbcd76, models.pojo.User@21a6b5c9, models.pojo.UserRole@284f571f, models.pojo.User@5db5f927, models.pojo.Course@5c9d60ef, models.pojo.UserRole@b57f98ea, models.pojo.Role@14af4d79, models.pojo.UserRole@22c70db1, models.pojo.Lesson@e81a2d2d, models.pojo.Role@5c7661ee, models.pojo.User@e58b2033, models.pojo.UserRole@a69aa603, models.pojo.LessonTest@26181745, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c, models.pojo.LessonTestResult@b0c7d8f8] result: true
+TRACE   2017-02-21 23:04:34,388 [Thread-14] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.LessonTestResult@a6dc0ea5 inserted
+TRACE   2017-02-21 23:04:34,389 [Thread-14] jaxbwork.InsertedWrapper  - Search object models.pojo.LessonTest@26181745 in [models.pojo.UserRole@7dae8b8d, models.pojo.User@d4d94f9f, models.pojo.Lesson@18ce28a9, models.pojo.UserRole@6fa6780a, models.pojo.LessonTest@d1fbcd76, models.pojo.User@21a6b5c9, models.pojo.UserRole@284f571f, models.pojo.User@5db5f927, models.pojo.Course@5c9d60ef, models.pojo.UserRole@b57f98ea, models.pojo.Role@14af4d79, models.pojo.UserRole@22c70db1, models.pojo.Lesson@e81a2d2d, models.pojo.Role@5c7661ee, models.pojo.User@e58b2033, models.pojo.UserRole@a69aa603, models.pojo.LessonTestResult@a6dc0ea5, models.pojo.LessonTest@26181745, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c, models.pojo.LessonTestResult@b0c7d8f8] result: true
+TRACE   2017-02-21 23:04:34,389 [Thread-14] jaxbwork.InsertedWrapper  - Search object models.pojo.User@5db5f927 in [models.pojo.UserRole@7dae8b8d, models.pojo.User@d4d94f9f, models.pojo.Lesson@18ce28a9, models.pojo.UserRole@6fa6780a, models.pojo.LessonTest@d1fbcd76, models.pojo.User@21a6b5c9, models.pojo.UserRole@284f571f, models.pojo.User@5db5f927, models.pojo.Course@5c9d60ef, models.pojo.UserRole@b57f98ea, models.pojo.Role@14af4d79, models.pojo.UserRole@22c70db1, models.pojo.Lesson@e81a2d2d, models.pojo.Role@5c7661ee, models.pojo.User@e58b2033, models.pojo.UserRole@a69aa603, models.pojo.LessonTestResult@a6dc0ea5, models.pojo.LessonTest@26181745, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c, models.pojo.LessonTestResult@b0c7d8f8] result: true
+TRACE   2017-02-21 23:04:34,425 [Thread-14] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.LessonTestResult@7333bd7f inserted
+TRACE   2017-02-21 23:10:56,770 [main] main.Main  - started database export to xml files
+TRACE   2017-02-21 23:10:56,779 [Thread-0] jaxbwork.XmlMarshallerRunnable  - started export to xmlout/users.xml
+TRACE   2017-02-21 23:10:57,285 [Thread-0] jaxbwork.XmlMarshallerRunnable  - finished export to xmlout/users.xml
+TRACE   2017-02-21 23:10:57,288 [Thread-2] jaxbwork.XmlMarshallerRunnable  - started export to xmlout/roles.xml
+TRACE   2017-02-21 23:10:57,325 [Thread-2] jaxbwork.XmlMarshallerRunnable  - finished export to xmlout/roles.xml
+TRACE   2017-02-21 23:10:57,327 [Thread-3] jaxbwork.XmlMarshallerRunnable  - started export to xmlout/userRoles.xml
+TRACE   2017-02-21 23:10:57,543 [Thread-3] jaxbwork.XmlMarshallerRunnable  - finished export to xmlout/userRoles.xml
+TRACE   2017-02-21 23:10:57,588 [Thread-4] jaxbwork.XmlMarshallerRunnable  - started export to xmlout/courses.xml
+TRACE   2017-02-21 23:10:57,691 [Thread-4] jaxbwork.XmlMarshallerRunnable  - finished export to xmlout/courses.xml
+TRACE   2017-02-21 23:10:57,724 [Thread-5] jaxbwork.XmlMarshallerRunnable  - started export to xmlout/lessons.xml
+TRACE   2017-02-21 23:10:57,873 [Thread-5] jaxbwork.XmlMarshallerRunnable  - finished export to xmlout/lessons.xml
+TRACE   2017-02-21 23:10:57,876 [Thread-6] jaxbwork.XmlMarshallerRunnable  - started export to xmlout/lessontests.xml
+TRACE   2017-02-21 23:10:58,044 [Thread-6] jaxbwork.XmlMarshallerRunnable  - finished export to xmlout/lessontests.xml
+TRACE   2017-02-21 23:10:58,145 [Thread-7] jaxbwork.XmlMarshallerRunnable  - started export to xmlout/lessontestsresult.xml
+TRACE   2017-02-21 23:10:58,308 [Thread-7] jaxbwork.XmlMarshallerRunnable  - finished export to xmlout/lessontestsresult.xml
+TRACE   2017-02-21 23:10:58,309 [main] main.Main  - finished database export to xml files
+TRACE   2017-02-21 23:10:58,309 [main] main.Main  - delete all from database...
+TRACE   2017-02-21 23:11:00,312 [main] main.Main  - insert to database from xml files
+TRACE   2017-02-21 23:11:00,317 [Thread-9] jaxbwork.XmlUnmarshallerRunnable  - thread started for xmlout/users.xml
+TRACE   2017-02-21 23:11:00,317 [Thread-10] jaxbwork.XmlUnmarshallerRunnable  - thread started for xmlout/userRoles.xml
+TRACE   2017-02-21 23:11:00,317 [Thread-12] jaxbwork.XmlUnmarshallerRunnable  - thread started for xmlout/lessons.xml
+TRACE   2017-02-21 23:11:00,317 [Thread-8] jaxbwork.XmlUnmarshallerRunnable  - thread started for xmlout/roles.xml
+TRACE   2017-02-21 23:11:00,318 [Thread-13] jaxbwork.XmlUnmarshallerRunnable  - thread started for xmlout/lessontests.xml
+TRACE   2017-02-21 23:11:00,318 [Thread-14] jaxbwork.XmlUnmarshallerRunnable  - thread started for xmlout/lessontestsresult.xml
+TRACE   2017-02-21 23:11:00,317 [Thread-11] jaxbwork.XmlUnmarshallerRunnable  - thread started for xmlout/courses.xml
+TRACE   2017-02-21 23:11:00,362 [Thread-12] jaxbwork.InsertedWrapper  - Search object models.pojo.Course@5c9d60ef in [] result: false
+TRACE   2017-02-21 23:11:00,370 [Thread-13] jaxbwork.InsertedWrapper  - Search object models.pojo.Lesson@e81a2d2d in [] result: false
+TRACE   2017-02-21 23:11:00,473 [Thread-9] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@2a5ca662 inserted
+TRACE   2017-02-21 23:11:00,506 [Thread-9] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@d4d94f9f inserted
+TRACE   2017-02-21 23:11:00,557 [Thread-9] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@5db5f927 inserted
+TRACE   2017-02-21 23:11:00,619 [Thread-9] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@e58b2033 inserted
+TRACE   2017-02-21 23:11:00,687 [Thread-9] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@21a6b5c9 inserted
+TRACE   2017-02-21 23:11:00,749 [Thread-9] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@ba626d7c inserted
+TRACE   2017-02-21 23:11:00,783 [Thread-8] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.Role@5c7661ee inserted
+TRACE   2017-02-21 23:11:00,838 [Thread-8] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.Role@14af4d79 inserted
+TRACE   2017-02-21 23:11:00,838 [Thread-13] jaxbwork.InsertedWrapper  - Search object models.pojo.Lesson@e81a2d2d in [models.pojo.User@5db5f927, models.pojo.User@d4d94f9f, models.pojo.Role@14af4d79, models.pojo.User@e58b2033, models.pojo.Role@5c7661ee, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c, models.pojo.User@21a6b5c9] result: false
+TRACE   2017-02-21 23:11:00,838 [Thread-12] jaxbwork.InsertedWrapper  - Search object models.pojo.Course@5c9d60ef in [models.pojo.User@5db5f927, models.pojo.User@d4d94f9f, models.pojo.Role@14af4d79, models.pojo.User@e58b2033, models.pojo.Role@5c7661ee, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c, models.pojo.User@21a6b5c9] result: false
+TRACE   2017-02-21 23:11:00,839 [Thread-14] jaxbwork.InsertedWrapper  - Search object models.pojo.LessonTest@26181745 in [models.pojo.User@5db5f927, models.pojo.User@d4d94f9f, models.pojo.Role@14af4d79, models.pojo.User@e58b2033, models.pojo.Role@5c7661ee, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c, models.pojo.User@21a6b5c9] result: false
+TRACE   2017-02-21 23:11:00,839 [Thread-10] jaxbwork.InsertedWrapper  - Search object models.pojo.User@2a5ca662 in [models.pojo.User@5db5f927, models.pojo.User@d4d94f9f, models.pojo.Role@14af4d79, models.pojo.User@e58b2033, models.pojo.Role@5c7661ee, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c, models.pojo.User@21a6b5c9] result: true
+TRACE   2017-02-21 23:11:00,840 [Thread-10] jaxbwork.InsertedWrapper  - Search object models.pojo.Role@5c7661ee in [models.pojo.User@5db5f927, models.pojo.User@d4d94f9f, models.pojo.Role@14af4d79, models.pojo.User@e58b2033, models.pojo.Role@5c7661ee, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c, models.pojo.User@21a6b5c9] result: true
+TRACE   2017-02-21 23:11:00,840 [Thread-10] jaxbwork.XmlUnmarshallerRunnable  - wake up!
+TRACE   2017-02-21 23:11:00,894 [Thread-10] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.UserRole@7dae8b8d inserted
+TRACE   2017-02-21 23:11:00,895 [Thread-11] jaxbwork.InsertedWrapper  - Search object models.pojo.User@ba626d7c in [models.pojo.User@5db5f927, models.pojo.UserRole@7dae8b8d, models.pojo.User@d4d94f9f, models.pojo.Role@14af4d79, models.pojo.User@e58b2033, models.pojo.Role@5c7661ee, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c, models.pojo.User@21a6b5c9] result: true
+TRACE   2017-02-21 23:11:00,927 [Thread-11] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.Course@5c9d60ef inserted
+TRACE   2017-02-21 23:11:00,927 [Thread-10] jaxbwork.InsertedWrapper  - Search object models.pojo.User@d4d94f9f in [models.pojo.User@5db5f927, models.pojo.Course@5c9d60ef, models.pojo.UserRole@7dae8b8d, models.pojo.User@d4d94f9f, models.pojo.Role@14af4d79, models.pojo.User@e58b2033, models.pojo.Role@5c7661ee, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c, models.pojo.User@21a6b5c9] result: true
+TRACE   2017-02-21 23:11:00,927 [Thread-10] jaxbwork.InsertedWrapper  - Search object models.pojo.Role@5c7661ee in [models.pojo.User@5db5f927, models.pojo.Course@5c9d60ef, models.pojo.UserRole@7dae8b8d, models.pojo.User@d4d94f9f, models.pojo.Role@14af4d79, models.pojo.User@e58b2033, models.pojo.Role@5c7661ee, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c, models.pojo.User@21a6b5c9] result: true
+TRACE   2017-02-21 23:11:00,928 [Thread-10] jaxbwork.XmlUnmarshallerRunnable  - wake up!
+TRACE   2017-02-21 23:11:00,961 [Thread-10] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.UserRole@22c70db1 inserted
+TRACE   2017-02-21 23:11:00,961 [Thread-10] jaxbwork.InsertedWrapper  - Search object models.pojo.User@5db5f927 in [models.pojo.User@5db5f927, models.pojo.Course@5c9d60ef, models.pojo.UserRole@7dae8b8d, models.pojo.User@d4d94f9f, models.pojo.Role@14af4d79, models.pojo.UserRole@22c70db1, models.pojo.User@e58b2033, models.pojo.Role@5c7661ee, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c, models.pojo.User@21a6b5c9] result: true
+TRACE   2017-02-21 23:11:00,961 [Thread-10] jaxbwork.InsertedWrapper  - Search object models.pojo.Role@5c7661ee in [models.pojo.User@5db5f927, models.pojo.Course@5c9d60ef, models.pojo.UserRole@7dae8b8d, models.pojo.User@d4d94f9f, models.pojo.Role@14af4d79, models.pojo.UserRole@22c70db1, models.pojo.User@e58b2033, models.pojo.Role@5c7661ee, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c, models.pojo.User@21a6b5c9] result: true
+TRACE   2017-02-21 23:11:00,961 [Thread-10] jaxbwork.XmlUnmarshallerRunnable  - wake up!
+TRACE   2017-02-21 23:11:01,016 [Thread-10] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.UserRole@b57f98ea inserted
+TRACE   2017-02-21 23:11:01,016 [Thread-10] jaxbwork.InsertedWrapper  - Search object models.pojo.User@e58b2033 in [models.pojo.User@5db5f927, models.pojo.Course@5c9d60ef, models.pojo.UserRole@7dae8b8d, models.pojo.UserRole@b57f98ea, models.pojo.User@d4d94f9f, models.pojo.Role@14af4d79, models.pojo.UserRole@22c70db1, models.pojo.User@e58b2033, models.pojo.Role@5c7661ee, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c, models.pojo.User@21a6b5c9] result: true
+TRACE   2017-02-21 23:11:01,017 [Thread-10] jaxbwork.InsertedWrapper  - Search object models.pojo.Role@5c7661ee in [models.pojo.User@5db5f927, models.pojo.Course@5c9d60ef, models.pojo.UserRole@7dae8b8d, models.pojo.UserRole@b57f98ea, models.pojo.User@d4d94f9f, models.pojo.Role@14af4d79, models.pojo.UserRole@22c70db1, models.pojo.User@e58b2033, models.pojo.Role@5c7661ee, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c, models.pojo.User@21a6b5c9] result: true
+TRACE   2017-02-21 23:11:01,017 [Thread-10] jaxbwork.XmlUnmarshallerRunnable  - wake up!
+TRACE   2017-02-21 23:11:01,049 [Thread-10] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.UserRole@284f571f inserted
+TRACE   2017-02-21 23:11:01,049 [Thread-10] jaxbwork.InsertedWrapper  - Search object models.pojo.User@21a6b5c9 in [models.pojo.UserRole@7dae8b8d, models.pojo.User@d4d94f9f, models.pojo.User@21a6b5c9, models.pojo.UserRole@284f571f, models.pojo.User@5db5f927, models.pojo.Course@5c9d60ef, models.pojo.UserRole@b57f98ea, models.pojo.Role@14af4d79, models.pojo.UserRole@22c70db1, models.pojo.User@e58b2033, models.pojo.Role@5c7661ee, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c] result: true
+TRACE   2017-02-21 23:11:01,050 [Thread-10] jaxbwork.InsertedWrapper  - Search object models.pojo.Role@5c7661ee in [models.pojo.UserRole@7dae8b8d, models.pojo.User@d4d94f9f, models.pojo.User@21a6b5c9, models.pojo.UserRole@284f571f, models.pojo.User@5db5f927, models.pojo.Course@5c9d60ef, models.pojo.UserRole@b57f98ea, models.pojo.Role@14af4d79, models.pojo.UserRole@22c70db1, models.pojo.User@e58b2033, models.pojo.Role@5c7661ee, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c] result: true
+TRACE   2017-02-21 23:11:01,050 [Thread-10] jaxbwork.XmlUnmarshallerRunnable  - wake up!
+TRACE   2017-02-21 23:11:01,082 [Thread-10] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.UserRole@6fa6780a inserted
+TRACE   2017-02-21 23:11:01,083 [Thread-10] jaxbwork.InsertedWrapper  - Search object models.pojo.User@ba626d7c in [models.pojo.UserRole@7dae8b8d, models.pojo.User@d4d94f9f, models.pojo.UserRole@6fa6780a, models.pojo.User@21a6b5c9, models.pojo.UserRole@284f571f, models.pojo.User@5db5f927, models.pojo.Course@5c9d60ef, models.pojo.UserRole@b57f98ea, models.pojo.Role@14af4d79, models.pojo.UserRole@22c70db1, models.pojo.User@e58b2033, models.pojo.Role@5c7661ee, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c] result: true
+TRACE   2017-02-21 23:11:01,083 [Thread-10] jaxbwork.InsertedWrapper  - Search object models.pojo.Role@14af4d79 in [models.pojo.UserRole@7dae8b8d, models.pojo.User@d4d94f9f, models.pojo.UserRole@6fa6780a, models.pojo.User@21a6b5c9, models.pojo.UserRole@284f571f, models.pojo.User@5db5f927, models.pojo.Course@5c9d60ef, models.pojo.UserRole@b57f98ea, models.pojo.Role@14af4d79, models.pojo.UserRole@22c70db1, models.pojo.User@e58b2033, models.pojo.Role@5c7661ee, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c] result: true
+TRACE   2017-02-21 23:11:01,083 [Thread-10] jaxbwork.XmlUnmarshallerRunnable  - wake up!
+TRACE   2017-02-21 23:11:01,116 [Thread-10] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.UserRole@a69aa603 inserted
+TRACE   2017-02-21 23:11:01,116 [Thread-14] jaxbwork.InsertedWrapper  - Search object models.pojo.LessonTest@26181745 in [models.pojo.UserRole@7dae8b8d, models.pojo.User@d4d94f9f, models.pojo.UserRole@6fa6780a, models.pojo.User@21a6b5c9, models.pojo.UserRole@284f571f, models.pojo.User@5db5f927, models.pojo.Course@5c9d60ef, models.pojo.UserRole@b57f98ea, models.pojo.Role@14af4d79, models.pojo.UserRole@22c70db1, models.pojo.User@e58b2033, models.pojo.Role@5c7661ee, models.pojo.UserRole@a69aa603, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c] result: false
+TRACE   2017-02-21 23:11:01,117 [Thread-12] jaxbwork.InsertedWrapper  - Search object models.pojo.Course@5c9d60ef in [models.pojo.UserRole@7dae8b8d, models.pojo.User@d4d94f9f, models.pojo.UserRole@6fa6780a, models.pojo.User@21a6b5c9, models.pojo.UserRole@284f571f, models.pojo.User@5db5f927, models.pojo.Course@5c9d60ef, models.pojo.UserRole@b57f98ea, models.pojo.Role@14af4d79, models.pojo.UserRole@22c70db1, models.pojo.User@e58b2033, models.pojo.Role@5c7661ee, models.pojo.UserRole@a69aa603, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c] result: true
+TRACE   2017-02-21 23:11:01,149 [Thread-12] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.Lesson@e81a2d2d inserted
+TRACE   2017-02-21 23:11:01,149 [Thread-12] jaxbwork.InsertedWrapper  - Search object models.pojo.Course@5c9d60ef in [models.pojo.UserRole@7dae8b8d, models.pojo.User@d4d94f9f, models.pojo.UserRole@6fa6780a, models.pojo.User@21a6b5c9, models.pojo.UserRole@284f571f, models.pojo.User@5db5f927, models.pojo.Course@5c9d60ef, models.pojo.UserRole@b57f98ea, models.pojo.Role@14af4d79, models.pojo.UserRole@22c70db1, models.pojo.Lesson@e81a2d2d, models.pojo.User@e58b2033, models.pojo.Role@5c7661ee, models.pojo.UserRole@a69aa603, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c] result: true
+TRACE   2017-02-21 23:11:01,223 [Thread-12] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.Lesson@18ce28a9 inserted
+TRACE   2017-02-21 23:11:01,224 [Thread-13] jaxbwork.InsertedWrapper  - Search object models.pojo.Lesson@e81a2d2d in [models.pojo.UserRole@7dae8b8d, models.pojo.User@d4d94f9f, models.pojo.Lesson@18ce28a9, models.pojo.UserRole@6fa6780a, models.pojo.User@21a6b5c9, models.pojo.UserRole@284f571f, models.pojo.User@5db5f927, models.pojo.Course@5c9d60ef, models.pojo.UserRole@b57f98ea, models.pojo.Role@14af4d79, models.pojo.UserRole@22c70db1, models.pojo.Lesson@e81a2d2d, models.pojo.User@e58b2033, models.pojo.Role@5c7661ee, models.pojo.UserRole@a69aa603, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c] result: true
+TRACE   2017-02-21 23:11:01,408 [Thread-13] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.LessonTest@26181745 inserted
+TRACE   2017-02-21 23:11:01,409 [Thread-13] jaxbwork.InsertedWrapper  - Search object models.pojo.Lesson@18ce28a9 in [models.pojo.UserRole@7dae8b8d, models.pojo.User@d4d94f9f, models.pojo.Lesson@18ce28a9, models.pojo.UserRole@6fa6780a, models.pojo.User@21a6b5c9, models.pojo.UserRole@284f571f, models.pojo.User@5db5f927, models.pojo.Course@5c9d60ef, models.pojo.UserRole@b57f98ea, models.pojo.Role@14af4d79, models.pojo.UserRole@22c70db1, models.pojo.Lesson@e81a2d2d, models.pojo.User@e58b2033, models.pojo.Role@5c7661ee, models.pojo.UserRole@a69aa603, models.pojo.LessonTest@26181745, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c] result: true
+TRACE   2017-02-21 23:11:01,513 [Thread-13] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.LessonTest@d1fbcd76 inserted
+TRACE   2017-02-21 23:11:01,514 [Thread-14] jaxbwork.InsertedWrapper  - Search object models.pojo.LessonTest@26181745 in [models.pojo.UserRole@7dae8b8d, models.pojo.User@d4d94f9f, models.pojo.Lesson@18ce28a9, models.pojo.UserRole@6fa6780a, models.pojo.LessonTest@d1fbcd76, models.pojo.User@21a6b5c9, models.pojo.UserRole@284f571f, models.pojo.User@5db5f927, models.pojo.Course@5c9d60ef, models.pojo.UserRole@b57f98ea, models.pojo.Role@14af4d79, models.pojo.UserRole@22c70db1, models.pojo.Lesson@e81a2d2d, models.pojo.User@e58b2033, models.pojo.Role@5c7661ee, models.pojo.UserRole@a69aa603, models.pojo.LessonTest@26181745, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c] result: true
+TRACE   2017-02-21 23:11:01,514 [Thread-14] jaxbwork.InsertedWrapper  - Search object models.pojo.User@2a5ca662 in [models.pojo.UserRole@7dae8b8d, models.pojo.User@d4d94f9f, models.pojo.Lesson@18ce28a9, models.pojo.UserRole@6fa6780a, models.pojo.LessonTest@d1fbcd76, models.pojo.User@21a6b5c9, models.pojo.UserRole@284f571f, models.pojo.User@5db5f927, models.pojo.Course@5c9d60ef, models.pojo.UserRole@b57f98ea, models.pojo.Role@14af4d79, models.pojo.UserRole@22c70db1, models.pojo.Lesson@e81a2d2d, models.pojo.User@e58b2033, models.pojo.Role@5c7661ee, models.pojo.UserRole@a69aa603, models.pojo.LessonTest@26181745, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c] result: true
+TRACE   2017-02-21 23:11:01,594 [Thread-14] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.LessonTestResult@b0c7d8f8 inserted
+TRACE   2017-02-21 23:11:01,594 [Thread-14] jaxbwork.InsertedWrapper  - Search object models.pojo.LessonTest@d1fbcd76 in [models.pojo.UserRole@7dae8b8d, models.pojo.User@d4d94f9f, models.pojo.Lesson@18ce28a9, models.pojo.UserRole@6fa6780a, models.pojo.LessonTest@d1fbcd76, models.pojo.User@21a6b5c9, models.pojo.UserRole@284f571f, models.pojo.User@5db5f927, models.pojo.Course@5c9d60ef, models.pojo.UserRole@b57f98ea, models.pojo.Role@14af4d79, models.pojo.UserRole@22c70db1, models.pojo.Lesson@e81a2d2d, models.pojo.User@e58b2033, models.pojo.Role@5c7661ee, models.pojo.UserRole@a69aa603, models.pojo.LessonTest@26181745, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c, models.pojo.LessonTestResult@b0c7d8f8] result: true
+TRACE   2017-02-21 23:11:01,594 [Thread-14] jaxbwork.InsertedWrapper  - Search object models.pojo.User@d4d94f9f in [models.pojo.UserRole@7dae8b8d, models.pojo.User@d4d94f9f, models.pojo.Lesson@18ce28a9, models.pojo.UserRole@6fa6780a, models.pojo.LessonTest@d1fbcd76, models.pojo.User@21a6b5c9, models.pojo.UserRole@284f571f, models.pojo.User@5db5f927, models.pojo.Course@5c9d60ef, models.pojo.UserRole@b57f98ea, models.pojo.Role@14af4d79, models.pojo.UserRole@22c70db1, models.pojo.Lesson@e81a2d2d, models.pojo.User@e58b2033, models.pojo.Role@5c7661ee, models.pojo.UserRole@a69aa603, models.pojo.LessonTest@26181745, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c, models.pojo.LessonTestResult@b0c7d8f8] result: true
+TRACE   2017-02-21 23:11:01,659 [Thread-14] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.LessonTestResult@a6dc0ea5 inserted
+TRACE   2017-02-21 23:11:01,660 [Thread-14] jaxbwork.InsertedWrapper  - Search object models.pojo.LessonTest@26181745 in [models.pojo.UserRole@7dae8b8d, models.pojo.User@d4d94f9f, models.pojo.Lesson@18ce28a9, models.pojo.UserRole@6fa6780a, models.pojo.LessonTest@d1fbcd76, models.pojo.User@21a6b5c9, models.pojo.UserRole@284f571f, models.pojo.User@5db5f927, models.pojo.Course@5c9d60ef, models.pojo.UserRole@b57f98ea, models.pojo.Role@14af4d79, models.pojo.UserRole@22c70db1, models.pojo.Lesson@e81a2d2d, models.pojo.User@e58b2033, models.pojo.Role@5c7661ee, models.pojo.UserRole@a69aa603, models.pojo.LessonTestResult@a6dc0ea5, models.pojo.LessonTest@26181745, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c, models.pojo.LessonTestResult@b0c7d8f8] result: true
+TRACE   2017-02-21 23:11:01,660 [Thread-14] jaxbwork.InsertedWrapper  - Search object models.pojo.User@5db5f927 in [models.pojo.UserRole@7dae8b8d, models.pojo.User@d4d94f9f, models.pojo.Lesson@18ce28a9, models.pojo.UserRole@6fa6780a, models.pojo.LessonTest@d1fbcd76, models.pojo.User@21a6b5c9, models.pojo.UserRole@284f571f, models.pojo.User@5db5f927, models.pojo.Course@5c9d60ef, models.pojo.UserRole@b57f98ea, models.pojo.Role@14af4d79, models.pojo.UserRole@22c70db1, models.pojo.Lesson@e81a2d2d, models.pojo.User@e58b2033, models.pojo.Role@5c7661ee, models.pojo.UserRole@a69aa603, models.pojo.LessonTestResult@a6dc0ea5, models.pojo.LessonTest@26181745, models.pojo.User@2a5ca662, models.pojo.User@ba626d7c, models.pojo.LessonTestResult@b0c7d8f8] result: true
+TRACE   2017-02-21 23:11:01,715 [Thread-14] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.LessonTestResult@7333bd7f inserted

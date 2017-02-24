@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<lessons>
+    <lesson>
+        <id>1</id>
+        <course>
+            <id>1</id>
+            <author>
+                <id>6</id>
+                <firstName>Galileo</firstName>
+                <surname>Galiley</surname>
+                <patronymic></patronymic>
+                <birthday>1564-02-15</birthday>
+                <sex>m</sex>
+                <email>galileo@mail.ru</email>
+                <password>123</password>
+            </author>
+            <name>Java developer</name>
+            <duration>300.0</duration>
+            <price>100000.0</price>
+            <certified>true</certified>
+        </course>
+        <orderNum>0</orderNum>
+        <theme>Java basics 2</theme>
+        <duration>4.0</duration>
+        <content>adxzczsessdgsdgsdgsdgsdg</content>
+        <scoreToPass>65</scoreToPass>
+    </lesson>
+    <lesson>
+        <id>2</id>
+        <course>
+            <id>1</id>
+            <author>
+                <id>6</id>
+                <firstName>Galileo</firstName>
+                <surname>Galiley</surname>
+                <patronymic></patronymic>
+                <birthday>1564-02-15</birthday>
+                <sex>m</sex>
+                <email>galileo@mail.ru</email>
+                <password>123</password>
+            </author>
+            <name>Java developer</name>
+            <duration>300.0</duration>
+            <price>100000.0</price>
+            <certified>true</certified>
+        </course>
+        <orderNum>1</orderNum>
+        <theme>Java basics 3</theme>
+        <duration>3.0</duration>
+        <content>aaaaaaaaaaaaaaaaaaaaaa</content>
+        <scoreToPass>75</scoreToPass>
+    </lesson>
+</lessons>
