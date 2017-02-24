@@ -1,6 +1,6 @@
 package jaxbwork.jaxbwrappers;
 
-import models.LessonTestResult;
+import models.pojo.LessonTestResult;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;

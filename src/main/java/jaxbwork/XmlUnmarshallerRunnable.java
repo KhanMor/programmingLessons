@@ -1,8 +1,9 @@
 package jaxbwork;
 
-import dao.*;
+import exceptions.DAOException;
 import jaxbwork.jaxbwrappers.*;
-import models.*;
+import models.dao.SuperDAO;
+import models.pojo.*;
 import org.apache.log4j.Logger;
 
 import java.util.List;
@@ -26,142 +27,141 @@ public class XmlUnmarshallerRunnable<T> implements Runnable {
 
     @Override
     public void run() {
-        logger.trace("thread started for " + filename);
-        if(t instanceof User) {
-            UsersWrapper usersWrapper = new UsersWrapper();
-            usersWrapper = (UsersWrapper)usersWrapper.xmlUnmarshall(filename);
-            List<User> users = usersWrapper.getObjects();
-            for(User user:users) {
-                synchronized (insertedWrapper) {
-                    superDAO.insert(user);
-                    insertedWrapper.add(user);
-                    insertedWrapper.notifyAll();
-                    logger.trace(user);
-                }
-            }
-        } else
-        if(t instanceof Role) {
-            RolesWrapper rolesWrapper = new RolesWrapper(superDAO.list());
-            rolesWrapper = (RolesWrapper)rolesWrapper.xmlUnmarshall(filename);
-            List<Role> roles = rolesWrapper.getObjects();
-            for(Role role:roles) {
-                synchronized (insertedWrapper) {
-                    superDAO.insert(role);
-                    insertedWrapper.add(role);
-                    insertedWrapper.notifyAll();
-                    logger.trace(role);
-                }
-            }
-        } else
-        if(t instanceof UserRole) {
-            UserRolesWrapper userRolesWrapper = new UserRolesWrapper(superDAO.list());
-            userRolesWrapper = (UserRolesWrapper)userRolesWrapper.xmlUnmarshall(filename);
-            List<UserRole> userRoles = userRolesWrapper.getObjects();
-            for(UserRole userRole:userRoles) {
-                synchronized (insertedWrapper) {
-                    User user = userRole.getUser();
-                    Role role = userRole.getRole();
-                    try {
-                        while (!insertedWrapper.contains(user) || !insertedWrapper.contains(role)) {
-                            logger.trace("User " + user + " or role " + role + " not founded, waiting inserts...");
-                            insertedWrapper.wait();
-                        }
-                        logger.trace("wake up!");
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
+        try {
+            logger.trace("thread started for " + filename);
+            if (t instanceof User) {
+                UsersWrapper usersWrapper = new UsersWrapper();
+                usersWrapper = (UsersWrapper) usersWrapper.xmlUnmarshall(filename);
+                List<User> users = usersWrapper.getObjects();
+                for (User user : users) {
+                    synchronized (insertedWrapper) {
+                        superDAO.insert(user);
+                        insertedWrapper.add(user);
+                        insertedWrapper.notifyAll();
+                        logger.trace(user + " inserted");
                     }
+                }
+            } else if (t instanceof Role) {
+                RolesWrapper rolesWrapper = new RolesWrapper(superDAO.list());
+                rolesWrapper = (RolesWrapper) rolesWrapper.xmlUnmarshall(filename);
+                List<Role> roles = rolesWrapper.getObjects();
+                for (Role role : roles) {
+                    synchronized (insertedWrapper) {
+                        superDAO.insert(role);
+                        insertedWrapper.add(role);
+                        insertedWrapper.notifyAll();
+                        logger.trace(role + " inserted");
+                    }
+                }
+            } else if (t instanceof UserRole) {
+                UserRolesWrapper userRolesWrapper = new UserRolesWrapper(superDAO.list());
+                userRolesWrapper = (UserRolesWrapper) userRolesWrapper.xmlUnmarshall(filename);
+                List<UserRole> userRoles = userRolesWrapper.getObjects();
+                for (UserRole userRole : userRoles) {
+                    synchronized (insertedWrapper) {
+                        User user = userRole.getUser();
+                        Role role = userRole.getRole();
+                        try {
+                            while (!insertedWrapper.contains(user) || !insertedWrapper.contains(role)) {
+                                logger.trace("User " + user + " or role " + role + " not founded, waiting inserts...");
+                                insertedWrapper.wait();
+                            }
+                            logger.trace("wake up!");
+                        } catch (InterruptedException e) {
+                            logger.error(e);
+                        }
 
-                    superDAO.insert(userRole);
-                    insertedWrapper.add(userRole);
-                    insertedWrapper.notifyAll();
-                    logger.trace(userRole);
-                }
-            }
-        } else
-        if(t instanceof Course) {
-            CoursesWrapper coursesWrapper = new CoursesWrapper(superDAO.list());
-            coursesWrapper = (CoursesWrapper)coursesWrapper.xmlUnmarshall(filename);
-            List<Course> courses = coursesWrapper.getObjects();
-            for(Course course:courses) {
-                synchronized (insertedWrapper) {
-                    User author = course.getAuthor();
-                    while (!insertedWrapper.contains(author)) {
-                        try {
-                            insertedWrapper.wait();
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
+                        superDAO.insert(userRole);
+                        insertedWrapper.add(userRole);
+                        insertedWrapper.notifyAll();
+                        logger.trace(userRole + " inserted");
                     }
-                    superDAO.insert(course);
-                    insertedWrapper.add(course);
-                    insertedWrapper.notifyAll();
-                    logger.trace(course);
                 }
-            }
-        } else
-        if(t instanceof Lesson) {
-            LessonsWrapper lessonsWrapper = new LessonsWrapper(superDAO.list());
-            lessonsWrapper = (LessonsWrapper)lessonsWrapper.xmlUnmarshall(filename);
-            List<Lesson> lessons = lessonsWrapper.getObjects();
-            for(Lesson lesson:lessons) {
-                synchronized (insertedWrapper) {
-                    Course course = lesson.getCourse();
-                    while (!insertedWrapper.contains(course)) {
-                        try {
-                            insertedWrapper.wait();
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
+            } else if (t instanceof Course) {
+                CoursesWrapper coursesWrapper = new CoursesWrapper(superDAO.list());
+                coursesWrapper = (CoursesWrapper) coursesWrapper.xmlUnmarshall(filename);
+                List<Course> courses = coursesWrapper.getObjects();
+                for (Course course : courses) {
+                    synchronized (insertedWrapper) {
+                        User author = course.getAuthor();
+                        while (!insertedWrapper.contains(author)) {
+                            try {
+                                insertedWrapper.wait();
+                            } catch (InterruptedException e) {
+                                logger.error(e);
+                            }
                         }
+                        superDAO.insert(course);
+                        insertedWrapper.add(course);
+                        insertedWrapper.notifyAll();
+                        logger.trace(course + " inserted");
                     }
-                    superDAO.insert(lesson);
-                    insertedWrapper.add(lesson);
-                    insertedWrapper.notifyAll();
-                    logger.trace(lesson);
                 }
-            }
-        } else
-        if(t instanceof LessonTest) {
-            LessonTestsWrapper lessonTestsWrapper = new LessonTestsWrapper(superDAO.list());
-            lessonTestsWrapper = (LessonTestsWrapper)lessonTestsWrapper.xmlUnmarshall(filename);
-            List<LessonTest> lessonTests = lessonTestsWrapper.getObjects();
-            for(LessonTest lessonTest:lessonTests) {
-                synchronized (insertedWrapper) {
-                    Lesson lesson = lessonTest.getLesson();
-                    while (!insertedWrapper.contains(lesson)) {
-                        try {
-                            insertedWrapper.wait();
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
+            } else if (t instanceof Lesson) {
+                LessonsWrapper lessonsWrapper = new LessonsWrapper(superDAO.list());
+                lessonsWrapper = (LessonsWrapper) lessonsWrapper.xmlUnmarshall(filename);
+                List<Lesson> lessons = lessonsWrapper.getObjects();
+                for (Lesson lesson : lessons) {
+                    synchronized (insertedWrapper) {
+                        Course course = lesson.getCourse();
+                        while (!insertedWrapper.contains(course)) {
+                            try {
+                                insertedWrapper.wait();
+                            } catch (InterruptedException e) {
+                                logger.error(e);
+                            }
                         }
+                        superDAO.insert(lesson);
+                        insertedWrapper.add(lesson);
+                        insertedWrapper.notifyAll();
+                        logger.trace(lesson + " inserted");
                     }
-                    superDAO.insert(lessonTest);
-                    insertedWrapper.add(lessonTest);
-                    insertedWrapper.notifyAll();
-                    logger.trace(lessonTest);
                 }
-            }
-        } else
-        if(t instanceof LessonTestResult) {
-            LessonTestResultsWrapper lessonTestResultsWrapper = new LessonTestResultsWrapper(superDAO.list());
-            lessonTestResultsWrapper = (LessonTestResultsWrapper)lessonTestResultsWrapper.xmlUnmarshall(filename);
-            List<LessonTestResult> lessonTestResults = lessonTestResultsWrapper.getObjects();
-            for(LessonTestResult lessonTestResult:lessonTestResults) {
-                synchronized (insertedWrapper) {
-                    LessonTest lessonTest = lessonTestResult.getLessonTest();
-                    User user = lessonTestResult.getUser();
-                    while(!insertedWrapper.contains(lessonTest) || !insertedWrapper.contains(user)) {
-                        try {
-                            insertedWrapper.wait();
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
+            } else if (t instanceof LessonTest) {
+                LessonTestsWrapper lessonTestsWrapper = new LessonTestsWrapper(superDAO.list());
+                lessonTestsWrapper = (LessonTestsWrapper) lessonTestsWrapper.xmlUnmarshall(filename);
+                List<LessonTest> lessonTests = lessonTestsWrapper.getObjects();
+                for (LessonTest lessonTest : lessonTests) {
+                    synchronized (insertedWrapper) {
+                        Lesson lesson = lessonTest.getLesson();
+                        while (!insertedWrapper.contains(lesson)) {
+                            try {
+                                insertedWrapper.wait();
+                            } catch (InterruptedException e) {
+                                logger.error(e);
+                            }
                         }
+                        superDAO.insert(lessonTest);
+                        insertedWrapper.add(lessonTest);
+                        insertedWrapper.notifyAll();
+                        logger.trace(lessonTest + " inserted");
                     }
-                    superDAO.insert(lessonTestResult);
-                    insertedWrapper.add(lessonTestResult);
-                    insertedWrapper.notifyAll();
-                    logger.trace(lessonTestResult);
+                }
+            } else if (t instanceof LessonTestResult) {
+                LessonTestResultsWrapper lessonTestResultsWrapper = new LessonTestResultsWrapper(superDAO.list());
+                lessonTestResultsWrapper = (LessonTestResultsWrapper) lessonTestResultsWrapper.xmlUnmarshall(filename);
+                List<LessonTestResult> lessonTestResults = lessonTestResultsWrapper.getObjects();
+                for (LessonTestResult lessonTestResult : lessonTestResults) {
+                    synchronized (insertedWrapper) {
+                        LessonTest lessonTest = lessonTestResult.getLessonTest();
+                        User user = lessonTestResult.getUser();
+                        while (!insertedWrapper.contains(lessonTest) || !insertedWrapper.contains(user)) {
+                            try {
+                                insertedWrapper.wait();
+                            } catch (InterruptedException e) {
+                                logger.error(e);
+                            }
+                        }
+                        superDAO.insert(lessonTestResult);
+                        insertedWrapper.add(lessonTestResult);
+                        insertedWrapper.notifyAll();
+                        logger.trace(lessonTestResult + " inserted");
+                    }
                 }
             }
+        } catch (
+                DAOException e) {
+            e.printStackTrace();
         }
     }
 }

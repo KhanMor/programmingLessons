@@ -1,8 +1,9 @@
-package daoimpl;
+package models.daoimpl;
 
-import boxer.EntityBoxer;
-import dao.SuperDAO;
-import models.User;
+import models.connector.DatabaseConnector;
+import models.daoimpl.boxer.EntityBoxer;
+import models.dao.SuperDAO;
+import models.pojo.User;
 import org.apache.log4j.Logger;
 
 import java.sql.*;
@@ -16,18 +17,9 @@ public class UserDAOImpl implements SuperDAO<User> {
     private final Connection conn;
     private static final Logger logger = Logger.getLogger(UserDAOImpl.class);
 
-    public UserDAOImpl(Connection conn) {
-        this.conn = conn;
-    }
-
-    private void setPreparedStatementParams(PreparedStatement preparedStatement, User user) throws SQLException {
-        preparedStatement.setString(1, user.getFirstName());
-        preparedStatement.setString(2, user.getSurname());
-        preparedStatement.setString(3, user.getPatronymic());
-        preparedStatement.setDate(4, user.getBirthday());
-        preparedStatement.setString(5, user.getSex());
-        preparedStatement.setString(6, user.getEmail());
-        preparedStatement.setString(7, user.getPassword());
+    public UserDAOImpl() {
+        DatabaseConnector databaseConnector = DatabaseConnector.getInstance();
+        this.conn = databaseConnector.getConnection();
     }
 
     @Override
@@ -42,7 +34,7 @@ public class UserDAOImpl implements SuperDAO<User> {
             }
             return users;
         } catch (SQLException e) {
-            logger.error(e.getMessage());
+            logger.error(e);
         }
         return null;
     }
@@ -58,7 +50,7 @@ public class UserDAOImpl implements SuperDAO<User> {
                 return student;
             }
         } catch (SQLException e) {
-            logger.error(e.getMessage());
+            logger.error(e);
         }
         return null;
     }
@@ -69,7 +61,13 @@ public class UserDAOImpl implements SuperDAO<User> {
                 " values (?, ?, ?, ?, ?, ?, ?)";
         try (PreparedStatement preparedStatement =
                      conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-            setPreparedStatementParams(preparedStatement, user);
+            preparedStatement.setString(1, user.getFirstName());
+            preparedStatement.setString(2, user.getSurname());
+            preparedStatement.setString(3, user.getPatronymic());
+            preparedStatement.setDate(4, user.getBirthday());
+            preparedStatement.setString(5, user.getSex());
+            preparedStatement.setString(6, user.getEmail());
+            preparedStatement.setString(7, user.getPassword());
             int insertedRows = preparedStatement.executeUpdate();
             if (insertedRows == 0) {
                 throw new SQLException("No user inserted");
@@ -82,13 +80,36 @@ public class UserDAOImpl implements SuperDAO<User> {
                 }
             }
         } catch (SQLException e) {
-            logger.error(e.getMessage());
+            logger.error(e);
         }
     }
 
     @Override
     public void update(User user) {
-
+        String sql = "update user set firstname = ?, " +
+                    "surname = ?, " +
+                    "patronymic = ?, " +
+                    "birthday = ?, " +
+                    "sex = ?, " +
+                    "email = ?, " +
+                    "password = ? " +
+                    "where id = ?";
+        try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
+            preparedStatement.setString(1, user.getFirstName());
+            preparedStatement.setString(2, user.getSurname());
+            preparedStatement.setString(3, user.getPatronymic());
+            preparedStatement.setDate(4, user.getBirthday());
+            preparedStatement.setString(5, user.getSex());
+            preparedStatement.setString(6, user.getEmail());
+            preparedStatement.setString(7, user.getPassword());
+            preparedStatement.setInt(8, user.getId());
+            int updatedRows = preparedStatement.executeUpdate();
+            if (updatedRows == 0) {
+                throw new SQLException("No user updated");
+            }
+        } catch (SQLException e) {
+            logger.error(e);
+        }
     }
 
     private void deleteUserRoles(User user) {
@@ -97,7 +118,7 @@ public class UserDAOImpl implements SuperDAO<User> {
             preparedStatement.setInt(1, user.getId());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            logger.error(e.getMessage());
+            logger.error(e);
         }
     }
 
@@ -109,7 +130,7 @@ public class UserDAOImpl implements SuperDAO<User> {
             preparedStatement.setInt(1, user.getId());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            logger.error(e.getMessage());
+            logger.error(e);
         }
     }
 
@@ -119,13 +140,13 @@ public class UserDAOImpl implements SuperDAO<User> {
         try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            logger.error(e.getMessage());
+            logger.error(e);
         }
         sql = "ALTER TABLE user AUTO_INCREMENT = 1;";
         try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            logger.error(e.getMessage());
+            logger.error(e);
         }
     }
 }

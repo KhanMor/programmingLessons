@@ -1,8 +1,10 @@
-package daoimpl;
+package models.daoimpl;
 
-import boxer.EntityBoxer;
-import dao.SuperDAO;
-import models.Course;
+import exceptions.DAOException;
+import models.connector.DatabaseConnector;
+import models.daoimpl.boxer.EntityBoxer;
+import models.dao.SuperDAO;
+import models.pojo.Course;
 import org.apache.log4j.Logger;
 
 import java.sql.*;
@@ -16,12 +18,13 @@ public class CourseDAOImpl implements SuperDAO<Course> {
     private final Connection conn;
     private static final Logger logger = Logger.getLogger(CourseDAOImpl.class);
 
-    public CourseDAOImpl(Connection conn) {
-        this.conn = conn;
+    public CourseDAOImpl() {
+        DatabaseConnector databaseConnector = DatabaseConnector.getInstance();
+        this.conn = databaseConnector.getConnection();
     }
 
     @Override
-    public List<Course> list() {
+    public List<Course> list()  throws DAOException {
         String sql = "select * from course";
         try (Statement statement = conn.createStatement()) {
             ResultSet resultSet = statement.executeQuery(sql);
@@ -32,13 +35,13 @@ public class CourseDAOImpl implements SuperDAO<Course> {
             }
             return courses;
         } catch (SQLException e) {
-            logger.error(e.getMessage());
+            logger.error(e);
+            throw new DAOException();
         }
-        return null;
     }
 
     @Override
-    public Course get(Integer id) {
+    public Course get(Integer id)  throws DAOException {
         String sql = "select * from course where id=?";
         try (PreparedStatement preparedStatement = conn.prepareStatement(sql);) {
             preparedStatement.setInt(1, id);
@@ -48,7 +51,8 @@ public class CourseDAOImpl implements SuperDAO<Course> {
                 return course;
             }
         } catch (SQLException e) {
-            logger.error(e.getMessage());
+            logger.error(e);
+            throw new DAOException();
         }
         return null;
     }
@@ -62,7 +66,7 @@ public class CourseDAOImpl implements SuperDAO<Course> {
     }
 
     @Override
-    public void insert(Course course) {
+    public void insert(Course course) throws DAOException {
         String sql = "insert into course (author_user_id, name, duration, price, certified) values (?, ?, ?, ?, ?)";
         try (PreparedStatement preparedStatement =
                      conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
@@ -79,39 +83,42 @@ public class CourseDAOImpl implements SuperDAO<Course> {
                 }
             }
         } catch (SQLException e) {
-            logger.error(e.getMessage());
+            logger.error(e);
+            throw new DAOException();
         }
     }
 
     @Override
-    public void update(Course course) {
+    public void update(Course course) throws DAOException {
 
     }
 
     @Override
-    public void delete(Course course) {
+    public void delete(Course course)  throws DAOException {
         String sql = "delete from course where id=?";
         try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
             preparedStatement.setInt(1, course.getId());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            logger.error(e.getMessage());
+            logger.error(e);
+            throw new DAOException();
         }
     }
 
     @Override
-    public void deleteAll() {
+    public void deleteAll()  throws DAOException {
         String sql = "delete from course";
         try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            logger.error(e.getMessage());
+            logger.error(e);
         }
         sql = "ALTER TABLE course AUTO_INCREMENT = 1;";
         try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            logger.error(e.getMessage());
+            logger.error(e);
+            throw new DAOException();
         }
     }
 }

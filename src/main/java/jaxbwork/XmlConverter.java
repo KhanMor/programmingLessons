@@ -22,7 +22,7 @@ public class XmlConverter {
             jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
             jaxbMarshaller.marshal(object, file);
         } catch (JAXBException e) {
-            logger.error(e.getMessage());
+            logger.error(e);
         }
     }
     public Object unmarshallObject(Class clazz, String filename) {
@@ -33,7 +33,7 @@ public class XmlConverter {
             Object object = jaxbUnmarshaller.unmarshal(file);
             return object;
         } catch (JAXBException e) {
-            logger.error(e.getMessage());
+            logger.error(e);
         }
         return null;
     }

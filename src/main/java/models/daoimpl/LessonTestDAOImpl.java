@@ -1,8 +1,9 @@
-package daoimpl;
+package models.daoimpl;
 
-import boxer.EntityBoxer;
-import dao.SuperDAO;
-import models.LessonTest;
+import models.connector.DatabaseConnector;
+import models.daoimpl.boxer.EntityBoxer;
+import models.dao.SuperDAO;
+import models.pojo.LessonTest;
 import org.apache.log4j.Logger;
 
 import java.sql.*;
@@ -16,8 +17,9 @@ public class LessonTestDAOImpl implements SuperDAO<LessonTest> {
     private final Connection conn;
     private static final Logger logger = Logger.getLogger(LessonTestDAOImpl.class);
 
-    public LessonTestDAOImpl(Connection conn) {
-        this.conn = conn;
+    public LessonTestDAOImpl() {
+        DatabaseConnector databaseConnector = DatabaseConnector.getInstance();
+        this.conn = databaseConnector.getConnection();
     }
 
     @Override
@@ -32,7 +34,7 @@ public class LessonTestDAOImpl implements SuperDAO<LessonTest> {
             }
             return lessonTests;
         } catch (SQLException e) {
-            logger.error(e.getMessage());
+            logger.error(e);
         }
         return null;
     }
@@ -48,7 +50,7 @@ public class LessonTestDAOImpl implements SuperDAO<LessonTest> {
                 return lessonTest;
             }
         } catch (SQLException e) {
-            logger.error(e.getMessage());
+            logger.error(e);
         }
         return null;
     }
@@ -80,7 +82,7 @@ public class LessonTestDAOImpl implements SuperDAO<LessonTest> {
                 }
             }
         } catch (SQLException e) {
-            logger.error(e.getMessage());
+            logger.error(e);
         }
     }
 
@@ -96,7 +98,7 @@ public class LessonTestDAOImpl implements SuperDAO<LessonTest> {
             preparedStatement.setInt(1, lessonTest.getId());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            logger.error(e.getMessage());
+            logger.error(e);
         }
     }
 
@@ -106,13 +108,13 @@ public class LessonTestDAOImpl implements SuperDAO<LessonTest> {
         try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e);
         }
         sql = "ALTER TABLE lessontest AUTO_INCREMENT = 1;";
         try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            logger.error(e.getMessage());
+            logger.error(e);
         }
     }
 }

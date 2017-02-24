@@ -1,4 +1,4 @@
-package config;
+package models.connector;
 
 import org.apache.log4j.Logger;
 
@@ -11,11 +11,11 @@ import java.sql.SQLException;
  */
 public class DatabaseConnector {
     private Connection connection;
-    private static DatabaseConnector ourInstance = new DatabaseConnector();
+    private static DatabaseConnector databaseConnector = new DatabaseConnector();
     private static final Logger logger = Logger.getLogger(DatabaseConnector.class);
 
     public static DatabaseConnector getInstance() {
-        return ourInstance;
+        return databaseConnector;
     }
 
     private DatabaseConnector() {
@@ -27,13 +27,13 @@ public class DatabaseConnector {
             Class.forName(driver).newInstance();
             this.connection = DriverManager.getConnection(url,userName,password);
         } catch (InstantiationException e) {
-            logger.error(e.getMessage());
+            logger.error(e);
         } catch (IllegalAccessException e) {
-            logger.error(e.getMessage());
+            logger.error(e);
         } catch (ClassNotFoundException e) {
-            logger.error(e.getMessage());
+            logger.error(e);
         } catch (SQLException e) {
-            logger.error(e.getMessage());
+            logger.error(e);
         }
 
     }

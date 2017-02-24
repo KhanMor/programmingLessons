@@ -1,8 +1,9 @@
-package daoimpl;
+package models.daoimpl;
 
-import boxer.EntityBoxer;
-import dao.SuperDAO;
-import models.*;
+import models.connector.DatabaseConnector;
+import models.daoimpl.boxer.EntityBoxer;
+import models.dao.SuperDAO;
+import models.pojo.LessonTestResult;
 import org.apache.log4j.Logger;
 
 import java.sql.*;
@@ -16,8 +17,9 @@ public class LessonTestResultDAOImpl implements SuperDAO<LessonTestResult> {
     private final Connection conn;
     private static final Logger logger = Logger.getLogger(LessonTestDAOImpl.class);
 
-    public LessonTestResultDAOImpl(Connection conn) {
-        this.conn = conn;
+    public LessonTestResultDAOImpl() {
+        DatabaseConnector databaseConnector = DatabaseConnector.getInstance();
+        this.conn = databaseConnector.getConnection();
     }
 
 
@@ -33,7 +35,7 @@ public class LessonTestResultDAOImpl implements SuperDAO<LessonTestResult> {
             }
             return lessonTestsResults;
         } catch (SQLException e) {
-            logger.error(e.getMessage());
+            logger.error(e);
         }
         return null;
     }
@@ -49,7 +51,7 @@ public class LessonTestResultDAOImpl implements SuperDAO<LessonTestResult> {
                 return lessonTestResult;
             }
         } catch (SQLException e) {
-            logger.error(e.getMessage());
+            logger.error(e);
         }
         return null;
     }
@@ -80,7 +82,7 @@ public class LessonTestResultDAOImpl implements SuperDAO<LessonTestResult> {
                 }
             }
         } catch (SQLException e) {
-            logger.error(e.getMessage());
+            logger.error(e);
         }
     }
 
@@ -96,7 +98,7 @@ public class LessonTestResultDAOImpl implements SuperDAO<LessonTestResult> {
             preparedStatement.setInt(1, lessonTestResult.getId());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            logger.error(e.getMessage());
+            logger.error(e);
         }
     }
 
@@ -106,13 +108,13 @@ public class LessonTestResultDAOImpl implements SuperDAO<LessonTestResult> {
         try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            logger.error(e.getMessage());;
+            logger.error(e);
         }
         sql = "ALTER TABLE lessontestresult AUTO_INCREMENT = 1;";
         try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            logger.error(e.getMessage());
+            logger.error(e);
         }
     }
 }

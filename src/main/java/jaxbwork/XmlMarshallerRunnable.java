@@ -1,8 +1,9 @@
 package jaxbwork;
 
-import dao.*;
+import exceptions.DAOException;
 import jaxbwork.jaxbwrappers.*;
-import models.*;
+import models.dao.SuperDAO;
+import models.pojo.*;
 import org.apache.log4j.Logger;
 
 /**
@@ -22,34 +23,40 @@ public class XmlMarshallerRunnable<T> implements Runnable {
 
     @Override
     public void run() {
-        logger.trace("thread started for " + filename);
-        if(t instanceof User) {
-            UsersWrapper usersWrapper = new UsersWrapper(superDAO.list());
-            usersWrapper.xmlMarshall(filename);
-        } else
-        if(t instanceof Role) {
-            RolesWrapper rolesWrapper = new RolesWrapper(superDAO.list());
-            rolesWrapper.xmlMarshall(filename);
-        } else
-        if(t instanceof UserRole) {
-            UserRolesWrapper rolesWrapper = new UserRolesWrapper(superDAO.list());
-            rolesWrapper.xmlMarshall(filename);
-        } else
-        if(t instanceof Course) {
-            CoursesWrapper coursesWrapper = new CoursesWrapper(superDAO.list());
-            coursesWrapper.xmlMarshall(filename);
-        } else
-        if(t instanceof Lesson) {
-            LessonsWrapper lessonsWrapper = new LessonsWrapper(superDAO.list());
-            lessonsWrapper.xmlMarshall(filename);
-        } else
-        if(t instanceof LessonTest) {
-            LessonTestsWrapper lessonTestsWrapper = new LessonTestsWrapper(superDAO.list());
-            lessonTestsWrapper.xmlMarshall(filename);
-        } else
-        if(t instanceof LessonTestResult) {
-            LessonTestResultsWrapper lessonTestResultsWrapper = new LessonTestResultsWrapper(superDAO.list());
-            lessonTestResultsWrapper.xmlMarshall(filename);
+        try {
+            logger.trace("started export to " + filename);
+            if(t instanceof User) {
+                UsersWrapper usersWrapper = null;
+                usersWrapper = new UsersWrapper(superDAO.list());
+                usersWrapper.xmlMarshall(filename);
+            } else
+            if(t instanceof Role) {
+                RolesWrapper rolesWrapper = new RolesWrapper(superDAO.list());
+                rolesWrapper.xmlMarshall(filename);
+            } else
+            if(t instanceof UserRole) {
+                UserRolesWrapper rolesWrapper = new UserRolesWrapper(superDAO.list());
+                rolesWrapper.xmlMarshall(filename);
+            } else
+            if(t instanceof Course) {
+                CoursesWrapper coursesWrapper = new CoursesWrapper(superDAO.list());
+                coursesWrapper.xmlMarshall(filename);
+            } else
+            if(t instanceof Lesson) {
+                LessonsWrapper lessonsWrapper = new LessonsWrapper(superDAO.list());
+                lessonsWrapper.xmlMarshall(filename);
+            } else
+            if(t instanceof LessonTest) {
+                LessonTestsWrapper lessonTestsWrapper = new LessonTestsWrapper(superDAO.list());
+                lessonTestsWrapper.xmlMarshall(filename);
+            } else
+            if(t instanceof LessonTestResult) {
+                LessonTestResultsWrapper lessonTestResultsWrapper = new LessonTestResultsWrapper(superDAO.list());
+                lessonTestResultsWrapper.xmlMarshall(filename);
+            }
+            logger.trace("finished export to " + filename);
+        } catch (DAOException e) {
+            e.printStackTrace();
         }
     }
 }

@@ -1,4 +1,4 @@
-package models;
+package models.pojo;
 
 import jaxbwork.jaxbadapters.TimestampAdapter;
 

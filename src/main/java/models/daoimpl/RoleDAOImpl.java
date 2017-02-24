@@ -1,8 +1,9 @@
-package daoimpl;
+package models.daoimpl;
 
-import boxer.EntityBoxer;
-import dao.SuperDAO;
-import models.Role;
+import models.connector.DatabaseConnector;
+import models.daoimpl.boxer.EntityBoxer;
+import models.dao.SuperDAO;
+import models.pojo.Role;
 import org.apache.log4j.Logger;
 
 import java.sql.*;
@@ -16,8 +17,9 @@ public class RoleDAOImpl implements SuperDAO<Role> {
     private final Connection conn;
     private static final Logger logger = Logger.getLogger(RoleDAOImpl.class);
 
-    public RoleDAOImpl(Connection conn) {
-        this.conn = conn;
+    public RoleDAOImpl() {
+        DatabaseConnector databaseConnector = DatabaseConnector.getInstance();
+        this.conn = databaseConnector.getConnection();
     }
 
     @Override
@@ -32,7 +34,7 @@ public class RoleDAOImpl implements SuperDAO<Role> {
             }
             return roles;
         } catch (SQLException e) {
-            logger.error(e.getMessage());
+            logger.error(e);
         }
         return null;
     }
@@ -48,7 +50,7 @@ public class RoleDAOImpl implements SuperDAO<Role> {
                 return role;
             }
         } catch (SQLException e) {
-            logger.error(e.getMessage());
+            logger.error(e);
         }
         return null;
     }
@@ -77,7 +79,7 @@ public class RoleDAOImpl implements SuperDAO<Role> {
                 }
             }
         } catch (SQLException e) {
-            logger.error(e.getMessage());
+            logger.error(e);
         }
     }
 
@@ -93,7 +95,7 @@ public class RoleDAOImpl implements SuperDAO<Role> {
             preparedStatement.setInt(1, role.getId());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            logger.error(e.getMessage());
+            logger.error(e);
         }
     }
 
@@ -103,13 +105,13 @@ public class RoleDAOImpl implements SuperDAO<Role> {
         try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            logger.error(e.getMessage());
+            logger.error(e);
         }
         sql = "ALTER TABLE role AUTO_INCREMENT = 1;";
         try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            logger.error(e.getMessage());
+            logger.error(e);
         }
     }
 }

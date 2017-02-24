@@ -1,8 +1,9 @@
-package daoimpl;
+package models.daoimpl;
 
-import boxer.EntityBoxer;
-import dao.SuperDAO;
-import models.UserRole;
+import models.connector.DatabaseConnector;
+import models.daoimpl.boxer.EntityBoxer;
+import models.dao.SuperDAO;
+import models.pojo.UserRole;
 import org.apache.log4j.Logger;
 
 import java.sql.*;
@@ -16,8 +17,9 @@ public class UserRoleDAOImpl implements SuperDAO<UserRole> {
     private final Connection conn;
     private static final Logger logger = Logger.getLogger(UserRoleDAOImpl.class);
 
-    public UserRoleDAOImpl(Connection conn) {
-        this.conn = conn;
+    public UserRoleDAOImpl() {
+        DatabaseConnector databaseConnector = DatabaseConnector.getInstance();
+        this.conn = databaseConnector.getConnection();
     }
 
     @Override
@@ -32,7 +34,7 @@ public class UserRoleDAOImpl implements SuperDAO<UserRole> {
             }
             return userRoles;
         } catch (SQLException e) {
-            logger.error(e.getMessage());
+            logger.error(e);
         }
         return null;
     }
@@ -48,7 +50,7 @@ public class UserRoleDAOImpl implements SuperDAO<UserRole> {
                 return course;
             }
         } catch (SQLException e) {
-            logger.error(e.getMessage());
+            logger.error(e);
         }
         return null;
     }
@@ -73,7 +75,7 @@ public class UserRoleDAOImpl implements SuperDAO<UserRole> {
                 }
             }
         } catch (SQLException e) {
-            logger.error(e.getMessage());
+            logger.error(e);
         }
     }
 
@@ -99,7 +101,7 @@ public class UserRoleDAOImpl implements SuperDAO<UserRole> {
         try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            logger.error(e.getMessage());
+            logger.error(e);
         }
     }
 }
