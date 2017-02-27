@@ -1,6 +1,6 @@
 package models.daoimpl.boxer;
 
-import exceptions.DAOException;
+import common.exceptions.DAOException;
 import models.dao.*;
 import models.daoimpl.*;
 import models.pojo.*;

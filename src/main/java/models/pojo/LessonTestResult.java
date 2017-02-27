@@ -13,6 +13,7 @@ import java.sql.Timestamp;
  */
 @XmlRootElement
 @XmlType(propOrder = {"id", "lessonTest", "user", "testDateTime", "score"})
+@Deprecated
 public class LessonTestResult {
     private Integer id;
     private LessonTest lessonTest;

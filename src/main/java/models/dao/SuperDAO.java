@@ -1,6 +1,6 @@
 package models.dao;
 
-import exceptions.DAOException;
+import common.exceptions.DAOException;
 
 import java.util.List;
 
@@ -12,6 +12,6 @@ public interface SuperDAO<T> {
     T get(Integer id)  throws DAOException;
     void insert(T t) throws DAOException;
     void update(T t) throws DAOException;
-    void delete(T t) throws DAOException;
+    void delete(Integer id) throws DAOException;
     void deleteAll() throws DAOException;
 }

@@ -1,10 +1,9 @@
 package controllers.users;
 
-import exceptions.DAOException;
-import models.dao.SuperDAO;
-import models.daoimpl.UserDAOImpl;
-import models.pojo.User;
+import common.exceptions.DAOException;
 import org.apache.log4j.Logger;
+import services.UserRoleService;
+import services.UserService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,10 +22,9 @@ public class DeleteUserServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
-            SuperDAO<User> userDAO = new UserDAOImpl();
             Integer id = Integer.parseInt(req.getParameter("id"));
-            User user = userDAO.get(id);
-            userDAO.delete(user);
+            UserRoleService.clearUserRoles(id);
+            UserService.deleteUser(id);
         } catch (DAOException e) {
             e.printStackTrace();
         }

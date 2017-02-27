@@ -16,6 +16,6 @@
 </head>
 <body>
     <jsp:include page="mainmenu.jsp"></jsp:include>
-    <h1>Я домашняя страничка!</h1>
+    <h3>Я домашняя страничка!</h3>
 </body>
 </html>

@@ -1,11 +1,14 @@
 package controllers.users;
 
 import crypt.EncryptMD5;
-import exceptions.DAOException;
-import models.dao.SuperDAO;
-import models.daoimpl.UserDAOImpl;
+import common.exceptions.DAOException;
+import models.pojo.Role;
 import models.pojo.User;
+import models.pojo.UserRole;
 import org.apache.log4j.Logger;
+import services.RoleService;
+import services.UserRoleService;
+import services.UserService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,10 +16,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Mordr on 24.02.2017.
@@ -40,10 +44,10 @@ public class UpdateUserServlet extends HttpServlet {
             java.util.Date date = dateFormat.parse(req.getParameter("birthday"));
             Date birthday = new Date(date.getTime());
             String sex = req.getParameter("sex");
+            String roleName = req.getParameter("role");
             Boolean changePassword = Boolean.parseBoolean(req.getParameter("changePassword"));
 
-            SuperDAO<User> userDAO = new UserDAOImpl();
-            User user = userDAO.get(id);
+            User user = UserService.getUser(id);
             user.setEmail(email);
             if(changePassword) {
                 user.setPassword(password);
@@ -53,11 +57,19 @@ public class UpdateUserServlet extends HttpServlet {
             user.setPatronymic(patronymic);
             user.setBirthday(birthday);
             user.setSex(sex);
-            userDAO.update(user);
 
-            PrintWriter out = resp.getWriter();
-            out.print(user.getId());
-            out.flush();
+            Role role = RoleService.createRoleIfNotFound(roleName);
+            UserRole userRole = new UserRole();
+            userRole.setRole(role);
+            userRole.setUser(user);
+            List<UserRole> userRoles = new ArrayList<>(1);
+            userRoles.add(userRole);
+
+            user.setUserRoles(userRoles);
+
+            UserService.updateUser(user);
+            UserRoleService.clearUserRoles(id);
+            UserRoleService.createUserRole(userRole);
         } catch (ParseException e) {
             logger.error(e);
             resp.sendRedirect(req.getContextPath() + "/error.jsp");

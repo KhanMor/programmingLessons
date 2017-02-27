@@ -1,5 +1,6 @@
 package models.daoimpl;
 
+import common.exceptions.DAOException;
 import models.connector.DatabaseConnector;
 import models.daoimpl.boxer.EntityBoxer;
 import models.dao.SuperDAO;
@@ -13,6 +14,7 @@ import java.util.List;
 /**
  * Created by Mordr on 18.02.2017.
  */
+@Deprecated
 public class LessonTestResultDAOImpl implements SuperDAO<LessonTestResult> {
     private final Connection conn;
     private static final Logger logger = Logger.getLogger(LessonTestDAOImpl.class);
@@ -65,7 +67,7 @@ public class LessonTestResultDAOImpl implements SuperDAO<LessonTestResult> {
     }
 
     @Override
-    public void insert(LessonTestResult lessonTestResult) {
+    public void insert(LessonTestResult lessonTestResult) throws DAOException {
         String sql = "insert into lessontestresult (lessontest_id, user_id, testdatetime, score) values (?, ?, ?, ?)";
         try (PreparedStatement preparedStatement =
                      conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
@@ -83,6 +85,7 @@ public class LessonTestResultDAOImpl implements SuperDAO<LessonTestResult> {
             }
         } catch (SQLException e) {
             logger.error(e);
+            throw new DAOException();
         }
     }
 
@@ -92,10 +95,10 @@ public class LessonTestResultDAOImpl implements SuperDAO<LessonTestResult> {
     }
 
     @Override
-    public void delete(LessonTestResult lessonTestResult) {
+    public void delete(Integer id) {
         String sql = "delete from lessontestresult where id=?";
         try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
-            preparedStatement.setInt(1, lessonTestResult.getId());
+            preparedStatement.setInt(1, id);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             logger.error(e);

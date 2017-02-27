@@ -1,5 +1,6 @@
 package models.daoimpl;
 
+import common.exceptions.DAOException;
 import models.connector.DatabaseConnector;
 import models.daoimpl.boxer.EntityBoxer;
 import models.dao.SuperDAO;
@@ -13,6 +14,7 @@ import java.util.List;
 /**
  * Created by Mordr on 18.02.2017.
  */
+@Deprecated
 public class LessonTestDAOImpl implements SuperDAO<LessonTest> {
     private final Connection conn;
     private static final Logger logger = Logger.getLogger(LessonTestDAOImpl.class);
@@ -64,7 +66,7 @@ public class LessonTestDAOImpl implements SuperDAO<LessonTest> {
     }
 
     @Override
-    public void insert(LessonTest lessonTest) {
+    public void insert(LessonTest lessonTest) throws DAOException {
         String sql = "insert into lessontest (lesson_id, ordernum, question, answer, points)" +
                 " values (?, ?, ?, ?, ?)";
         try (PreparedStatement preparedStatement =
@@ -83,6 +85,7 @@ public class LessonTestDAOImpl implements SuperDAO<LessonTest> {
             }
         } catch (SQLException e) {
             logger.error(e);
+            throw new DAOException();
         }
     }
 
@@ -92,10 +95,10 @@ public class LessonTestDAOImpl implements SuperDAO<LessonTest> {
     }
 
     @Override
-    public void delete(LessonTest lessonTest) {
+    public void delete(Integer id) {
         String sql = "delete from lessontest where id=?";
         try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
-            preparedStatement.setInt(1, lessonTest.getId());
+            preparedStatement.setInt(1, id);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             logger.error(e);

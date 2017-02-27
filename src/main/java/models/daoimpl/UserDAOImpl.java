@@ -1,11 +1,13 @@
 package models.daoimpl;
 
-import models.connector.DatabaseConnector;
+import common.exceptions.DAOException;
+import models.connector.DataSourceMySQL;
 import models.daoimpl.boxer.EntityBoxer;
 import models.dao.SuperDAO;
 import models.pojo.User;
 import org.apache.log4j.Logger;
 
+import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,19 +16,31 @@ import java.util.List;
  * Created by Mordr on 17.02.2017.
  */
 public class UserDAOImpl implements SuperDAO<User> {
-    private final Connection conn;
+    //private final Connection conn;
     private static final Logger logger = Logger.getLogger(UserDAOImpl.class);
+    private static final String LIST_SQL = "select * from user";
+    private static final String GET_SQL = "select * from user where id=?";
+    private static final String INSERT_SQL = "insert into user (firstname, surname, patronymic, birthday, sex, email, password)" +
+                                             " values (?, ?, ?, ?, ?, ?, ?)";
+    private static final String UPDATE_SQL = "update user set firstname = ?, surname = ?, patronymic = ?, birthday = ?, sex = ?," +
+                                             " email = ?, password = ? where id = ?";
+    private static final String DELETE_SQL = "delete from user where id=?";
+    private static final String DELETE_ALL_SQL = "delete from user";
+    private static final String REFRESH_INCREMENT_SQL = "ALTER TABLE user AUTO_INCREMENT = 1;";
+
+    private DataSource dataSource = DataSourceMySQL.getInstance().getDataSource();
 
     public UserDAOImpl() {
-        DatabaseConnector databaseConnector = DatabaseConnector.getInstance();
-        this.conn = databaseConnector.getConnection();
+       /* DatabaseConnector databaseConnector = DatabaseConnector.getInstance();
+        this.conn = databaseConnector.getConnection();*/
     }
 
     @Override
     public List<User> list() {
-        String sql = "select * from user";
-        try (Statement statement = conn.createStatement()) {
-            ResultSet resultSet = statement.executeQuery(sql);
+        try(Connection conn = dataSource.getConnection();
+            Statement statement = conn.createStatement()
+        ) {
+            ResultSet resultSet = statement.executeQuery(LIST_SQL);
             List<User> users = new ArrayList<>();
             while (resultSet.next()) {
                 User user = EntityBoxer.packUser(resultSet, conn);
@@ -41,8 +55,9 @@ public class UserDAOImpl implements SuperDAO<User> {
 
     @Override
     public User get(Integer id) {
-        String sql = "select * from user where id=?";
-        try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
+        try(Connection conn = dataSource.getConnection();
+            PreparedStatement preparedStatement = conn.prepareStatement(GET_SQL)
+        ) {
             preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
@@ -56,11 +71,10 @@ public class UserDAOImpl implements SuperDAO<User> {
     }
 
     @Override
-    public void insert(User user) {
-        String sql = "insert into user (firstname, surname, patronymic, birthday, sex, email, password)" +
-                " values (?, ?, ?, ?, ?, ?, ?)";
-        try (PreparedStatement preparedStatement =
-                     conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+    public void insert(User user) throws DAOException {
+        try(Connection conn = dataSource.getConnection();
+            PreparedStatement preparedStatement = conn.prepareStatement(INSERT_SQL, Statement.RETURN_GENERATED_KEYS)
+        ) {
             preparedStatement.setString(1, user.getFirstName());
             preparedStatement.setString(2, user.getSurname());
             preparedStatement.setString(3, user.getPatronymic());
@@ -81,20 +95,15 @@ public class UserDAOImpl implements SuperDAO<User> {
             }
         } catch (SQLException e) {
             logger.error(e);
+            throw new DAOException();
         }
     }
 
     @Override
     public void update(User user) {
-        String sql = "update user set firstname = ?, " +
-                    "surname = ?, " +
-                    "patronymic = ?, " +
-                    "birthday = ?, " +
-                    "sex = ?, " +
-                    "email = ?, " +
-                    "password = ? " +
-                    "where id = ?";
-        try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
+        try(Connection conn = dataSource.getConnection();
+            PreparedStatement preparedStatement = conn.prepareStatement(UPDATE_SQL))
+        {
             preparedStatement.setString(1, user.getFirstName());
             preparedStatement.setString(2, user.getSurname());
             preparedStatement.setString(3, user.getPatronymic());
@@ -112,22 +121,12 @@ public class UserDAOImpl implements SuperDAO<User> {
         }
     }
 
-    private void deleteUserRoles(User user) {
-        String sql = "delete from userrole where user_id=?";
-        try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
-            preparedStatement.setInt(1, user.getId());
-            preparedStatement.executeUpdate();
-        } catch (SQLException e) {
-            logger.error(e);
-        }
-    }
-
     @Override
-    public void delete(User user) {
-        deleteUserRoles(user);
-        String sql = "delete from user where id=?";
-        try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
-            preparedStatement.setInt(1, user.getId());
+    public void delete(Integer id) {
+        try(Connection conn = dataSource.getConnection();
+            PreparedStatement preparedStatement = conn.prepareStatement(DELETE_SQL)
+        ) {
+            preparedStatement.setInt(1, id);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             logger.error(e);
@@ -136,15 +135,12 @@ public class UserDAOImpl implements SuperDAO<User> {
 
     @Override
     public void deleteAll() {
-        String sql = "delete from user";
-        try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
+        try(Connection conn = dataSource.getConnection();
+            PreparedStatement preparedStatement = conn.prepareStatement(DELETE_ALL_SQL);
+            PreparedStatement preparedStatement2 = conn.prepareStatement(REFRESH_INCREMENT_SQL)
+        ) {
             preparedStatement.executeUpdate();
-        } catch (SQLException e) {
-            logger.error(e);
-        }
-        sql = "ALTER TABLE user AUTO_INCREMENT = 1;";
-        try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
-            preparedStatement.executeUpdate();
+            preparedStatement2.executeUpdate();
         } catch (SQLException e) {
             logger.error(e);
         }

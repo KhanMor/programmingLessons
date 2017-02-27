@@ -1,6 +1,6 @@
 package jaxbwork;
 
-import exceptions.DAOException;
+import common.exceptions.DAOException;
 import jaxbwork.jaxbwrappers.*;
 import models.dao.SuperDAO;
 import models.pojo.*;

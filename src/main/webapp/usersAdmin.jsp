@@ -13,6 +13,7 @@
     <link href="${pageContext.request.contextPath}/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" rel="stylesheet">
     <script src="${pageContext.request.contextPath}/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js" type="text/javascript"></script>
     <link href="/css/common.css" rel="stylesheet">
+    <link href="/css/usersAdmin.css" rel="stylesheet">
     <script src="/js/common.js" type="text/javascript"></script>
     <script src="/js/usersAdmin.js" type="text/javascript"></script>
     <title>Администрирование пользователей</title>
@@ -35,6 +36,7 @@
                 <th>Отчество</th>
                 <th>Дата рождения</th>
                 <th>Пол</th>
+                <th>Роли</th>
             </tr>
             <c:forEach items="${users}" var="user">
                 <tr data-id="${user.id}">
@@ -44,6 +46,13 @@
                     <td>${user.patronymic}</td>
                     <td>${user.birthday}</td>
                     <td>${user.sex}</td>
+                    <td>
+                        <ul class = "list-group">
+                        <c:forEach items="${user.userRoles}" var="userRole">
+                            <li class = "list-group-item">${userRole.role.role}</li>
+                        </c:forEach>
+                        </ul>
+                    </td>
                 </tr>
             </c:forEach>
         </table>
@@ -61,6 +70,18 @@
                         <label><input type="checkbox" value="" id="password-change-flag">Изменить пароль</label>
                     </div>
                     <jsp:include page="user.details.jsp"></jsp:include>
+                    <h4>Роли пользователя</h4>
+                    <div id = "userRolesContainer">
+                        <div class="form-group">
+                            Роль пользователя: <label class="label-info" id="currentUserRole"></label>
+                        </div>
+                        <div class="btn-group">
+                            <button class="btn btn-default" id="setAdminBtn"> Сделать администратором</button>
+                            <button class="btn btn-default" id="setAuthorBtn"> Сделать автором</button>
+                            <button class="btn btn-default" id="setStudentBtn"> Сделать студентом</button>
+                            <button class="btn btn-default" id="setBlockBtn"> Заблокировать</button>
+                        </div>
+                    </div>
                     <div id = "error-response">
                     </div>
                 </div>

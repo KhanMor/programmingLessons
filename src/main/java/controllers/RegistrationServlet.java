@@ -1,12 +1,15 @@
 package controllers;
 
 import crypt.EncryptMD5;
-import exceptions.DAOException;
-import models.dao.SuperDAO;
+import common.exceptions.DAOException;
 import models.daoimpl.UserAuthorizationDAO;
-import models.daoimpl.UserDAOImpl;
+import models.pojo.Role;
 import models.pojo.User;
+import models.pojo.UserRole;
 import org.apache.log4j.Logger;
+import services.RoleService;
+import services.UserRoleService;
+import services.UserService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,11 +17,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Mordr on 23.02.2017.
@@ -56,8 +59,17 @@ public class RegistrationServlet extends HttpServlet{
             user.setBirthday(birthday);
             user.setSex(sex);
 
-            SuperDAO<User> userDAO = new UserDAOImpl();
-            userDAO.insert(user);
+            Role studentRole = RoleService.createRoleIfNotFound("student");
+            UserRole studentUserRole = new UserRole();
+            studentUserRole.setRole(studentRole);
+            studentUserRole.setUser(user);
+            List<UserRole> userRoles = new ArrayList<>(1);
+            userRoles.add(studentUserRole);
+
+            user.setUserRoles(userRoles);
+
+            UserService.createUser(user);
+            UserRoleService.createUserRole(studentUserRole);
             resp.sendRedirect(req.getContextPath() + "/registrationSuccess");
         } catch (ParseException e) {
             logger.error(e);

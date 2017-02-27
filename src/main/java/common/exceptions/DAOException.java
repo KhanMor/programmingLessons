@@ -1,4 +1,4 @@
-package exceptions;
+package common.exceptions;
 
 /**
  * Created by Mordr on 23.02.2017.

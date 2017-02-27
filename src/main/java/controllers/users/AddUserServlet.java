@@ -1,11 +1,14 @@
 package controllers.users;
 
 import crypt.EncryptMD5;
-import exceptions.DAOException;
-import models.dao.SuperDAO;
-import models.daoimpl.UserDAOImpl;
+import common.exceptions.DAOException;
+import models.pojo.Role;
 import models.pojo.User;
+import models.pojo.UserRole;
 import org.apache.log4j.Logger;
+import services.RoleService;
+import services.UserRoleService;
+import services.UserService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,6 +20,8 @@ import java.io.PrintWriter;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Mordr on 24.02.2017.
@@ -40,6 +45,7 @@ public class AddUserServlet extends HttpServlet {
             java.util.Date date = dateFormat.parse(req.getParameter("birthday"));
             Date birthday = new Date(date.getTime());
             String sex = req.getParameter("sex");
+            String roleName = req.getParameter("role");
 
             User user = new User();
             user.setEmail(email);
@@ -50,8 +56,17 @@ public class AddUserServlet extends HttpServlet {
             user.setBirthday(birthday);
             user.setSex(sex);
 
-            SuperDAO<User> userDAO = new UserDAOImpl();
-            userDAO.insert(user);
+            Role role = RoleService.createRoleIfNotFound(roleName);
+            UserRole userRole = new UserRole();
+            userRole.setRole(role);
+            userRole.setUser(user);
+            List<UserRole> userRoles = new ArrayList<>(1);
+            userRoles.add(userRole);
+
+            user.setUserRoles(userRoles);
+
+            UserService.createUser(user);
+            UserRoleService.createUserRole(userRole);
 
             PrintWriter out = resp.getWriter();
             out.print(user.getId());

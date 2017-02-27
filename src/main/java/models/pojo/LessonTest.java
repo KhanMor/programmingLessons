@@ -11,6 +11,7 @@ import java.util.List;
  */
 @XmlRootElement
 @XmlType(propOrder = {"id", "lesson", "orderNum", "question", "answer", "points"})
+@Deprecated
 public class LessonTest {
     private Integer id;
     private Lesson lesson;

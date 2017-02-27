@@ -1,11 +1,13 @@
 package models.daoimpl;
 
-import models.connector.DatabaseConnector;
+import common.exceptions.DAOException;
+import models.connector.DataSourceMySQL;
 import models.daoimpl.boxer.EntityBoxer;
 import models.dao.SuperDAO;
 import models.pojo.Role;
 import org.apache.log4j.Logger;
 
+import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,19 +16,27 @@ import java.util.List;
  * Created by Mordr on 18.02.2017.
  */
 public class RoleDAOImpl implements SuperDAO<Role> {
-    private final Connection conn;
+    //private final Connection conn;
     private static final Logger logger = Logger.getLogger(RoleDAOImpl.class);
+    private static final String LIST_SQL = "select * from role";
+    private static final String GET_SQL = "select * from role where id=?";
+    private static final String INSERT_SQL = "insert into role (role, description) values (?, ?)";
+    private static final String DELETE_SQL = "delete from role where id=?";
+    private static final String DELETE_ALL_SQL = "delete from role";
+    private static final String REFRESH_INCREMENT_SQL = "ALTER TABLE role AUTO_INCREMENT = 1;";
+    private DataSource dataSource = DataSourceMySQL.getInstance().getDataSource();
 
     public RoleDAOImpl() {
-        DatabaseConnector databaseConnector = DatabaseConnector.getInstance();
-        this.conn = databaseConnector.getConnection();
+        /*DatabaseConnector databaseConnector = DatabaseConnector.getInstance();
+        this.conn = databaseConnector.getConnection();*/
     }
 
     @Override
     public List<Role> list() {
-        String sql = "select * from role";
-        try (Statement statement = conn.createStatement()) {
-            ResultSet resultSet = statement.executeQuery(sql);
+        try(Connection conn = dataSource.getConnection();
+            Statement statement = conn.createStatement()
+        ) {
+            ResultSet resultSet = statement.executeQuery(LIST_SQL);
             List<Role> roles = new ArrayList<>();
             while (resultSet.next()) {
                 Role role = EntityBoxer.packRole(resultSet, conn);
@@ -41,8 +51,9 @@ public class RoleDAOImpl implements SuperDAO<Role> {
 
     @Override
     public Role get(Integer id) {
-        String sql = "select * from role where id=?";
-        try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
+        try(Connection conn = dataSource.getConnection();
+            PreparedStatement preparedStatement = conn.prepareStatement(GET_SQL)
+        ) {
             preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
@@ -61,11 +72,10 @@ public class RoleDAOImpl implements SuperDAO<Role> {
     }
 
     @Override
-    public void insert(Role role) {
-        String sql = "insert into role (role, description)" +
-                " values (?, ?)";
-        try (PreparedStatement preparedStatement =
-                     conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+    public void insert(Role role) throws DAOException {
+        try(Connection conn = dataSource.getConnection();
+            PreparedStatement preparedStatement = conn.prepareStatement(INSERT_SQL, Statement.RETURN_GENERATED_KEYS)
+        ) {
             setPreparedStatementParams(preparedStatement, role);
             int insertedRows = preparedStatement.executeUpdate();
             if (insertedRows == 0) {
@@ -80,6 +90,7 @@ public class RoleDAOImpl implements SuperDAO<Role> {
             }
         } catch (SQLException e) {
             logger.error(e);
+            throw new DAOException();
         }
     }
 
@@ -89,10 +100,11 @@ public class RoleDAOImpl implements SuperDAO<Role> {
     }
 
     @Override
-    public void delete(Role role) {
-        String sql = "delete from role where id=?";
-        try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
-            preparedStatement.setInt(1, role.getId());
+    public void delete(Integer id) {
+        try(Connection conn = dataSource.getConnection();
+            PreparedStatement preparedStatement = conn.prepareStatement(DELETE_SQL)
+        ) {
+            preparedStatement.setInt(1, id);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             logger.error(e);
@@ -101,15 +113,12 @@ public class RoleDAOImpl implements SuperDAO<Role> {
 
     @Override
     public void deleteAll() {
-        String sql = "delete from role";
-        try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
+        try(Connection conn = dataSource.getConnection();
+            PreparedStatement preparedStatement = conn.prepareStatement(DELETE_ALL_SQL);
+            PreparedStatement preparedStatement2 = conn.prepareStatement(REFRESH_INCREMENT_SQL)
+        ) {
             preparedStatement.executeUpdate();
-        } catch (SQLException e) {
-            logger.error(e);
-        }
-        sql = "ALTER TABLE role AUTO_INCREMENT = 1;";
-        try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
-            preparedStatement.executeUpdate();
+            preparedStatement2.executeUpdate();
         } catch (SQLException e) {
             logger.error(e);
         }

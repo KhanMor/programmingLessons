@@ -1,6 +1,6 @@
 package main;
 
-import exceptions.DAOException;
+import common.exceptions.DAOException;
 import models.connector.DatabaseConnector;
 import jaxbwork.InsertedWrapper;
 import jaxbwork.XmlMarshallerRunnable;

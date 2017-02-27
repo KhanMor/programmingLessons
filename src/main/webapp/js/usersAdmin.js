@@ -15,7 +15,8 @@ function getUserData(trUpdate, ID_ONLY) {
             "&patronymic=" + $("#patronymic-input").val() +
             "&birthday=" + $("#birthday-input").val() +
             "&sex=" + $("#sex-input").val() +
-            "&changePassword=" + !$("#password-input").prop("disabled");
+            "&changePassword=" + !$("#password-input").prop("disabled")+
+            "&role=" + $("#currentUserRole").data().roleName;
     }
 
     return data;
@@ -28,6 +29,9 @@ function userToTd(id) {
                         "<td>" + $("#patronymic-input").val()+ "</td>" +
                         "<td>" + $("#birthday-input").val() + "</td>" +
                         "<td>" + $("#sex-input").val()+ "</td>" +
+                        "<td data-roleName='" + $("#currentUserRole").data().roleName + "'>" +
+                            $("#currentUserRole").html()+
+                        "</td>" +
                     "</tr>";
     return trHtml;
 }
@@ -43,7 +47,7 @@ function addUser() {
                 $("#UserModal").modal("hide");
             } else {
                 $("#error-response").show("fast");
-                $("#error-response").html("Возникла ошибка! Проверьте правильность введенных данных!");
+                $("#error-response").html("<div class='label-danger' >Возникла ошибка! Проверьте правильность введенных данных!</div>");
             }
         },
         beforeSend: function() {
@@ -133,6 +137,8 @@ $(function() {
 
         $("#password-change-flag-container").show();
         $("#password-change-flag").prop("checked", false);
+        $("#currentUserRole").data().roleName=$(tds.get(6)).data().roleName;
+        $("#currentUserRole").html($(tds.get(6)).html());
 
         $("#error-response").hide();
         $("#UserModal").modal("show");
@@ -159,9 +165,29 @@ $(function() {
                 break;
         }
     });
+
     $("#deleteUserBtn").click(function() {
+        console.log("clicked");
         var tr=$("#usersTable tr.selected");
         trUpdate = tr;
         deleteUser(trUpdate);
-    })
+    });
+
+    $("#setAdminBtn").click(function() {
+        console.log("clicked");
+        $("#currentUserRole").data().roleName="admin";
+        $("#currentUserRole").html("<li class='list-group-item list-group-item-success'>admin</li>");
+    });
+    $("#setAuthorBtn").click(function() {
+        $("#currentUserRole").data().roleName="author";
+        $("#currentUserRole").html("<li class='list-group-item list-group-item-info'>author</li>");
+    });
+    $("#setStudentBtn").click(function() {
+        $("#currentUserRole").data().roleName="student";
+        $("#currentUserRole").html("<li class='list-group-item list-group-item-info'>student</li>");
+    });
+    $("#setBlockBtn").click(function() {
+        $("#currentUserRole").data().roleName="blocked";
+        $("#currentUserRole").html("<li class='list-group-item list-group-item-danger'>blocked</li>");
+    });
 })

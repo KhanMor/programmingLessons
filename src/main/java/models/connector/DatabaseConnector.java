@@ -9,6 +9,7 @@ import java.sql.SQLException;
 /**
  * Created by Mordr on 16.02.2017.
  */
+@Deprecated
 public class DatabaseConnector {
     private Connection connection;
     private static DatabaseConnector databaseConnector = new DatabaseConnector();

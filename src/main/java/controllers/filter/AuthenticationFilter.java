@@ -1,6 +1,5 @@
 package controllers.filter;
 
-import controllers.LoginServlet;
 import org.apache.log4j.Logger;
 
 import javax.servlet.*;
@@ -15,13 +14,12 @@ import java.io.IOException;
  */
 @WebFilter(urlPatterns = "/*")
 public class AuthenticationFilter implements Filter {
-    private static final Logger logger = Logger.getLogger(LoginServlet.class);
-    private ServletContext servletContext;
+    private static final Logger logger = Logger.getLogger(AuthenticationFilter.class);
+    private static final String AUTH_ATTRIBUTE_NAME = "user";
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
         logger.trace("filter init");
-        this.servletContext = filterConfig.getServletContext();
     }
 
     @Override
@@ -30,13 +28,11 @@ public class AuthenticationFilter implements Filter {
         HttpServletResponse res = (HttpServletResponse) response;
 
         String uri = req.getRequestURI();
-        logger.trace("Requested Resource::"+uri);
 
         HttpSession session = req.getSession(false);
         Object user = null;
         if(session != null) {
-            user = session.getAttribute("user");
-            logger.trace("session = " + session);
+            user = session.getAttribute(AUTH_ATTRIBUTE_NAME);
         }
         if(
             (session == null || user == null)
@@ -45,9 +41,10 @@ public class AuthenticationFilter implements Filter {
             && !uri.contains("css")
             && !uri.contains("error")
         ){
-            logger.trace("Unauthorized access request");
+            logger.trace("denied access request " + uri);
             res.sendRedirect(req.getContextPath() + "/login");
         }else{
+            logger.trace("allowed access request " + uri);
             chain.doFilter(request, response);
         }
     }

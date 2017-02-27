@@ -1,6 +1,6 @@
 package services;
 
-import exceptions.DAOException;
+import common.exceptions.DAOException;
 import models.dao.SuperDAO;
 import models.daoimpl.UserAuthorizationDAO;
 import models.daoimpl.UserDAOImpl;
@@ -25,7 +25,7 @@ public class UserService {
         return users;
     }
 
-    public static void addUser(User user) throws DAOException {
+    public static void createUser(User user) throws DAOException {
         USER_DAO.insert(user);
     }
 
@@ -38,8 +38,8 @@ public class UserService {
         USER_DAO.update(user);
     }
 
-    public static void deleteUser(User user) throws DAOException {
-        USER_DAO.delete(user);
+    public static void deleteUser(Integer user_id) throws DAOException {
+        USER_DAO.delete(user_id);
     }
 
 }
