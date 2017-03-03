@@ -14,6 +14,7 @@ import java.util.Properties;
 
 /**
  * Created by Mordr on 27.02.2017.
+ * Отправка email
  */
 public class EmailSender {
     private static final Logger logger = Logger.getLogger(EmailSender.class);

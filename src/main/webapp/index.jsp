@@ -8,14 +8,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <script src="${pageContext.request.contextPath}/webjars/jquery/3.1.1-1/jquery.min.js" type="text/javascript"></script>
-    <link href="${pageContext.request.contextPath}/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" rel="stylesheet">
-    <script src="${pageContext.request.contextPath}/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js" type="text/javascript"></script>
-    <link href="/css/common.css" rel="stylesheet">
+    <jsp:include page="common.head.jsp"></jsp:include>
     <title>Домашняя</title>
 </head>
 <body>
     <jsp:include page="mainmenu.jsp"></jsp:include>
-    <h3>Я домашняя страничка!</h3>
+    <h3>${greeting_message}, я домашняя страничка!</h3>
 </body>
 </html>

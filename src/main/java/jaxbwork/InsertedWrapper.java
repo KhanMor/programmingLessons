@@ -6,6 +6,8 @@ import java.util.Set;
 
 /**
  * Created by Mordr on 21.02.2017.
+ * Обертка для коллекции, которая отражает объекты,
+ * добавленные в БД
  */
 public class InsertedWrapper {
     private final Set<Object> insertedObjects;

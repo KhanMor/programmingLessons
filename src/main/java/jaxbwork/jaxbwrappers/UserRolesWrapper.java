@@ -8,6 +8,7 @@ import java.util.List;
 
 /**
  * Created by Mordr on 21.02.2017.
+ * Обертка для коллекции ролей пользователей
  */
 @XmlRootElement(name = "userRoles")
 public class UserRolesWrapper extends WrapperSuper<UserRole>{

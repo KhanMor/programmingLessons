@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 
 /**
  * Created by Mordr on 16.02.2017.
+ * Преобразование даты в строку и обратно для JAXB
  */
 public class DateAdapter extends XmlAdapter<String, Date> {
     private final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");

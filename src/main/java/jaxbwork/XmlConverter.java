@@ -10,6 +10,7 @@ import java.io.File;
 
 /**
  * Created by Mordr on 19.02.2017.
+ * Преобразование моделей в xml и обратно
  */
 public class XmlConverter {
     private static final Logger logger = Logger.getLogger(XmlConverter.class);

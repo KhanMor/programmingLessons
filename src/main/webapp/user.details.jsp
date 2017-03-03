@@ -34,7 +34,7 @@
     <div class="form-group row">
         <label class="col-xs-2" for="birthday-input">Дата рождения</label>
         <div class="col-xs-10">
-            <input type="date" class="form-control" id="birthday-input" name="birthday">
+            <input type="date" class="form-control" id="birthday-input" name="birthday" required>
         </div>
     </div>
     <div class="form-group row">

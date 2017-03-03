@@ -6,6 +6,7 @@ import java.util.List;
 
 /**
  * Created by Mordr on 19.02.2017.
+ * Общие, CRUD операции с данными
  */
 public interface SuperDAO<T> {
     List<T> list() throws DAOException;

@@ -8,10 +8,10 @@ import javax.servlet.http.HttpSessionAttributeListener;
 import javax.servlet.http.HttpSessionBindingEvent;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 
 /**
  * Created by Mordr on 27.02.2017.
+ * Прослушка сессий
  */
 @WebListener
 public class SessionListener implements HttpSessionAttributeListener {
@@ -23,18 +23,15 @@ public class SessionListener implements HttpSessionAttributeListener {
         String attributeName = event.getName();
         Object attributeValue = event.getValue();
         if(ADMIN_ATTRIBUTE_NAME.equals(attributeName)) {
-            Thread emailSendingThread = new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    logger.trace("Admin logged in, sending email");
-                    EmailSender emailSender = new EmailSender();
-                    logger.trace("message text formatting");
-                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                    Timestamp now = new Timestamp(System.currentTimeMillis());
-                    String emailText = "Admin " + attributeValue + " logged in at " + dateFormat.format(now) + ".";
-                    logger.trace("message formatted, got to email");
-                    emailSender.sendEmail("Admin logged in", emailText, null);
-                }
+            Thread emailSendingThread = new Thread(() -> {
+                logger.trace("Admin logged in, sending email");
+                EmailSender emailSender = new EmailSender();
+                logger.trace("message text formatting");
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                Timestamp now = new Timestamp(System.currentTimeMillis());
+                String emailText = "Admin " + attributeValue + " logged in at " + dateFormat.format(now) + ".";
+                logger.trace("message formatted, got to email");
+                emailSender.sendEmail("Admin logged in", emailText, null);
             });
             emailSendingThread.start();
         }

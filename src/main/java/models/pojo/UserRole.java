@@ -1,14 +1,19 @@
 package models.pojo;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import javax.persistence.*;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 /**
  * Created by Mordr on 18.02.2017.
+ * Сущность, отражающая какие права есть у конкретного пользователя
  */
 @XmlRootElement
 @XmlType(propOrder = {"id", "user", "role"})
+@Entity
 public class UserRole {
     private Integer id;
     private User user;
@@ -17,6 +22,13 @@ public class UserRole {
     public UserRole() {
     }
 
+    public UserRole(User user, Role role) {
+        this.user = user;
+        this.role = role;
+    }
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer getId() {
         return id;
     }
@@ -26,6 +38,9 @@ public class UserRole {
         this.id = id;
     }
 
+    @JoinColumn(nullable = false)
+    @ManyToOne(cascade={CascadeType.MERGE}, fetch= FetchType.EAGER)
+    @JsonManagedReference
     public User getUser() {
         return user;
     }
@@ -35,6 +50,9 @@ public class UserRole {
         this.user = user;
     }
 
+    @JoinColumn(nullable = false)
+    @ManyToOne(cascade={CascadeType.MERGE}, fetch= FetchType.EAGER)
+    @JsonManagedReference
     public Role getRole() {
         return role;
     }
@@ -51,9 +69,7 @@ public class UserRole {
 
         UserRole userRole = (UserRole) o;
 
-        if (!id.equals(userRole.id)) return false;
-        if (!user.equals(userRole.user)) return false;
-        return role.equals(userRole.role);
+        return id.equals(userRole.id) && user.equals(userRole.user) && role.equals(userRole.role);
     }
 
     @Override

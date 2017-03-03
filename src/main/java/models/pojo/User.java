@@ -1,7 +1,9 @@
 package models.pojo;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jaxbwork.jaxbadapters.DateAdapter;
 
+import javax.persistence.*;
 import javax.xml.bind.annotation.*;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.sql.Date;
@@ -9,9 +11,11 @@ import java.util.List;
 
 /**
  * Created by Mordr on 16.02.2017.
+ * Сущность, отражающая пользователя системы
  */
 @XmlRootElement
 @XmlType(propOrder = {"id", "firstName", "surname", "patronymic", "birthday", "sex", "email", "password"})
+@Entity
 public class User {
     private Integer id;
     private String firstName;
@@ -23,12 +27,23 @@ public class User {
     private String password;
     private List<Course> coursesAuthor;
     private List<UserRole> userRoles;
-    private List<LessonTestResult> lessonTestResults;
 
     public User() {
 
     }
 
+    public User(String firstName, String surname, String patronymic, Date birthday, String sex, String email, String password) {
+        this.firstName = firstName;
+        this.surname = surname;
+        this.patronymic = patronymic;
+        this.birthday = birthday;
+        this.sex = sex;
+        this.email = email;
+        this.password = password;
+    }
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer getId() {
         return id;
     }
@@ -84,6 +99,7 @@ public class User {
         this.sex = sex;
     }
 
+    @Column(unique = true, nullable = false)
     public String getEmail() {
         return email;
     }
@@ -93,6 +109,7 @@ public class User {
         this.email = email;
     }
 
+    @Column(nullable = false)
     public String getPassword() {
         return password;
     }
@@ -102,6 +119,8 @@ public class User {
         this.password = password;
     }
 
+    @OneToMany(cascade={CascadeType.ALL}, orphanRemoval = true, fetch = FetchType.LAZY, mappedBy="author")
+    @JsonBackReference
     public List<Course> getCoursesAuthor() {
         return coursesAuthor;
     }
@@ -111,6 +130,8 @@ public class User {
         this.coursesAuthor = coursesAuthor;
     }
 
+    @OneToMany(cascade={CascadeType.ALL}, orphanRemoval = true, fetch = FetchType.LAZY, mappedBy="user")
+    @JsonBackReference
     public List<UserRole> getUserRoles() {
         return userRoles;
     }
@@ -120,15 +141,6 @@ public class User {
         this.userRoles = userRoles;
     }
 
-    public List<LessonTestResult> getLessonTestResults() {
-        return lessonTestResults;
-    }
-
-    @XmlTransient
-    public void setLessonTestResults(List<LessonTestResult> lessonTestResults) {
-        this.lessonTestResults = lessonTestResults;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -136,14 +148,12 @@ public class User {
 
         User user = (User) o;
 
-        if (!id.equals(user.id)) return false;
-        if (firstName != null ? !firstName.equals(user.firstName) : user.firstName != null) return false;
-        if (surname != null ? !surname.equals(user.surname) : user.surname != null) return false;
-        if (patronymic != null ? !patronymic.equals(user.patronymic) : user.patronymic != null) return false;
-        if (birthday != null ? !birthday.equals(user.birthday) : user.birthday != null) return false;
-        if (sex != null ? !sex.equals(user.sex) : user.sex != null) return false;
-        if (!email.equals(user.email)) return false;
-        return password.equals(user.password);
+        return id.equals(user.id) && (firstName != null ? firstName.equals(user.firstName) :
+                user.firstName == null) && (surname != null ? surname.equals(user.surname) :
+                user.surname == null) && (patronymic != null ? patronymic.equals(user.patronymic) :
+                user.patronymic == null) && (birthday != null ? birthday.equals(user.birthday) :
+                user.birthday == null) && (sex != null ? sex.equals(user.sex) :
+                user.sex == null) && email.equals(user.email) && password.equals(user.password);
     }
 
     @Override

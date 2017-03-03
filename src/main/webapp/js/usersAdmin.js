@@ -8,31 +8,31 @@ function getUserData(trUpdate, ID_ONLY) {
         data = "id=" + id;
     }else {
         data = "id=" + id +
-            "&email=" + $("#email-input").val() +
-            "&password=" + $("#password-input").val() +
-            "&firstname=" + $("#firstname-input").val() +
-            "&surname=" + $("#surname-input").val() +
-            "&patronymic=" + $("#patronymic-input").val() +
-            "&birthday=" + $("#birthday-input").val() +
-            "&sex=" + $("#sex-input").val() +
-            "&changePassword=" + !$("#password-input").prop("disabled")+
-            "&role=" + $("#currentUserRole").data().roleName;
+                "&email=" + $("#email-input").val() +
+                "&password=" + $("#password-input").val() +
+                "&firstname=" + $("#firstname-input").val() +
+                "&surname=" + $("#surname-input").val() +
+                "&patronymic=" + $("#patronymic-input").val() +
+                "&birthday=" + $("#birthday-input").val() +
+                "&sex=" + $("#sex-input").val() +
+                "&changePassword=" + !$("#password-input").prop("disabled")+
+                "&role=" + $("#currentUserRole").data().rolename;
     }
 
     return data;
 }
 function userToTd(id) {
     var trHtml = "<tr data-id=" + id + ">" +
-                        "<td>" + $("#email-input").val() + "</td>" +
-                        "<td>" + $("#firstname-input").val() + "</td>" +
-                        "<td>" + $("#surname-input").val() + "</td>" +
-                        "<td>" + $("#patronymic-input").val()+ "</td>" +
-                        "<td>" + $("#birthday-input").val() + "</td>" +
-                        "<td>" + $("#sex-input").val()+ "</td>" +
-                        "<td data-roleName='" + $("#currentUserRole").data().roleName + "'>" +
-                            $("#currentUserRole").html()+
-                        "</td>" +
-                    "</tr>";
+                    "<td>" + $("#email-input").val() + "</td>" +
+                    "<td>" + $("#firstname-input").val() + "</td>" +
+                    "<td>" + $("#surname-input").val() + "</td>" +
+                    "<td>" + $("#patronymic-input").val()+ "</td>" +
+                    "<td>" + $("#birthday-input").val() + "</td>" +
+                    "<td>" + $("#sex-input").val()+ "</td>" +
+                    "<td data-rolename='" + $("#currentUserRole").data().rolename + "'>" +
+                        $("#currentUserRole").html()+
+                    "</td>" +
+                "</tr>";
     return trHtml;
 }
 
@@ -137,8 +137,12 @@ $(function() {
 
         $("#password-change-flag-container").show();
         $("#password-change-flag").prop("checked", false);
-        $("#currentUserRole").data().roleName=$(tds.get(6)).data().roleName;
-        $("#currentUserRole").html($(tds.get(6)).html());
+
+        $(tds.get(6)).find(".list-group-item").each(function() {
+            $("#currentUserRole").data().rolename=$(this).data().rolename;
+            $("#currentUserRole").html($(this).html());
+        });
+        console.log($("#currentUserRole").data().rolename);
 
         $("#error-response").hide();
         $("#UserModal").modal("show");
@@ -175,19 +179,19 @@ $(function() {
 
     $("#setAdminBtn").click(function() {
         console.log("clicked");
-        $("#currentUserRole").data().roleName="admin";
+        $("#currentUserRole").data().rolename="admin";
         $("#currentUserRole").html("<li class='list-group-item list-group-item-success'>admin</li>");
     });
     $("#setAuthorBtn").click(function() {
-        $("#currentUserRole").data().roleName="author";
+        $("#currentUserRole").data().rolename="author";
         $("#currentUserRole").html("<li class='list-group-item list-group-item-info'>author</li>");
     });
     $("#setStudentBtn").click(function() {
-        $("#currentUserRole").data().roleName="student";
+        $("#currentUserRole").data().rolename="student";
         $("#currentUserRole").html("<li class='list-group-item list-group-item-info'>student</li>");
     });
     $("#setBlockBtn").click(function() {
-        $("#currentUserRole").data().roleName="blocked";
+        $("#currentUserRole").data().rolename="blocked";
         $("#currentUserRole").html("<li class='list-group-item list-group-item-danger'>blocked</li>");
     });
 })

@@ -1,10 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
     <head>
-        <script src="${pageContext.request.contextPath}/webjars/jquery/3.1.1-1/jquery.min.js" type="text/javascript"></script>
-        <link href="${pageContext.request.contextPath}/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" rel="stylesheet">
-        <script src="${pageContext.request.contextPath}/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js" type="text/javascript"></script>
-
+        <jsp:include page="common.head.jsp"></jsp:include>
         <title>Регистрация</title>
     </head>
     <body>

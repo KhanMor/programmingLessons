@@ -8,6 +8,7 @@ import java.util.List;
 
 /**
  * Created by Mordr on 19.02.2017.
+ * Обертка для коллекции уроков
  */
 @XmlRootElement(name = "lessons")
 public class LessonsWrapper extends WrapperSuper<Lesson> {

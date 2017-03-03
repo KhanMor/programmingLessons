@@ -1,25 +1,31 @@
 package models.pojo;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import javax.persistence.*;
 import javax.xml.bind.annotation.*;
 import java.util.List;
 
 /**
  * Created by Mordr on 16.02.2017.
+ * Сущность отражающая курсы информационной ссистемы
  */
 @XmlRootElement
-@XmlType(propOrder = {"id", "author", "name", "duration", "price", "certified"})
+@XmlType(propOrder = {"id", "author", "name", "duration"})
+@Entity
 public class Course {
     private Integer id;
     private User author;
     private String name;
     private Double duration;
-    private Double price;
-    private boolean certified;
     private List<Lesson> lessons;
 
     public Course() {
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer getId() {
         return id;
     }
@@ -38,6 +44,9 @@ public class Course {
         this.name = name;
     }
 
+    @JoinColumn(nullable = false)
+    @ManyToOne(cascade={CascadeType.MERGE}, fetch= FetchType.LAZY)
+    @JsonManagedReference
     public User getAuthor() {
         return author;
     }
@@ -56,24 +65,8 @@ public class Course {
         this.duration = duration;
     }
 
-    public Double getPrice() {
-        return price;
-    }
-
-    @XmlElement
-    public void setPrice(Double price) {
-        this.price = price;
-    }
-
-    public boolean isCertified() {
-        return certified;
-    }
-
-    @XmlElement
-    public void setCertified(boolean certified) {
-        this.certified = certified;
-    }
-
+    @OneToMany(cascade={CascadeType.ALL}, orphanRemoval = true, fetch = FetchType.LAZY, mappedBy="course")
+    @JsonBackReference
     public List<Lesson> getLessons() {
         return lessons;
     }
@@ -90,10 +83,9 @@ public class Course {
 
         Course course = (Course) o;
 
-        if (!id.equals(course.id)) return false;
-        if (!author.equals(course.author)) return false;
-        if (name != null ? !name.equals(course.name) : course.name != null) return false;
-        return duration != null ? duration.equals(course.duration) : course.duration == null;
+        return id.equals(course.id) && author.equals(course.author) && (name != null ? name.equals(course.name) :
+                course.name == null) && (duration != null ? duration.equals(course.duration) :
+                course.duration == null);
     }
 
     @Override

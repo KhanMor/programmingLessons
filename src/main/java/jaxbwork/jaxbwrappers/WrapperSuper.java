@@ -6,6 +6,7 @@ import java.util.List;
 
 /**
  * Created by Mordr on 19.02.2017.
+ * Обертка-суперкласс для других оберток
  */
 public class WrapperSuper<T> {
     protected List<T> objects;

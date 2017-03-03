@@ -9,12 +9,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <script src="${pageContext.request.contextPath}/webjars/jquery/3.1.1-1/jquery.min.js" type="text/javascript"></script>
-    <link href="${pageContext.request.contextPath}/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" rel="stylesheet">
-    <script src="${pageContext.request.contextPath}/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js" type="text/javascript"></script>
-    <link href="/css/common.css" rel="stylesheet">
+    <jsp:include page="common.head.jsp"></jsp:include>
     <link href="/css/usersAdmin.css" rel="stylesheet">
-    <script src="/js/common.js" type="text/javascript"></script>
     <script src="/js/usersAdmin.js" type="text/javascript"></script>
     <title>Администрирование пользователей</title>
 </head>
@@ -49,7 +45,7 @@
                     <td>
                         <ul class = "list-group">
                         <c:forEach items="${user.userRoles}" var="userRole">
-                            <li class = "list-group-item">${userRole.role.role}</li>
+                           <li data-rolename = "${userRole.role}" class = "list-group-item">${userRole.role.role}</li>
                         </c:forEach>
                         </ul>
                     </td>

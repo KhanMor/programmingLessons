@@ -1,45 +1,21 @@
 package services;
 
-import common.exceptions.DAOException;
-import models.dao.SuperDAO;
-import models.daoimpl.UserAuthorizationDAO;
-import models.daoimpl.UserDAOImpl;
+import common.exceptions.ServiceException;
 import models.pojo.User;
 
 import java.util.List;
 
 /**
  * Created by Mordr on 23.02.2017.
+ * Сервис работы с пользователями
  */
-public class UserService {
-    private static final UserAuthorizationDAO USER_AUTHORIZATION_DAO = new UserAuthorizationDAO();
-    private static final SuperDAO<User> USER_DAO = new UserDAOImpl();
-
-    public static User loginUser(String email, String password) throws DAOException {
-        User user = USER_AUTHORIZATION_DAO.findUserByEmailAndPassword(email, password);
-        return user;
-    }
-
-    public static List<User> getUsers() throws DAOException {
-        List<User> users = USER_DAO.list();
-        return users;
-    }
-
-    public static void createUser(User user) throws DAOException {
-        USER_DAO.insert(user);
-    }
-
-    public static User getUser(Integer id) throws DAOException {
-        User user = USER_DAO.get(id);
-        return user;
-    }
-
-    public static void updateUser(User user) throws DAOException {
-        USER_DAO.update(user);
-    }
-
-    public static void deleteUser(Integer user_id) throws DAOException {
-        USER_DAO.delete(user_id);
-    }
-
+@SuppressWarnings("unused")
+public interface UserService {
+    User loginUser(String email, String password) throws ServiceException;
+    List<User> getUsers() throws ServiceException;
+    void createUser(User user) throws ServiceException;
+    User getUser(Integer id) throws ServiceException;
+    void updateUser(User user) throws ServiceException;
+    void deleteUser(Integer user_id) throws ServiceException;
+    User getUserByEmail(String email) throws ServiceException;
 }

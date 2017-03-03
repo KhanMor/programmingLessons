@@ -8,6 +8,7 @@ import org.apache.log4j.Logger;
 
 /**
  * Created by Mordr on 19.02.2017.
+ * Поток для сериализации БД в xml
  */
 public class XmlMarshallerRunnable<T> implements Runnable {
     private final SuperDAO superDAO;
@@ -26,8 +27,7 @@ public class XmlMarshallerRunnable<T> implements Runnable {
         try {
             logger.trace("started export to " + filename);
             if(t instanceof User) {
-                UsersWrapper usersWrapper = null;
-                usersWrapper = new UsersWrapper(superDAO.list());
+                UsersWrapper usersWrapper = new UsersWrapper(superDAO.list());
                 usersWrapper.xmlMarshall(filename);
             } else
             if(t instanceof Role) {
@@ -45,14 +45,6 @@ public class XmlMarshallerRunnable<T> implements Runnable {
             if(t instanceof Lesson) {
                 LessonsWrapper lessonsWrapper = new LessonsWrapper(superDAO.list());
                 lessonsWrapper.xmlMarshall(filename);
-            } else
-            if(t instanceof LessonTest) {
-                LessonTestsWrapper lessonTestsWrapper = new LessonTestsWrapper(superDAO.list());
-                lessonTestsWrapper.xmlMarshall(filename);
-            } else
-            if(t instanceof LessonTestResult) {
-                LessonTestResultsWrapper lessonTestResultsWrapper = new LessonTestResultsWrapper(superDAO.list());
-                lessonTestResultsWrapper.xmlMarshall(filename);
             }
             logger.trace("finished export to " + filename);
         } catch (DAOException e) {

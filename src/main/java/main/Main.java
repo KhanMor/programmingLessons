@@ -6,7 +6,7 @@ import jaxbwork.InsertedWrapper;
 import jaxbwork.XmlMarshallerRunnable;
 import jaxbwork.XmlUnmarshallerRunnable;
 import models.dao.SuperDAO;
-import models.daoimpl.*;
+import models.daoimpl.jdbcimpl.*;
 import models.pojo.*;
 import org.apache.log4j.Logger;
 import org.apache.log4j.xml.DOMConfigurator;
@@ -17,21 +17,18 @@ import java.util.HashSet;
 
 /**
  * Created by Mordr on 16.02.2017.
+ * Лабараторкая работа №2
  */
 public class Main {
     private static final Logger logger = Logger.getLogger(Main.class);
     static  {
         DOMConfigurator.configure("src/main/resources/log4j.xml");
     }
-    private static final DatabaseConnector DATABASE_CONNECTOR =DatabaseConnector.getInstance();
-    private static final Connection CONN = DATABASE_CONNECTOR.getConnection();
     private static final SuperDAO USER_DAO = new UserDAOImpl();
     private static final SuperDAO ROLE_DAO = new RoleDAOImpl();
     private static final SuperDAO USER_ROLE_DAO = new UserRoleDAOImpl();
     private static final SuperDAO COURSE_DAO = new CourseDAOImpl();
     private static final SuperDAO LESSON_DAO = new LessonDAOImpl();
-    private static final SuperDAO LESSON_TEST_DAO = new LessonTestDAOImpl();
-    private static final SuperDAO LESSON_TEST_RESULT_DAO = new LessonTestResultDAOImpl();
     private static final String XML_OUTPUT_FOLDER = "xmlout";
 
     private static  void startMarshallerThread(SuperDAO dao, String filename, Object object) {
@@ -59,23 +56,19 @@ public class Main {
         startMarshallerThread(USER_ROLE_DAO,XML_OUTPUT_FOLDER + "/userRoles.xml", new UserRole());
         startMarshallerThread(COURSE_DAO,XML_OUTPUT_FOLDER + "/courses.xml", new Course());
         startMarshallerThread(LESSON_DAO,XML_OUTPUT_FOLDER + "/lessons.xml", new Lesson());
-        startMarshallerThread(LESSON_TEST_DAO,XML_OUTPUT_FOLDER + "/lessontests.xml", new LessonTest());
-        startMarshallerThread(LESSON_TEST_RESULT_DAO,XML_OUTPUT_FOLDER + "/lessontestsresult.xml", new LessonTestResult());
         logger.trace("finished database export to xml files");
     }
 
     private static void doDelete() {
         logger.trace("delete all from database...");
         try {
-            LESSON_TEST_RESULT_DAO.deleteAll();
-            LESSON_TEST_DAO.deleteAll();
             LESSON_DAO.deleteAll();
             COURSE_DAO.deleteAll();
             USER_ROLE_DAO.deleteAll();
             ROLE_DAO.deleteAll();
             USER_DAO.deleteAll();
         } catch (DAOException e) {
-            e.printStackTrace();
+            logger.error(e);
         }
     }
 
@@ -94,8 +87,6 @@ public class Main {
         startUnmarshallerThread(USER_ROLE_DAO,XML_OUTPUT_FOLDER + "/userRoles.xml", new UserRole(), insertedWrapper);
         startUnmarshallerThread(COURSE_DAO,XML_OUTPUT_FOLDER + "/courses.xml", new Course(), insertedWrapper);
         startUnmarshallerThread(LESSON_DAO,XML_OUTPUT_FOLDER + "/lessons.xml", new Lesson(), insertedWrapper);
-        startUnmarshallerThread(LESSON_TEST_DAO,XML_OUTPUT_FOLDER + "/lessontests.xml", new LessonTest(), insertedWrapper);
-        startUnmarshallerThread(LESSON_TEST_RESULT_DAO,XML_OUTPUT_FOLDER + "/lessontestsresult.xml", new LessonTestResult(), insertedWrapper);
     }
 
     public static void main(String[] args) {

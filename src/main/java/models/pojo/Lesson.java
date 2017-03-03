@@ -1,13 +1,17 @@
 package models.pojo;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import javax.persistence.*;
 import javax.xml.bind.annotation.*;
-import java.util.List;
 
 /**
  * Created by Mordr on 18.02.2017.
+ * Сущность, отражающая уроки входящие  в курс
  */
 @XmlRootElement
-@XmlType(propOrder = {"id", "course", "orderNum", "theme", "duration", "content", "scoreToPass"})
+@XmlType(propOrder = {"id", "course", "orderNum", "theme", "duration", "content"})
+@Entity
 public class Lesson {
     private Integer id;
     private Course course;
@@ -15,13 +19,13 @@ public class Lesson {
     private String theme;
     private Double duration;
     private String content;
-    private Integer scoreToPass;
-    private List<LessonTest> lessonTests;
 
     public Lesson() {
 
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer getId() {
         return id;
     }
@@ -31,6 +35,9 @@ public class Lesson {
         this.id = id;
     }
 
+    @JoinColumn(nullable = false)
+    @ManyToOne(cascade={CascadeType.MERGE}, fetch= FetchType.LAZY)
+    @JsonManagedReference
     public Course getCourse() {
         return course;
     }
@@ -40,6 +47,7 @@ public class Lesson {
         this.course = course;
     }
 
+    @Column(nullable = false)
     public Integer getOrderNum() {
         return orderNum;
     }
@@ -49,6 +57,7 @@ public class Lesson {
         this.orderNum = orderNum;
     }
 
+    @Column(nullable = false)
     public String getTheme() {
         return theme;
     }
@@ -76,38 +85,16 @@ public class Lesson {
         this.content = content;
     }
 
-    public Integer getScoreToPass() {
-        return scoreToPass;
-    }
-
-    @XmlElement(type = Integer.class)
-    public void setScoreToPass(Integer scoreToPass) {
-        this.scoreToPass = scoreToPass;
-    }
-
-    public List<LessonTest> getLessonTests() {
-        return lessonTests;
-    }
-
-    @XmlTransient
-    public void setLessonTests(List<LessonTest> lessonTests) {
-        this.lessonTests = lessonTests;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Lesson)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
 
         Lesson lesson = (Lesson) o;
 
-        if (!id.equals(lesson.id)) return false;
-        if (!course.equals(lesson.course)) return false;
-        if (!orderNum.equals(lesson.orderNum)) return false;
-        if (!theme.equals(lesson.theme)) return false;
-        if (duration != null ? !duration.equals(lesson.duration) : lesson.duration != null) return false;
-        if (content != null ? !content.equals(lesson.content) : lesson.content != null) return false;
-        return scoreToPass.equals(lesson.scoreToPass);
+        return id.equals(lesson.id) && course.equals(lesson.course) && orderNum.equals(lesson.orderNum) &&
+                theme.equals(lesson.theme) && (duration != null ? duration.equals(lesson.duration) :
+                lesson.duration == null) && (content != null ? content.equals(lesson.content) : lesson.content == null);
     }
 
     @Override
@@ -118,7 +105,6 @@ public class Lesson {
         result = 31 * result + theme.hashCode();
         result = 31 * result + (duration != null ? duration.hashCode() : 0);
         result = 31 * result + (content != null ? content.hashCode() : 0);
-        result = 31 * result + scoreToPass.hashCode();
         return result;
     }
 }

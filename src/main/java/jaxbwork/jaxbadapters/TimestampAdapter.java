@@ -6,9 +6,10 @@ import java.text.SimpleDateFormat;
 
 /**
  * Created by Mordr on 19.02.2017.
+ * Преобразование timestamp в строку и обратно для JAXB
  */
 public class TimestampAdapter extends XmlAdapter<String, Timestamp> {
-    private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    private final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     @Override
     public Timestamp unmarshal(String v) throws Exception {

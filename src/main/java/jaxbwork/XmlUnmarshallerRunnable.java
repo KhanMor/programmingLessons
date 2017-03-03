@@ -10,6 +10,7 @@ import java.util.List;
 
 /**
  * Created by Mordr on 19.02.2017.
+ * Поток для десериализации xml в БД
  */
 public class XmlUnmarshallerRunnable<T> implements Runnable {
     private final SuperDAO superDAO;
@@ -115,47 +116,6 @@ public class XmlUnmarshallerRunnable<T> implements Runnable {
                         insertedWrapper.add(lesson);
                         insertedWrapper.notifyAll();
                         logger.trace(lesson + " inserted");
-                    }
-                }
-            } else if (t instanceof LessonTest) {
-                LessonTestsWrapper lessonTestsWrapper = new LessonTestsWrapper(superDAO.list());
-                lessonTestsWrapper = (LessonTestsWrapper) lessonTestsWrapper.xmlUnmarshall(filename);
-                List<LessonTest> lessonTests = lessonTestsWrapper.getObjects();
-                for (LessonTest lessonTest : lessonTests) {
-                    synchronized (insertedWrapper) {
-                        Lesson lesson = lessonTest.getLesson();
-                        while (!insertedWrapper.contains(lesson)) {
-                            try {
-                                insertedWrapper.wait();
-                            } catch (InterruptedException e) {
-                                logger.error(e);
-                            }
-                        }
-                        superDAO.insert(lessonTest);
-                        insertedWrapper.add(lessonTest);
-                        insertedWrapper.notifyAll();
-                        logger.trace(lessonTest + " inserted");
-                    }
-                }
-            } else if (t instanceof LessonTestResult) {
-                LessonTestResultsWrapper lessonTestResultsWrapper = new LessonTestResultsWrapper(superDAO.list());
-                lessonTestResultsWrapper = (LessonTestResultsWrapper) lessonTestResultsWrapper.xmlUnmarshall(filename);
-                List<LessonTestResult> lessonTestResults = lessonTestResultsWrapper.getObjects();
-                for (LessonTestResult lessonTestResult : lessonTestResults) {
-                    synchronized (insertedWrapper) {
-                        LessonTest lessonTest = lessonTestResult.getLessonTest();
-                        User user = lessonTestResult.getUser();
-                        while (!insertedWrapper.contains(lessonTest) || !insertedWrapper.contains(user)) {
-                            try {
-                                insertedWrapper.wait();
-                            } catch (InterruptedException e) {
-                                logger.error(e);
-                            }
-                        }
-                        superDAO.insert(lessonTestResult);
-                        insertedWrapper.add(lessonTestResult);
-                        insertedWrapper.notifyAll();
-                        logger.trace(lessonTestResult + " inserted");
                     }
                 }
             }

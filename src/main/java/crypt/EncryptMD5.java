@@ -7,9 +7,9 @@ import java.security.NoSuchAlgorithmException;
 
 /**
  * Created by Mordr on 23.02.2017.
+ * Шифрование строки по MD5
  */
 public class EncryptMD5 {
-    private static  final String MD5 = "MD5";
     private static final Logger logger = Logger.getLogger(EncryptMD5.class);
 
     public static String encrypt(String string){
@@ -18,11 +18,12 @@ public class EncryptMD5 {
             byte[] passBytes = string.getBytes();
             messageDigest.reset();
             byte[] digested = messageDigest.digest(passBytes);
-            StringBuffer stringBuffer = new StringBuffer();
-            for(int i = 0; i < digested.length; i++){
-                stringBuffer.append(Integer.toHexString(0xff & digested[i]));
+            StringBuilder stringBuilder;
+            stringBuilder = new StringBuilder();
+            for (byte aDigested : digested) {
+                stringBuilder.append(Integer.toHexString(0xff & aDigested));
             }
-            return stringBuffer.toString();
+            return stringBuilder.toString();
         } catch (NoSuchAlgorithmException e) {
             logger.error(e);
         }

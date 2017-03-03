@@ -11,6 +11,7 @@ import java.io.IOException;
 
 /**
  * Created by Mordr on 24.02.2017.
+ * Фильтр по сессиям
  */
 @WebFilter(urlPatterns = "/*")
 public class AuthenticationFilter implements Filter {
@@ -38,8 +39,10 @@ public class AuthenticationFilter implements Filter {
             (session == null || user == null)
             && !uri.endsWith("login")
             && !uri.contains("registration")
-            && !uri.contains("css")
+            && !uri.contains("/css/")
             && !uri.contains("error")
+            && !uri.contains("/webjars/")
+            && !uri.contains("/js/")
         ){
             logger.trace("denied access request " + uri);
             res.sendRedirect(req.getContextPath() + "/login");

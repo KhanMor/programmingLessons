@@ -9,7 +9,7 @@ import java.util.Properties;
 /**
  * Created by Mordr on 27.02.2017.
  */
-
+@Deprecated
 public class DataSourceMySQL {
     private DataSource dataSource;
     private static DataSourceMySQL dataSourceMySQL = new DataSourceMySQL();
@@ -29,7 +29,7 @@ public class DataSourceMySQL {
             properties.put("password", "khan_megakey");
             properties.put("url", "jdbc:mysql://localhost:3306/programminglessons?autoReconnect=true&useSSL=false");
             properties.put("maxTotal", "10");
-            properties.put("maxIdle", "10");
+            properties.put("maxIdle", "100");
             properties.put("maxWaitMillis", "10000");
             properties.put("removeAbandonedTimeout", "300");
             this.dataSource= dataSourceFactory.createDataSource(properties);

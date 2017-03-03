@@ -7,21 +7,21 @@ TRACE   2017-02-21 17:45:39,126 [Thread-3] jaxbwork.XmlUnmarshallerRunnable  - t
 TRACE   2017-02-21 17:45:39,129 [Thread-4] jaxbwork.XmlUnmarshallerRunnable  - thread started for xmlout/lessons.xml
 TRACE   2017-02-21 17:45:39,130 [Thread-5] jaxbwork.XmlUnmarshallerRunnable  - thread started for xmlout/lessontests.xml
 TRACE   2017-02-21 17:45:39,153 [Thread-6] jaxbwork.XmlUnmarshallerRunnable  - thread started for xmlout/lessontestsresult.xml
-ERROR   2017-02-21 17:45:39,791 [Thread-0] models.daoimpl.RoleDAOImpl  - Duplicate entry 'student' for key 'role_UNIQUE'
+ERROR   2017-02-21 17:45:39,791 [Thread-0] models.daoimpl.jdbcimpl.RoleDAOImpl  - Duplicate entry 'student' for key 'role_UNIQUE'
 TRACE   2017-02-21 17:45:39,792 [Thread-0] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.Role@5c7661ee
-ERROR   2017-02-21 17:45:39,881 [Thread-0] models.daoimpl.RoleDAOImpl  - Duplicate entry 'author' for key 'role_UNIQUE'
+ERROR   2017-02-21 17:45:39,881 [Thread-0] models.daoimpl.jdbcimpl.RoleDAOImpl  - Duplicate entry 'author' for key 'role_UNIQUE'
 TRACE   2017-02-21 17:45:39,881 [Thread-0] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.Role@14af4d79
-ERROR   2017-02-21 17:45:39,989 [Thread-1] models.daoimpl.UserDAOImpl  - Duplicate entry 'kharkhanov@mail.ru' for key 'email_UNIQUE'
+ERROR   2017-02-21 17:45:39,989 [Thread-1] models.daoimpl.jdbcimpl.UserDAOImpl  - Duplicate entry 'kharkhanov@mail.ru' for key 'email_UNIQUE'
 TRACE   2017-02-21 17:45:39,989 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@2a5ca662
-ERROR   2017-02-21 17:45:40,063 [Thread-1] models.daoimpl.UserDAOImpl  - Duplicate entry 'naraikin@mail.ru' for key 'email_UNIQUE'
+ERROR   2017-02-21 17:45:40,063 [Thread-1] models.daoimpl.jdbcimpl.UserDAOImpl  - Duplicate entry 'naraikin@mail.ru' for key 'email_UNIQUE'
 TRACE   2017-02-21 17:45:40,064 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@d4d94f9f
-ERROR   2017-02-21 17:45:40,187 [Thread-1] models.daoimpl.UserDAOImpl  - Duplicate entry 'lobanov@mail.ru' for key 'email_UNIQUE'
+ERROR   2017-02-21 17:45:40,187 [Thread-1] models.daoimpl.jdbcimpl.UserDAOImpl  - Duplicate entry 'lobanov@mail.ru' for key 'email_UNIQUE'
 TRACE   2017-02-21 17:45:40,187 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@5db5f927
-ERROR   2017-02-21 17:45:40,222 [Thread-1] models.daoimpl.UserDAOImpl  - Duplicate entry 'penykov@mail.ru' for key 'email_UNIQUE'
+ERROR   2017-02-21 17:45:40,222 [Thread-1] models.daoimpl.jdbcimpl.UserDAOImpl  - Duplicate entry 'penykov@mail.ru' for key 'email_UNIQUE'
 TRACE   2017-02-21 17:45:40,223 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@e58b2033
-ERROR   2017-02-21 17:45:40,262 [Thread-1] models.daoimpl.UserDAOImpl  - Duplicate entry 'kochanovskiy@mail.ru' for key 'email_UNIQUE'
+ERROR   2017-02-21 17:45:40,262 [Thread-1] models.daoimpl.jdbcimpl.UserDAOImpl  - Duplicate entry 'kochanovskiy@mail.ru' for key 'email_UNIQUE'
 TRACE   2017-02-21 17:45:40,262 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@21a6b5c9
-ERROR   2017-02-21 17:45:40,344 [Thread-1] models.daoimpl.UserDAOImpl  - Duplicate entry 'galileo@mail.ru' for key 'email_UNIQUE'
+ERROR   2017-02-21 17:45:40,344 [Thread-1] models.daoimpl.jdbcimpl.UserDAOImpl  - Duplicate entry 'galileo@mail.ru' for key 'email_UNIQUE'
 TRACE   2017-02-21 17:45:40,345 [Thread-1] jaxbwork.XmlUnmarshallerRunnable  - models.pojo.User@ba626d7c
 TRACE   2017-02-21 17:47:14,150 [main] main.Main  - delete all from database...
 TRACE   2017-02-21 17:47:27,803 [main] main.Main  - insert to database from xml files

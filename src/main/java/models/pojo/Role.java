@@ -1,13 +1,19 @@
 package models.pojo;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import javax.persistence.*;
 import javax.xml.bind.annotation.*;
 import java.util.List;
 
 /**
  * Created by Mordr on 18.02.2017.
+ * Сушность, отражающая роли, которые могут быть
+ * присвоенны пользователю системы
  */
 @XmlRootElement
 @XmlType(propOrder = {"id", "role", "description"})
+@Entity
 public class Role {
     private Integer id;
     private String role;
@@ -17,6 +23,8 @@ public class Role {
     public Role() {
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer getId() {
         return id;
     }
@@ -26,6 +34,7 @@ public class Role {
         this.id = id;
     }
 
+    @Column(unique = true, nullable = false)
     public String getRole() {
         return role;
     }
@@ -44,6 +53,8 @@ public class Role {
         this.description = description;
     }
 
+    @OneToMany(cascade={CascadeType.ALL}, orphanRemoval = true, fetch = FetchType.LAZY, mappedBy="role")
+    @JsonBackReference
     public List<UserRole> getUserRoles() {
         return userRoles;
     }
@@ -60,9 +71,8 @@ public class Role {
 
         Role role1 = (Role) o;
 
-        if (!id.equals(role1.id)) return false;
-        if (!role.equals(role1.role)) return false;
-        return description != null ? description.equals(role1.description) : role1.description == null;
+        return id.equals(role1.id) && role.equals(role1.role) &&
+                (description != null ? description.equals(role1.description) : role1.description == null);
     }
 
     @Override
