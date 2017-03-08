@@ -17,6 +17,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -27,7 +28,7 @@ import java.util.List;
  * Created by Mordr on 23.02.2017.
  * Регистрация студента в системе
  */
-@WebServlet(urlPatterns = "/registration")
+//@WebServlet(urlPatterns = "/registration")
 public class RegistrationServlet extends SuperServlet {
     private static final Logger logger = Logger.getLogger(UserAuthorizationDAO.class);
     private static final String REGISTRATION_ROLE_NAME = "student";
@@ -78,7 +79,7 @@ public class RegistrationServlet extends SuperServlet {
             userService.createUser(user);
             //userRoleService.createUserRole(studentUserRole);
             resp.sendRedirect(req.getContextPath() + "/registrationSuccess");
-        } catch (ParseException | ServiceException e) {
+        } catch (ParseException | ServiceException | NoSuchAlgorithmException e) {
             logger.error(e);
             resp.sendRedirect(req.getContextPath() + "/error.jsp");
         }

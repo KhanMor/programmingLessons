@@ -10,8 +10,10 @@ import models.daoimpl.jdbcimpl.*;
 import models.pojo.*;
 import org.apache.log4j.Logger;
 import org.apache.log4j.xml.DOMConfigurator;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.File;
+import java.lang.annotation.RetentionPolicy;
 import java.sql.*;
 import java.util.HashSet;
 
@@ -20,6 +22,7 @@ import java.util.HashSet;
  * Лабараторкая работа №2
  */
 public class Main {
+
     private static final Logger logger = Logger.getLogger(Main.class);
     static  {
         DOMConfigurator.configure("src/main/resources/log4j.xml");
@@ -89,9 +92,12 @@ public class Main {
         startUnmarshallerThread(LESSON_DAO,XML_OUTPUT_FOLDER + "/lessons.xml", new Lesson(), insertedWrapper);
     }
 
+
     public static void main(String[] args) {
         xmlOut();
         doDelete();
         xmlIn();
+       Class<?> cla=String.class;
+        cla.getAnnotations();
     }
 }

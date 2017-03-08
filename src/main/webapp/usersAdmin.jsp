@@ -24,7 +24,7 @@
         </div>
     </nav>
     <div class="container" id="usersTableContainer">
-        <table class="table table-bordered table-responsive" id="usersTable">
+        <table class="table table-bordered table-hover" id="usersTable">
             <tr class="bg-info">
                 <th>email</th>
                 <th>Имя</th>
@@ -45,7 +45,7 @@
                     <td>
                         <ul class = "list-group">
                         <c:forEach items="${user.userRoles}" var="userRole">
-                           <li data-rolename = "${userRole.role}" class = "list-group-item">${userRole.role.role}</li>
+                           <li data-rolename = "${userRole.role.role}" class = "list-group-item">${userRole.role.role}</li>
                         </c:forEach>
                         </ul>
                     </td>

@@ -2,11 +2,12 @@ package spring;
 
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
-import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
+import org.springframework.web.filter.CharacterEncodingFilter;
+import org.springframework.web.servlet.DispatcherServlet;
 
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
+import javax.servlet.*;
+import java.util.EnumSet;
 
 /**
  * Created by Mordr on 01.03.2017.
@@ -20,5 +21,18 @@ public class WebAppInit implements WebApplicationInitializer {
 
         servletContext.addListener(new ContextLoaderListener(context));
         context.setServletContext(servletContext);
+
+        ServletRegistration.Dynamic dynamic=servletContext.addServlet("dispatcher", new DispatcherServlet(context));
+        dynamic.addMapping("/");
+        dynamic.setLoadOnStartup(1);
+        dynamic.setAsyncSupported(true);
+
+        CharacterEncodingFilter characterEncodingFilter = new CharacterEncodingFilter();
+        characterEncodingFilter.setEncoding("UTF-8");
+        characterEncodingFilter.setForceEncoding(true);
+
+        EnumSet<DispatcherType> dispatcherTypes = EnumSet.of(DispatcherType.REQUEST, DispatcherType.FORWARD);
+        FilterRegistration.Dynamic characterEncoding = servletContext.addFilter("characterEncoding", characterEncodingFilter);
+        characterEncoding.addMappingForUrlPatterns(dispatcherTypes, true, "/*");
     }
 }

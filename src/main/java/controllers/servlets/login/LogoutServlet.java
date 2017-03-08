@@ -14,7 +14,7 @@ import java.io.IOException;
  * Created by Mordr on 24.02.2017.
  * Выход пользователя из системы
  */
-@WebServlet(urlPatterns = "/logout")
+//@WebServlet(urlPatterns = "/logout")
 public class LogoutServlet extends SuperServlet {
     private static final Logger logger = Logger.getLogger(LogoutServlet.class);
     private static final String AUTH_ATTRIBUTE_NAME = "user";

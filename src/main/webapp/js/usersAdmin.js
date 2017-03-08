@@ -102,12 +102,6 @@ function deleteUser(tr) {
     })
 }
 $(function() {
-    $(document).off("click","#usersTable td");
-    $(document).on("click","#usersTable td", function() {
-        $("#usersTable tr").removeClass("selected");
-        var tr=$(this).closest("tr");
-        tr.addClass("selected");
-    });
     $("#addUserBtn").click(function() {
         clearUserForm();
         $("#password-change-flag-container").hide();

@@ -21,7 +21,7 @@ import java.io.PrintWriter;
  * Created by Mordr on 03.03.2017.
  * Сервлет добавления нового курса
  */
-@WebServlet(urlPatterns = "/courses/add")
+//@WebServlet(urlPatterns = "/courses/add")
 public class AddCourseServlet extends SuperServlet {
     private static final Logger logger = Logger.getLogger(AddCourseServlet.class);
     private static final String AUTH_ATTRIBUTE_NAME = "user";

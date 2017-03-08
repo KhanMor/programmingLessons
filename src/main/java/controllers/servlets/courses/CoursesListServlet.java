@@ -18,7 +18,7 @@ import java.util.List;
  * Created by Mordr on 03.03.2017.
  * Сервлет вывода списка курсов
  */
-@WebServlet(urlPatterns = "/courses")
+//@WebServlet(urlPatterns = "/courses")
 public class CoursesListServlet extends SuperServlet {
     private static final Logger logger = Logger.getLogger(CoursesListServlet.class);
     private CourseService courseService;

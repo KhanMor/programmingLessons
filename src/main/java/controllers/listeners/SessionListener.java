@@ -20,7 +20,7 @@ public class SessionListener implements HttpSessionAttributeListener {
 
     @Override
     public void attributeAdded(HttpSessionBindingEvent event) {
-        String attributeName = event.getName();
+        /*String attributeName = event.getName();
         Object attributeValue = event.getValue();
         if(ADMIN_ATTRIBUTE_NAME.equals(attributeName)) {
             Thread emailSendingThread = new Thread(() -> {
@@ -34,7 +34,7 @@ public class SessionListener implements HttpSessionAttributeListener {
                 emailSender.sendEmail("Admin logged in", emailText, null);
             });
             emailSendingThread.start();
-        }
+        }*/
     }
 
     @Override

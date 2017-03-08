@@ -4,6 +4,7 @@ import common.exceptions.DAOException;
 import models.dao.SuperDAO;
 import models.pojo.Course;
 import org.apache.log4j.Logger;
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -45,7 +46,11 @@ public class CourseDAOImplH implements SuperDAO<Course> {
             CriteriaQuery<Course> criteriaQuery = criteriaBuilder.createQuery(Course.class);
             Root<Course> root = criteriaQuery.from(Course.class);
             criteriaQuery.select(root);
-            return entityManager.createQuery(criteriaQuery).getResultList();
+            List<Course> courses = entityManager.createQuery(criteriaQuery).getResultList();
+            for(Course course:courses) {
+                Hibernate.initialize(course.getAuthor());
+            }
+            return courses;
         }catch (Exception e) {
             logger.error(e);
             throw new DAOException(e);

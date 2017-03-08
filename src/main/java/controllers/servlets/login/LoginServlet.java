@@ -18,12 +18,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 
 /**
  * Created by Mordr on 22.02.2017.
  * Вход пользователя в систему
  */
-@WebServlet(urlPatterns = "/login", loadOnStartup = 1)
+//@WebServlet(urlPatterns = "/login", loadOnStartup = 1)
 public class LoginServlet extends SuperServlet {
     private static final Logger logger = Logger.getLogger(UserAuthorizationDAO.class);
     private static final String BLOCKED_USER_MESSAGE = "Пользователь заблокирован.";
@@ -60,8 +61,8 @@ public class LoginServlet extends SuperServlet {
         req.setCharacterEncoding("UTF-8");
         String email = req.getParameter("email");
         String password = req.getParameter("password");
-        password = EncryptMD5.encrypt(password);
         try {
+            password = EncryptMD5.encrypt(password);
             User user = userService.loginUser(email, password);
             logger.trace(user);
             if(user != null) {
@@ -69,7 +70,7 @@ public class LoginServlet extends SuperServlet {
                 boolean isBlocked = userRoleService.checkIfUserHasRole(user, blocked_role);
                 if(isBlocked) {
                     logger.trace("user with email " + email + " authorization attempt, user is blocked");
-                    req.setAttribute("error_message", BLOCKED_USER_MESSAGE);
+                    req.setAttribute(ERROR_ATTRIBUTE_NAME, BLOCKED_USER_MESSAGE);
                     req.getRequestDispatcher("/login.jsp").forward(req, resp);
                 } else {
 
@@ -90,7 +91,7 @@ public class LoginServlet extends SuperServlet {
                 req.setAttribute(ERROR_ATTRIBUTE_NAME, AUTH_FAIL_MESSAGE);
                 req.getRequestDispatcher("/login.jsp").forward(req, resp);
             }
-        } catch (ServiceException e) {
+        } catch (ServiceException | NoSuchAlgorithmException e) {
             logger.error(e);
             resp.sendRedirect(req.getContextPath() + "/error.jsp");
         }

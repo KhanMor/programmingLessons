@@ -12,6 +12,8 @@
     <title>Error</title>
 </head>
 <body>
-    <h2>U have error, bro, sorry</h2>
+    <h2>Произошла ошибка, простите :(</h2>
+    <h4>Страница: ${url}</h4>
+    <h4>Ошибка: ${exception}</h4>
 </body>
 </html>

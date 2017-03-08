@@ -24,6 +24,12 @@ public class Course {
     public Course() {
     }
 
+    public Course(User author, String name, Double duration) {
+        this.author = author;
+        this.name = name;
+        this.duration = duration;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer getId() {

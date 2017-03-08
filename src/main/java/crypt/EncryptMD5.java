@@ -12,21 +12,16 @@ import java.security.NoSuchAlgorithmException;
 public class EncryptMD5 {
     private static final Logger logger = Logger.getLogger(EncryptMD5.class);
 
-    public static String encrypt(String string){
-        try {
-            MessageDigest messageDigest = MessageDigest.getInstance("MD5");
-            byte[] passBytes = string.getBytes();
-            messageDigest.reset();
-            byte[] digested = messageDigest.digest(passBytes);
-            StringBuilder stringBuilder;
-            stringBuilder = new StringBuilder();
-            for (byte aDigested : digested) {
-                stringBuilder.append(Integer.toHexString(0xff & aDigested));
-            }
-            return stringBuilder.toString();
-        } catch (NoSuchAlgorithmException e) {
-            logger.error(e);
+    public static String encrypt(String string) throws NoSuchAlgorithmException {
+        MessageDigest messageDigest = MessageDigest.getInstance("MD5");
+        byte[] passBytes = string.getBytes();
+        messageDigest.reset();
+        byte[] digested = messageDigest.digest(passBytes);
+        StringBuilder stringBuilder;
+        stringBuilder = new StringBuilder();
+        for (byte aDigested : digested) {
+            stringBuilder.append(Integer.toHexString(0xff & aDigested));
         }
-        return null;
+        return stringBuilder.toString();
     }
 }

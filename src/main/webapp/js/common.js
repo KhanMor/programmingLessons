@@ -13,3 +13,11 @@ function clearUserForm() {
 function isNumber(n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
 }
+$(function(){
+    $(document).off("click","td");
+    $(document).on("click","td", function() {
+        $("tr").removeClass("selected");
+        var tr=$(this).closest("tr");
+        tr.addClass("selected");
+    });
+})

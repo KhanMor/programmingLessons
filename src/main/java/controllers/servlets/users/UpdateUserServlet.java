@@ -16,6 +16,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -26,7 +27,7 @@ import java.util.List;
  * Created by Mordr on 24.02.2017.
  * Редактирование пользователя
  */
-@WebServlet(urlPatterns = "/usersAdmin/update")
+//@WebServlet(urlPatterns = "/usersAdmin/update")
 public class UpdateUserServlet extends SuperServlet {
     private static final Logger logger = Logger.getLogger(UsersAdminServlet.class);
 
@@ -83,7 +84,7 @@ public class UpdateUserServlet extends SuperServlet {
             userService.updateUser(user);
             //userRoleService.clearUserRoles(id);
             //userRoleService.createUserRole(userRole);
-        } catch (ParseException | ServiceException e) {
+        } catch (ParseException | ServiceException | NoSuchAlgorithmException e) {
             logger.error(e);
             resp.sendRedirect(req.getContextPath() + "/error.jsp");
         }

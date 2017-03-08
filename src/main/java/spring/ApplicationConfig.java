@@ -12,6 +12,12 @@ import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.handler.SimpleMappingExceptionResolver;
+import org.springframework.web.servlet.view.JstlView;
+import org.springframework.web.servlet.view.UrlBasedViewResolver;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
@@ -22,14 +28,16 @@ import java.util.Properties;
  * Конфигурация
  */
 @Configuration
-@ComponentScan({"servicesimpl", "models.daoimpl"})
-public class ApplicationConfig {
+@ComponentScan({"servicesimpl", "models.daoimpl", "controllers.mvc"})
+@EnableWebMvc
+public class ApplicationConfig extends WebMvcConfigurerAdapter {
     private static final Logger logger = Logger.getLogger(ApplicationConfig.class);
     static {
-        DOMConfigurator.configure("../resources/log4j.xml");
+        DOMConfigurator.configure("log4j.xml");
     }
 
     @Bean
+    @Deprecated
     public DataSource getDataSource() {
         DataSourceFactory dataSourceFactory = new DataSourceFactory();
         Properties properties = new Properties();
@@ -51,10 +59,8 @@ public class ApplicationConfig {
         logger.trace(dataSource);
         return dataSource;
     }
-
     private Properties getHibernateProperties() {
         Properties properties = new Properties();
-
         properties.put("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
         properties.put("hibernate.connection.url", "jdbc:mysql://localhost:3306/programminglessons?autoReconnect=true&useSSL=false");
         properties.put("hibernate.connection.username", "khan");
@@ -66,28 +72,37 @@ public class ApplicationConfig {
         properties.put("hibernate.show_sql", "false");
         properties.put("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
         properties.put("hibernate.hbm2ddl.auto", "update");
-
         return properties;
     }
-
-    @Bean
-    public PersistenceExceptionTranslationPostProcessor exceptionTranslation(){
-        return new PersistenceExceptionTranslationPostProcessor();
-    }
-    //@Autowired
     @Bean
     public LocalContainerEntityManagerFactoryBean getEntityManagerFactoryBean(/*DataSource dataSource*/) {
         LocalContainerEntityManagerFactoryBean container = new LocalContainerEntityManagerFactoryBean();
         JpaVendorAdapter jpaVendorAdapter = new HibernateJpaVendorAdapter();
-        //container.setDataSource(dataSource);
         container.setJpaProperties(getHibernateProperties());
         container.setPackagesToScan("models.pojo");
         container.setJpaVendorAdapter(jpaVendorAdapter);
         return container;
     }
-    @Autowired
-    @Bean(name = "transactionManager")
-    public JpaTransactionManager getTransactionManager(EntityManagerFactory entityManagerFactory){
-        return new JpaTransactionManager(entityManagerFactory);
+    @Bean
+    public UrlBasedViewResolver getViewResolver() {
+        UrlBasedViewResolver urlBasedViewResolver = new UrlBasedViewResolver();
+        urlBasedViewResolver.setPrefix("/");
+        urlBasedViewResolver.setSuffix(".jsp");
+        urlBasedViewResolver.setViewClass(JstlView.class);
+        return urlBasedViewResolver;
+    }
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/css/**").addResourceLocations("/css/");
+        registry.addResourceHandler("/js/**").addResourceLocations("/js/");
+        if (!registry.hasMappingForPattern("/webjars/**")) {
+            registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
+        }
+    }
+    @Bean
+    public CustomExceptionResolver createSimpleMappingExceptionResolver() {
+        CustomExceptionResolver exceptionResolver = new CustomExceptionResolver();
+        exceptionResolver.setDefaultErrorView("error");
+        return exceptionResolver;
     }
 }

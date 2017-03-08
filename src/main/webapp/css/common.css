@@ -1,6 +1,6 @@
 body { padding-top: 50px; }
 
 tr.selected {
-    background-color: mediumspringgreen;
-    font-weight: bold;
+    background-color: mediumspringgreen !important;
+    font-weight: bold !important;
 }

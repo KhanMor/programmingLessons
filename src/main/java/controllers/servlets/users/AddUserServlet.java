@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -27,7 +28,7 @@ import java.util.List;
  * Created by Mordr on 24.02.2017.
  * Добавить пользователя
  */
-@WebServlet(urlPatterns = "/usersAdmin/add")
+//@WebServlet(urlPatterns = "/usersAdmin/add")
 public class AddUserServlet extends SuperServlet {
     private static final Logger logger = Logger.getLogger(UsersAdminServlet.class);
 
@@ -75,7 +76,7 @@ public class AddUserServlet extends SuperServlet {
             PrintWriter out = resp.getWriter();
             out.print(user.getId());
             out.flush();
-        } catch (ParseException | ServiceException e) {
+        } catch (ParseException | ServiceException | NoSuchAlgorithmException e) {
             logger.error(e);
             resp.sendRedirect(req.getContextPath() + "/error.jsp");
         }

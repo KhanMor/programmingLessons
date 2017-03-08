@@ -14,18 +14,31 @@
 <body>
     <jsp:include page="mainmenu.jsp"></jsp:include>
     <div class="container" id="usersTableContainer">
-        <table class="table table-bordered table-responsive" id="usersTable">
-            <tr class="bg-info">
-                <th>Название</th>
-                <th>Продолжительность</th>
-            </tr>
-            <c:forEach items="${courses}" var="course">
-                <tr data-id="${course.id}">
-                    <td>${course.name}</td>
-                    <td>${course.duration}</td>
-                </tr>
-            </c:forEach>
-        </table>
+        <div class="row">
+            <div class="col-sm-1">
+                <div class="btn-group-vertical">
+                    <a href="/courses/add" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> </a>
+                    <a class="btn btn-default"><span class="glyphicon glyphicon-edit"></span> </a>
+                    <a class="btn btn-default"><span class="glyphicon glyphicon-remove"></span> </a>
+                </div>
+            </div>
+            <div class="col-sm-11">
+                <table class="table table-bordered table-hover cell-border display" id="usersTable">
+                    <tr class="bg-info">
+                        <th>Название</th>
+                        <th>Продолжительность</th>
+                        <th></th>
+                    </tr>
+                    <c:forEach items="${courses}" var="course">
+                        <tr data-id="${course.id}">
+                            <td>${course.name}</td>
+                            <td>${course.duration}</td>
+                            <td>${course.author.email}</td>
+                        </tr>
+                    </c:forEach>
+                </table>
+            </div>
+        </div>
     </div>
 </body>
 </html>
