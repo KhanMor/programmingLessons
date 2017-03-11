@@ -2,8 +2,11 @@ package models.daoimpl.hibernateimpl;
 
 import common.exceptions.DAOException;
 import models.dao.SuperDAO;
+import models.pojo.Course;
 import models.pojo.Lesson;
+import models.pojo.User;
 import org.apache.log4j.Logger;
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -60,7 +63,12 @@ public class LessonDAOImplH implements SuperDAO<Lesson> {
     public Lesson get(Integer id) throws DAOException {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         try{
-            return entityManager.find(Lesson.class, id);
+            Lesson lesson = entityManager.find(Lesson.class, id);
+            Course course = lesson.getCourse();
+            User author = course.getAuthor();
+            Hibernate.initialize(course);
+            Hibernate.initialize(author);
+            return lesson;
         }catch (Exception e) {
             logger.error(e);
             throw new DAOException(e);

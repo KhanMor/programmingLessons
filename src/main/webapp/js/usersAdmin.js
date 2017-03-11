@@ -68,7 +68,6 @@ function updateUser(tr) {
         type: "POST",
         data: getUserData(trUpdate, false),
         success: function(user){
-            console.log(user);
             $(tr).html( $(userToTd(user)).html() );
         },
         beforeSend: function() {
@@ -117,7 +116,6 @@ $(function() {
         var tr=$("#usersTable tr.selected");
         trUpdate = tr;
         var tds=tr.children("td");
-        console.log(tds);
         $("#email-input").val(tds.get(0).innerText);
 
         $("#password-input").val("*****");
@@ -136,14 +134,12 @@ $(function() {
             $("#currentUserRole").data().rolename=$(this).data().rolename;
             $("#currentUserRole").html($(this).html());
         });
-        console.log($("#currentUserRole").data().rolename);
 
         $("#error-response").hide();
         $("#UserModal").modal("show");
         $("#UserModal").data().mode="update";
     });
     $("#password-change-flag").change(function() {
-        console.log($(this).prop("checked"));
         if($(this).prop("checked")) {
             $("#password-input").val("");
             $("#password-input").prop("disabled", false);
@@ -165,14 +161,12 @@ $(function() {
     });
 
     $("#deleteUserBtn").click(function() {
-        console.log("clicked");
         var tr=$("#usersTable tr.selected");
         trUpdate = tr;
         deleteUser(trUpdate);
     });
 
     $("#setAdminBtn").click(function() {
-        console.log("clicked");
         $("#currentUserRole").data().rolename="admin";
         $("#currentUserRole").html("<li class='list-group-item list-group-item-success'>admin</li>");
     });

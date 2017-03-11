@@ -10,33 +10,94 @@
 <html>
 <head>
     <jsp:include page="common.head.jsp"></jsp:include>
+    <script src="/js/courses.js" type="text/javascript"></script>
+    <link href="${pageContext.request.contextPath}/css/courses.css" rel="stylesheet">
+    <title>Курсы</title>
 </head>
 <body>
     <jsp:include page="mainmenu.jsp"></jsp:include>
-    <div class="container" id="usersTableContainer">
-        <div class="row">
-            <div class="col-sm-1">
-                <div class="btn-group-vertical">
-                    <a href="/courses/add" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> </a>
-                    <a class="btn btn-default"><span class="glyphicon glyphicon-edit"></span> </a>
-                    <a class="btn btn-default"><span class="glyphicon glyphicon-remove"></span> </a>
+    <div id="coursesHeader">
+        <h3>Каталог курсов</h3>
+    </div>
+    <div class="container" id="coursesContainer">
+        <ul class="panel-group list-group" id="coursesList">
+            <c:forEach items="${courses}" var="course">
+                <li panel="panel panel-default list-group-item" data-id="${course.id}">
+                    <div class="panel-heading">
+                        <a href="#course${course.id}" data-toggle="collapse" data-parent="#coursesList" class="nounderline">
+                            <h4 class="panel-title">
+                                <div class="course-name">${course.name}</div>
+                                <span class="caret pull-right"></span>
+                            </h4>
+                        </a>
+                    </div>
+                    <div id="course${course.id}" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <div class="col-form-label">Продолжительность:</div>
+                            <div class="course-duration">
+                                ${course.duration}
+                            </div>
+                            <div class="col-form-label">Автор:</div>
+                            <div class="course-author-email">
+                                ${course.author.email}
+                            </div>
+                            <div class="btn-group btn-edit-group">
+                                <button class="btn btn-default editCourseBtn"><span class="glyphicon glyphicon-edit"></span> Изменить</button>
+                                <button class="btn btn-default deleteCourseBtn"><span class="glyphicon glyphicon-remove"></span> Удалить</button>
+                            </div>
+                            <a class="btn btn-primary goInsideCourseBtn"
+                               href="<c:url value="${pageContext.request.contextPath}/lessons?course_id=${course.id}"/>">
+                                <span class="glyphicon glyphicon-arrow-right"></span> Просмотр
+                            </a>
+                        </div>
+                    </div>
+                </li>
+            </c:forEach>
+        </ul>
+    </div>
+
+    <div class="btn-group container" id="coursesToolbar">
+        <a id="addCourseBtn" href="<c:url value="${pageContext.request.contextPath}/courses/add"/>" class="btn btn-success">
+            <span class="glyphicon glyphicon-plus"></span> Добавить курс
+        </a>
+    </div>
+
+    <div id="courseModal" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Курс</h4>
+                </div>
+                <div class="modal-body">
+                    <jsp:include page="course.details.jsp"></jsp:include>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="saveCourseBtn">
+                        <span class="glyphicon glyphicon-floppy-save"></span> Сохранить
+                    </button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
                 </div>
             </div>
-            <div class="col-sm-11">
-                <table class="table table-bordered table-hover cell-border display" id="usersTable">
-                    <tr class="bg-info">
-                        <th>Название</th>
-                        <th>Продолжительность</th>
-                        <th></th>
-                    </tr>
-                    <c:forEach items="${courses}" var="course">
-                        <tr data-id="${course.id}">
-                            <td>${course.name}</td>
-                            <td>${course.duration}</td>
-                            <td>${course.author.email}</td>
-                        </tr>
-                    </c:forEach>
-                </table>
+        </div>
+    </div>
+
+    <div id="courseDeleteModal" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Удалить?</h4>
+                </div>
+                <div class="modal-body">
+                    Удалить курс <span id="deletingCourseName"></span>?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" id="removeCourseBtn">
+                        <span class="glyphicon glyphicon-remove-sign"></span> Удалить
+                    </button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
+                </div>
             </div>
         </div>
     </div>

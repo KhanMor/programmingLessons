@@ -16,13 +16,11 @@
 </head>
 <body>
     <jsp:include page="mainmenu.jsp"></jsp:include>
-    <nav class="navbar navbar-form navbar-fixed-bottom">
-        <div class="container well well-sm">
-            <button type="button" id="addUserBtn" class="btn btn-primary navbar-btn"><span class="glyphicon glyphicon-plus"></span> Добавить</button>
-            <button type="button" id="editUserBtn" class="btn btn-warning navbar-btn"><span class="glyphicon glyphicon-edit"></span> Редактировать</button>
-            <button type="button" id="deleteUserBtn" class="btn btn-danger navbar-btn"><span class="glyphicon glyphicon-remove"></span> Удалить</button>
-        </div>
-    </nav>
+    <div class="container btn-group" id="usersToolbar">
+        <button type="button" id="addUserBtn" class="btn btn-primary navbar-btn"><span class="glyphicon glyphicon-plus"></span> Добавить</button>
+        <button type="button" id="editUserBtn" class="btn btn-warning navbar-btn"><span class="glyphicon glyphicon-edit"></span> Редактировать</button>
+        <button type="button" id="deleteUserBtn" class="btn btn-danger navbar-btn"><span class="glyphicon glyphicon-remove"></span> Удалить</button>
+    </div>
     <div class="container" id="usersTableContainer">
         <table class="table table-bordered table-hover" id="usersTable">
             <tr class="bg-info">

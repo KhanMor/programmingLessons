@@ -1,0 +1,20 @@
+body {
+    padding-bottom: 115px;
+    max-height: 100%;
+}
+
+#lessonsToolbar {
+    height: 50px;
+    border-top: 1px solid #ccc4cd;
+    padding: 5px;
+}
+
+#lessonsHeader {
+    border-left: 15px solid yellow;
+    border-bottom: 1px solid #ccc4cd;
+}
+
+#lessonsContainer {
+    height: 100%;
+    overflow: auto;
+}

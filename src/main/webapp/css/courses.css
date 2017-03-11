@@ -1,0 +1,23 @@
+body {
+    padding-bottom: 115px;
+    max-height: 100%;
+}
+
+#coursesToolbar {
+    height: 50px;
+    border-top: 1px solid #ccc4cd;
+    padding: 5px;
+}
+
+#coursesHeader {
+    border-left: 15px solid darkgreen;
+    border-bottom: 1px solid #ccc4cd;
+}
+
+#coursesContainer {
+    height: 100%;
+    overflow: auto;
+}
+.nounderline {
+    text-decoration: none !important
+}

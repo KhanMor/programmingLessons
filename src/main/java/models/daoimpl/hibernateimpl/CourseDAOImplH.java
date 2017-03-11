@@ -65,7 +65,9 @@ public class CourseDAOImplH implements SuperDAO<Course> {
     public Course get(Integer id) throws DAOException {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         try{
-            return entityManager.find(Course.class, id);
+            Course course = entityManager.find(Course.class, id);
+            Hibernate.initialize(course.getAuthor());
+            return course;
         }catch (Exception e) {
             logger.error(e);
             throw new DAOException(e);

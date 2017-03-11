@@ -37,6 +37,7 @@
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
+                    <li><a href="<c:url value="${pageContext.request.contextPath}/profile" />"><span class="glyphicon glyphicon-user"></span> Профиль</a></li>
                     <li><a href="<c:url value="${pageContext.request.contextPath}/logout" />"><span class="glyphicon glyphicon-log-out"></span> ВЫХОД</a></li>
                 </ul>
             </div>

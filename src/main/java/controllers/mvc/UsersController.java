@@ -28,7 +28,7 @@ import java.util.List;
 @Controller
 public class UsersController {
     private static final Logger logger = Logger.getLogger(UsersController.class);
-    private static final String ERROR_ATTRIBUTE_NAME = "error_message";
+    private static final String AUTH_ATTRIBUTE_NAME = "user";
     private static final String REGISTRATION_ROLE_NAME = "student";
     private RoleService roleService;
     private UserService userService;
@@ -150,4 +150,28 @@ public class UsersController {
         return "registration.success";
     }
 
+    @RequestMapping(value = "/profile", method = RequestMethod.GET)
+    public String viewUserProfile(@SessionAttribute(AUTH_ATTRIBUTE_NAME) String email, Model model) throws ServiceException {
+        User user = userService.getUserByEmail(email);
+        model.addAttribute(user);
+        return "profile";
+    }
+
+    @RequestMapping(value = "/profile", method = RequestMethod.POST)
+    public String updateProfile(@RequestParam Integer id, @RequestParam String firstname,
+                                @RequestParam String surname, @RequestParam String patronymic,
+                                @RequestParam String birthday, @RequestParam String sex) throws ParseException, ServiceException, NoSuchAlgorithmException {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        java.util.Date date = dateFormat.parse(birthday);
+        Date birthdayD = new Date(date.getTime());
+
+        User user = userService.getUser(id);
+        user.setFirstName(firstname);
+        user.setSurname(surname);
+        user.setPatronymic(patronymic);
+        user.setBirthday(birthdayD);
+        user.setSex(sex);
+        userService.updateUser(user);
+        return "redirect:/profile";
+    }
 }

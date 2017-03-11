@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="Gradle : com.kharkhanov.programmingLessons : programmingLessons-0.0.2.war (exploded)">
-    <output-path>$PROJECT_DIR$/build/libs/exploded/programmingLessons-0.0.2.war</output-path>
+  <artifact type="exploded-war" name="Gradle : com.kharkhanov.programmingLessons : programmingLessons-0.0.3.war (exploded)">
+    <output-path>$PROJECT_DIR$/build/libs/exploded/programmingLessons-0.0.3.war</output-path>
     <properties id="gradle-properties">
       <options external-project-path="$PROJECT_DIR$">
         <manifest>TWFuaWZlc3QtVmVyc2lvbjogMS4wDQoNCg==</manifest>
@@ -8,9 +8,9 @@
     </properties>
     <root id="root">
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/build/libs/exploded/programmingLessons-0.0.2.war/META-INF/MANIFEST.MF" />
+        <element id="file-copy" path="$PROJECT_DIR$/build/libs/exploded/programmingLessons-0.0.3.war/META-INF/MANIFEST.MF" />
       </element>
-      <element id="javaee-facet-resources" facet="programmingLessons_main/web/Web Gradle : programmingLessons-0.0.2.war" />
+      <element id="javaee-facet-resources" facet="programmingLessons_main/web/Web Gradle : programmingLessons-0.0.3.war" />
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="programmingLessons_main" />
@@ -29,6 +29,7 @@
           <element id="library" level="project" name="Gradle: org.springframework:spring-webmvc:4.3.6.RELEASE" />
           <element id="library" level="project" name="Gradle: org.hibernate:hibernate-core:5.2.8.Final" />
           <element id="library" level="project" name="Gradle: com.fasterxml.jackson.core:jackson-annotations:2.8.7" />
+          <element id="library" level="project" name="Gradle: com.fasterxml.jackson.core:jackson-databind:2.8.7" />
           <element id="library" level="project" name="Gradle: org.webjars:jquery:3.1.1-1" />
           <element id="library" level="project" name="Gradle: org.webjars:bootstrap:3.3.7-1" />
           <element id="library" level="project" name="Gradle: javax.activation:activation:1.1" />
@@ -48,9 +49,8 @@
           <element id="library" level="project" name="Gradle: com.fasterxml:classmate:1.3.0" />
           <element id="library" level="project" name="Gradle: dom4j:dom4j:1.6.1" />
           <element id="library" level="project" name="Gradle: org.hibernate.common:hibernate-commons-annotations:5.0.1.Final" />
+          <element id="library" level="project" name="Gradle: com.fasterxml.jackson.core:jackson-core:2.8.7" />
           <element id="library" level="project" name="Gradle: commons-logging:commons-logging:1.2" />
-          <element id="file-copy" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-databind/2.8.7/6c3257ef458ac58a8da69a6dca3d2a15286d88c8/jackson-databind-2.8.7.jar" />
-          <element id="file-copy" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-core/2.8.7/8b46f39c78476fb848c81a49fa807a9e9506dddd/jackson-core-2.8.7.jar" />
         </element>
       </element>
     </root>
