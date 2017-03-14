@@ -101,10 +101,7 @@ public class ApplicationConfig extends WebMvcConfigurerAdapter {
     public CustomExceptionResolver createSimpleMappingExceptionResolver() {
         CustomExceptionResolver exceptionResolver = new CustomExceptionResolver();
         Properties exceptionMappings = new Properties();
-        exceptionMappings.put("AccessDeniedException", "accessDeniedError");
-        exceptionMappings.put("MissingCsrfTokenException", "login");
-        exceptionMappings.put("PermissionDeniedException", "login");
-        exceptionMappings.put("NoHandlerFoundException", "error");
+        exceptionMappings.put("AccessDeniedException", "error.accessDenied");
         exceptionResolver.setDefaultErrorView("error");
         exceptionResolver.setExceptionMappings(exceptionMappings);
         return exceptionResolver;

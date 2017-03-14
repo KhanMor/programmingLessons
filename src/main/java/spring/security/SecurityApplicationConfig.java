@@ -13,6 +13,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.csrf.CsrfFilter;
 import org.springframework.web.filter.CharacterEncodingFilter;
+import spring.security.service.CustomAccessDeniedHandler;
 import spring.security.service.CustomUserDetailsService;
 
 /**
@@ -24,6 +25,13 @@ import spring.security.service.CustomUserDetailsService;
 @ComponentScan("spring.security.service")
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityApplicationConfig extends WebSecurityConfigurerAdapter {
+    private CustomAccessDeniedHandler accessDeniedHandler;
+
+    @Autowired
+    public void setAccessDeniedHandler(CustomAccessDeniedHandler accessDeniedHandler) {
+        this.accessDeniedHandler = accessDeniedHandler;
+    }
+
     @Bean
     public PasswordEncoder initPasswordEncoder() {
         return new BCryptPasswordEncoder();
@@ -44,6 +52,9 @@ public class SecurityApplicationConfig extends WebSecurityConfigurerAdapter {
         http.addFilterBefore(filter, CsrfFilter.class);
 
         http.csrf()
+                .and()
+            .exceptionHandling()
+                .accessDeniedHandler(accessDeniedHandler)
                 .and()
             .authorizeRequests()
                 .mvcMatchers("/css/**","/js/**","/webjars/**","/registration","/registration.success", "/error")
