@@ -14,6 +14,7 @@ import java.io.IOException;
  * Created by Mordr on 24.02.2017.
  * Выход пользователя из системы
  */
+@Deprecated
 //@WebServlet(urlPatterns = "/logout")
 public class LogoutServlet extends SuperServlet {
     private static final Logger logger = Logger.getLogger(LogoutServlet.class);

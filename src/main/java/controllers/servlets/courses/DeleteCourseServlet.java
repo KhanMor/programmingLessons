@@ -16,6 +16,7 @@ import java.io.IOException;
  * Created by Mordr on 03.03.2017.
  * Удаление курса
  */
+@Deprecated
 @WebServlet(urlPatterns = "/courses/delete")
 public class DeleteCourseServlet extends SuperServlet {
     private static final Logger logger = Logger.getLogger(DeleteCourseServlet.class);

@@ -20,6 +20,7 @@ import java.util.List;
  * Created by Mordr on 23.02.2017.
  * Панель управления пользователями
  */
+@Deprecated
 //@WebServlet(urlPatterns = "/usersAdmin")
 public class UsersAdminServlet extends SuperServlet {
     private static final Logger logger = Logger.getLogger(UsersAdminServlet.class);

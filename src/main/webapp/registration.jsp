@@ -10,6 +10,7 @@
             <hr>
             <form method="post" action="${pageContext.request.contextPath}/registration">
                 <jsp:include page="user.details.jsp"></jsp:include>
+                <input type="hidden" name="${_csrf.parameterName}"  value="${_csrf.token}" />
                 <div class="form-group row">
                         <div class="offset-sm-2 col-sm-10">
                             <button type="submit" class="btn btn-primary">Регистрация</button>

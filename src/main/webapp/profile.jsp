@@ -66,6 +66,7 @@
                     </select>
                 </div>
             </div>
+            <input type="hidden" name="${_csrf.parameterName}"  value="${_csrf.token}" />
             <div class="form-group row">
                 <button type="submit" class="btn btn-primary"> Сохранить изменения</button>
             </div>

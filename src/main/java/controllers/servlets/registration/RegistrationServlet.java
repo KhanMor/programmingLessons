@@ -28,6 +28,7 @@ import java.util.List;
  * Created by Mordr on 23.02.2017.
  * Регистрация студента в системе
  */
+@Deprecated
 //@WebServlet(urlPatterns = "/registration")
 public class RegistrationServlet extends SuperServlet {
     private static final Logger logger = Logger.getLogger(UserAuthorizationDAO.class);
@@ -65,18 +66,9 @@ public class RegistrationServlet extends SuperServlet {
             Date birthday = new Date(date.getTime());
             String sex = req.getParameter("sex");
 
-            User user = new User(firstname, surname, patronymic, birthday, sex, email, password);
-
             Role studentRole = roleService.createRoleIfNotFound(REGISTRATION_ROLE_NAME);
-            UserRole studentUserRole = new UserRole();
-            studentUserRole.setRole(studentRole);
-            studentUserRole.setUser(user);
-            List<UserRole> userRoles = new ArrayList<>(1);
-            userRoles.add(studentUserRole);
 
-            user.setUserRoles(userRoles);
-
-            userService.createUser(user);
+            userService.createUser(firstname, surname, patronymic, birthday, sex, email, password, studentRole);
             //userRoleService.createUserRole(studentUserRole);
             resp.sendRedirect(req.getContextPath() + "/registrationSuccess");
         } catch (ParseException | ServiceException | NoSuchAlgorithmException e) {

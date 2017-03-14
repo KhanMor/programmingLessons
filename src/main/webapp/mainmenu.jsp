@@ -7,6 +7,7 @@
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <html>
 <head>
 </head>
@@ -25,11 +26,13 @@
 
             <div class="collapse navbar-collapse" id="mainmenu-collapse">
                 <ul class="nav navbar-nav">
-                    <li>
-                        <a href="<c:url value="${pageContext.request.contextPath}/usersAdmin" />">
-                            <span class="glyphicon glyphicon-user"></span> Пользователи
-                        </a>
-                    </li>
+                    <sec:authorize access="hasRole('ROLE_admin')">
+                        <li>
+                            <a href="<c:url value="${pageContext.request.contextPath}/usersAdmin" />">
+                                <span class="glyphicon glyphicon-user"></span> Пользователи
+                            </a>
+                        </li>
+                    </sec:authorize>
                     <li>
                         <a href="<c:url value="${pageContext.request.contextPath}/courses" />">
                             <span class="glyphicon glyphicon-book"></span> Курсы
@@ -37,7 +40,11 @@
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="<c:url value="${pageContext.request.contextPath}/profile" />"><span class="glyphicon glyphicon-user"></span> Профиль</a></li>
+                    <sec:authorize access="isAuthenticated()">
+                        <li><a href="<c:url value="${pageContext.request.contextPath}/profile" />">
+                            <span class="glyphicon glyphicon-education"></span> Профиль (<sec:authentication property="principal.username" />)</a>
+                        </li>
+                    </sec:authorize>
                     <li><a href="<c:url value="${pageContext.request.contextPath}/logout" />"><span class="glyphicon glyphicon-log-out"></span> ВЫХОД</a></li>
                 </ul>
             </div>

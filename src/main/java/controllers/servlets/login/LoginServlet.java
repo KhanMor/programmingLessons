@@ -24,6 +24,7 @@ import java.security.NoSuchAlgorithmException;
  * Created by Mordr on 22.02.2017.
  * Вход пользователя в систему
  */
+@Deprecated
 //@WebServlet(urlPatterns = "/login", loadOnStartup = 1)
 public class LoginServlet extends SuperServlet {
     private static final Logger logger = Logger.getLogger(UserAuthorizationDAO.class);

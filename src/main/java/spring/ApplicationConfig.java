@@ -3,23 +3,20 @@ package spring;
 import org.apache.log4j.Logger;
 import org.apache.log4j.xml.DOMConfigurator;
 import org.apache.tomcat.jdbc.pool.DataSourceFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
-import org.springframework.orm.jpa.JpaTransactionManager;
+import org.springframework.context.annotation.Import;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
-import org.springframework.web.servlet.handler.SimpleMappingExceptionResolver;
 import org.springframework.web.servlet.view.JstlView;
 import org.springframework.web.servlet.view.UrlBasedViewResolver;
+import spring.security.SecurityApplicationConfig;
 
-import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 import java.util.Properties;
 
@@ -30,6 +27,7 @@ import java.util.Properties;
 @Configuration
 @ComponentScan({"servicesimpl", "models.daoimpl", "controllers.mvc"})
 @EnableWebMvc
+@Import(SecurityApplicationConfig.class)
 public class ApplicationConfig extends WebMvcConfigurerAdapter {
     private static final Logger logger = Logger.getLogger(ApplicationConfig.class);
     static {
@@ -102,7 +100,13 @@ public class ApplicationConfig extends WebMvcConfigurerAdapter {
     @Bean
     public CustomExceptionResolver createSimpleMappingExceptionResolver() {
         CustomExceptionResolver exceptionResolver = new CustomExceptionResolver();
+        Properties exceptionMappings = new Properties();
+        exceptionMappings.put("AccessDeniedException", "accessDeniedError");
+        exceptionMappings.put("MissingCsrfTokenException", "login");
+        exceptionMappings.put("PermissionDeniedException", "login");
+        exceptionMappings.put("NoHandlerFoundException", "error");
         exceptionResolver.setDefaultErrorView("error");
+        exceptionResolver.setExceptionMappings(exceptionMappings);
         return exceptionResolver;
     }
 }

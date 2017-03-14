@@ -27,6 +27,7 @@ import java.util.List;
  * Created by Mordr on 24.02.2017.
  * Редактирование пользователя
  */
+@Deprecated
 //@WebServlet(urlPatterns = "/usersAdmin/update")
 public class UpdateUserServlet extends SuperServlet {
     private static final Logger logger = Logger.getLogger(UsersAdminServlet.class);
@@ -61,27 +62,9 @@ public class UpdateUserServlet extends SuperServlet {
             String roleName = req.getParameter("role");
             Boolean changePassword = Boolean.parseBoolean(req.getParameter("changePassword"));
 
-            User user = userService.getUser(id);
-            user.setEmail(email);
-            if(changePassword) {
-                user.setPassword(password);
-            }
-            user.setFirstName(firstname);
-            user.setSurname(surname);
-            user.setPatronymic(patronymic);
-            user.setBirthday(birthday);
-            user.setSex(sex);
-
             Role role = roleService.createRoleIfNotFound(roleName);
-            UserRole userRole = new UserRole();
-            userRole.setRole(role);
-            userRole.setUser(user);
-            List<UserRole> userRoles = new ArrayList<>(1);
-            userRoles.add(userRole);
 
-            user.setUserRoles(userRoles);
-
-            userService.updateUser(user);
+            userService.updateUser(id, firstname, surname, patronymic, birthday, sex, email, password, role, changePassword);
             //userRoleService.clearUserRoles(id);
             //userRoleService.createUserRole(userRole);
         } catch (ParseException | ServiceException | NoSuchAlgorithmException e) {

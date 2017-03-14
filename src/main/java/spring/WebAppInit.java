@@ -22,7 +22,9 @@ public class WebAppInit implements WebApplicationInitializer {
         servletContext.addListener(new ContextLoaderListener(context));
         context.setServletContext(servletContext);
 
-        ServletRegistration.Dynamic dynamic=servletContext.addServlet("dispatcher", new DispatcherServlet(context));
+        DispatcherServlet dispatcherServlet = new DispatcherServlet(context);
+        dispatcherServlet.setThrowExceptionIfNoHandlerFound(true);
+        ServletRegistration.Dynamic dynamic=servletContext.addServlet("dispatcher", dispatcherServlet);
         dynamic.addMapping("/");
         dynamic.setLoadOnStartup(1);
         dynamic.setAsyncSupported(true);

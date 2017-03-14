@@ -9,6 +9,7 @@ import java.security.NoSuchAlgorithmException;
  * Created by Mordr on 23.02.2017.
  * Шифрование строки по MD5
  */
+@Deprecated
 public class EncryptMD5 {
     private static final Logger logger = Logger.getLogger(EncryptMD5.class);
 

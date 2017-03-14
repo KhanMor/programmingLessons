@@ -17,6 +17,7 @@ import java.io.IOException;
  * Created by Mordr on 03.03.2017.
  * Редактированик курса
  */
+@Deprecated
 @WebServlet(urlPatterns = "/courses/update")
 public class UpdateCourseServlet extends SuperServlet {
     private static final Logger logger = Logger.getLogger(UpdateCourseServlet.class);

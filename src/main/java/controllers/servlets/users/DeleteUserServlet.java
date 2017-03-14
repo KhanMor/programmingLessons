@@ -16,6 +16,7 @@ import java.io.IOException;
  * Created by Mordr on 24.02.2017.
  * Удаление пользователя
  */
+@Deprecated
 //@WebServlet(urlPatterns = "/usersAdmin/delete")
 public class DeleteUserServlet extends SuperServlet {
     private static final Logger logger = Logger.getLogger(UsersAdminServlet.class);

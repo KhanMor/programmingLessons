@@ -7,10 +7,11 @@
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <html>
 <head>
     <jsp:include page="common.head.jsp"></jsp:include>
-    <script src="/js/courses.js" type="text/javascript"></script>
+    <script src="${pageContext.request.contextPath}/js/courses.js" type="text/javascript"></script>
     <link href="${pageContext.request.contextPath}/css/courses.css" rel="stylesheet">
     <title>Курсы</title>
 </head>
@@ -41,10 +42,12 @@
                             <div class="course-author-email">
                                 ${course.author.email}
                             </div>
-                            <div class="btn-group btn-edit-group">
-                                <button class="btn btn-default editCourseBtn"><span class="glyphicon glyphicon-edit"></span> Изменить</button>
-                                <button class="btn btn-default deleteCourseBtn"><span class="glyphicon glyphicon-remove"></span> Удалить</button>
-                            </div>
+                            <sec:authorize access="hasRole('ROLE_admin') or hasRole('ROLE_author')">
+                                <div class="btn-group btn-edit-group">
+                                    <button class="btn btn-default editCourseBtn"><span class="glyphicon glyphicon-edit"></span> Изменить</button>
+                                    <button class="btn btn-default deleteCourseBtn"><span class="glyphicon glyphicon-remove"></span> Удалить</button>
+                                </div>
+                            </sec:authorize>
                             <a class="btn btn-primary goInsideCourseBtn"
                                href="<c:url value="${pageContext.request.contextPath}/lessons?course_id=${course.id}"/>">
                                 <span class="glyphicon glyphicon-arrow-right"></span> Просмотр
@@ -55,51 +58,52 @@
             </c:forEach>
         </ul>
     </div>
+    <sec:authorize access="hasRole('ROLE_admin') or hasRole('ROLE_author')">
+        <div class="btn-group container" id="coursesToolbar">
+            <a id="addCourseBtn" href="<c:url value="${pageContext.request.contextPath}/courses/add"/>" class="btn btn-success">
+                <span class="glyphicon glyphicon-plus"></span> Добавить курс
+            </a>
+        </div>
 
-    <div class="btn-group container" id="coursesToolbar">
-        <a id="addCourseBtn" href="<c:url value="${pageContext.request.contextPath}/courses/add"/>" class="btn btn-success">
-            <span class="glyphicon glyphicon-plus"></span> Добавить курс
-        </a>
-    </div>
-
-    <div id="courseModal" class="modal fade" role="dialog">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Курс</h4>
-                </div>
-                <div class="modal-body">
-                    <jsp:include page="course.details.jsp"></jsp:include>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" id="saveCourseBtn">
-                        <span class="glyphicon glyphicon-floppy-save"></span> Сохранить
-                    </button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
+        <div id="courseModal" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Курс</h4>
+                    </div>
+                    <div class="modal-body">
+                        <jsp:include page="course.details.jsp"></jsp:include>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" id="saveCourseBtn">
+                            <span class="glyphicon glyphicon-floppy-save"></span> Сохранить
+                        </button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div id="courseDeleteModal" class="modal fade" role="dialog">
-        <div class="modal-dialog modal-sm">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Удалить?</h4>
-                </div>
-                <div class="modal-body">
-                    Удалить курс <span id="deletingCourseName"></span>?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" id="removeCourseBtn">
-                        <span class="glyphicon glyphicon-remove-sign"></span> Удалить
-                    </button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
+        <div id="courseDeleteModal" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Удалить?</h4>
+                    </div>
+                    <div class="modal-body">
+                        Удалить курс <span id="deletingCourseName"></span>?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" id="removeCourseBtn">
+                            <span class="glyphicon glyphicon-remove-sign"></span> Удалить
+                        </button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </sec:authorize>
 </body>
 </html>

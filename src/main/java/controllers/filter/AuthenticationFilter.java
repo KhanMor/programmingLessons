@@ -13,7 +13,8 @@ import java.io.IOException;
  * Created by Mordr on 24.02.2017.
  * Фильтр по сессиям
  */
-@WebFilter(urlPatterns = "/*")
+@Deprecated
+//@WebFilter(urlPatterns = "/*")
 public class AuthenticationFilter implements Filter {
     private static final Logger logger = Logger.getLogger(AuthenticationFilter.class);
     private static final String AUTH_ATTRIBUTE_NAME = "user";

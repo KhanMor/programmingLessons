@@ -18,9 +18,8 @@
     <hr>
     <form action="<c:url value="${pageContext.request.contextPath}/courses/add"/>" method="post">
         <jsp:include page="course.details.jsp"></jsp:include>
-        <div class="form-group">
-            <hr>
-        </div>
+        <hr>
+        <input type="hidden" name="${_csrf.parameterName}"  value="${_csrf.token}" />
         <div class="form-group">
             <div class="col-xs-offset-2 col-xs-10">
                 <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-floppy-save"></span> Сохранить</button>

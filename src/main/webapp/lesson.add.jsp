@@ -18,6 +18,7 @@
     <form action="${pageContext.request.contextPath}/lessons/add" method="post">
         <c:set var="course" value="${course_id}" scope="request" />
         <jsp:include page="lesson.details.jsp"></jsp:include>
+        <input type="hidden" name="${_csrf.parameterName}"  value="${_csrf.token}" />
         <div class="form-group">
             <div class="col-xs-offset-2 col-xs-10">
                 <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-floppy-save"></span> Сохранить</button>

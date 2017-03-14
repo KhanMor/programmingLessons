@@ -5,12 +5,14 @@ import models.pojo.Course;
 import models.pojo.User;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import services.CourseService;
 import services.UserService;
 
+import java.security.Principal;
 import java.util.List;
 
 /**
@@ -20,16 +22,15 @@ import java.util.List;
 @Controller
 public class CoursesController {
     private static final Logger logger = Logger.getLogger(CoursesController.class);
-    private static final String AUTH_ATTRIBUTE_NAME = "user";
+    //private static final String AUTH_ATTRIBUTE_NAME = "user";
+    private static final String PRE_POST_AUTHOR_ROLE = "hasRole('ROLE_author')";
+    private static final String PRE_POST_ADMIN_ROLE = "hasRole('ROLE_admin')";
     private CourseService courseService;
     private UserService userService;
 
     @Autowired
-    public void setCourseService(CourseService courseService) {
+    public CoursesController(CourseService courseService, UserService userService) {
         this.courseService = courseService;
-    }
-    @Autowired
-    public void setUserService(UserService userService) {
         this.userService = userService;
     }
 
@@ -41,23 +42,34 @@ public class CoursesController {
     }
 
     @RequestMapping(value = "/courses/add", method = RequestMethod.GET)
+    @PreAuthorize(PRE_POST_ADMIN_ROLE + " or " + PRE_POST_AUTHOR_ROLE)
     public String getAddCoursePage() {
         return "course.add";
     }
+
     @RequestMapping(value = "/courses/add", method = RequestMethod.POST)
-    public String addCourse(@SessionAttribute(AUTH_ATTRIBUTE_NAME) String email,
+    @PreAuthorize(PRE_POST_ADMIN_ROLE + " or " + PRE_POST_AUTHOR_ROLE)
+    public String addCourse(//@SessionAttribute(AUTH_ATTRIBUTE_NAME) String email,
+                            Principal principal,
                             @RequestParam String name, @RequestParam Double duration) throws ServiceException {
+        String email = principal.getName();
         User author = userService.getUserByEmail(email);
         Course course = new Course(author, name, duration);
+        logger.trace("new course '" + name + "' was added by user " + principal.getName());
         courseService.createCourse(course);
         return "redirect:/courses";
     }
     @RequestMapping(value = "/courses/update", method = RequestMethod.POST)
-    public @ResponseBody void updateCourse(@ModelAttribute Course course) throws ServiceException {
+    @PreAuthorize(PRE_POST_ADMIN_ROLE + " or " + PRE_POST_AUTHOR_ROLE)
+    public @ResponseBody void updateCourse(@ModelAttribute Course course, Principal principal) throws ServiceException {
+        Integer id = course.getId();
+        logger.trace("course with id = " + id + " was updated by user " + principal.getName());
         courseService.updateCourse(course);
     }
     @RequestMapping(value = "/courses/delete/{id}", method = RequestMethod.DELETE)
-    public @ResponseBody void deleteCourse(@PathVariable Integer id) throws ServiceException {
+    @PreAuthorize(PRE_POST_ADMIN_ROLE + " or " + PRE_POST_AUTHOR_ROLE)
+    public @ResponseBody void deleteCourse(@PathVariable Integer id, Principal principal) throws ServiceException {
+        logger.trace("course with id = " + id + " was deleted by user " + principal.getName());
         courseService.deleteCourse(id);
     }
 }

@@ -12,6 +12,7 @@ import java.io.IOException;
  * Created by Mordr on 24.02.2017.
  *
  */
+@Deprecated
 //@WebServlet(urlPatterns = "/registrationSuccess")
 public class RegistrationSuccess extends SuperServlet {
     @Override

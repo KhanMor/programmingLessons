@@ -1,5 +1,5 @@
 group 'com.kharkhanov.programmingLessons'
-version '0.0.3'
+version '0.0.4'
 
 apply plugin: 'java'
 apply plugin: 'idea'
@@ -29,6 +29,9 @@ dependencies {
     compile group: 'org.springframework', name: 'spring-web', version: '4.3.6.RELEASE'
     compile group: 'org.springframework', name: 'spring-orm', version: '4.3.6.RELEASE'
     compile group: 'org.springframework', name: 'spring-webmvc', version: '4.3.6.RELEASE'
+    compile group: 'org.springframework.security', name: 'spring-security-web', version: '4.2.2.RELEASE'
+    compile group: 'org.springframework.security', name: 'spring-security-config', version: '4.2.2.RELEASE'
+    compile group: 'org.springframework.security', name: 'spring-security-taglibs', version: '4.2.2.RELEASE'
 
     compile group: 'org.hibernate', name: 'hibernate-core', version: '5.2.8.Final'
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.8.7'

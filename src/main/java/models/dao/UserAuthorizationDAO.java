@@ -12,7 +12,6 @@ import java.util.List;
  * Created by Mordr on 23.02.2017.
  * Набор методов для авторизация пользователя
  */
-@Repository
 public interface UserAuthorizationDAO {
     User findUserByEmailAndPassword(String email, String password) throws DAOException;
     Role findRoleByName(String roleName) throws DAOException;

@@ -11,6 +11,7 @@ import java.io.IOException;
 /**
  * Created by Mordr on 03.03.2017.
  */
+@Deprecated
 public class LessonListServlet extends SuperServlet {
     private static final Logger logger = Logger.getLogger(LessonListServlet.class);
 
