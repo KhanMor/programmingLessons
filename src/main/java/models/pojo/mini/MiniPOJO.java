@@ -3,15 +3,15 @@ package models.pojo.mini;
 /**
  * Created by Mordr on 10.03.2017.
  */
-public class MiniPojo {
+public class MiniPOJO {
     private Integer id;
     private String name;
 
-    public MiniPojo() {
+    public MiniPOJO() {
 
     }
 
-    public MiniPojo(Integer id, String name) {
+    public MiniPOJO(Integer id, String name) {
         this.id = id;
         this.name = name;
     }

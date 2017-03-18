@@ -1,6 +1,6 @@
 package jaxbwork.jaxbwrappers;
 
-import models.pojo.Lesson;
+import models.entity.Lesson;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;

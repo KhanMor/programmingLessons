@@ -1,6 +1,6 @@
 package jaxbwork.jaxbwrappers;
 
-import models.pojo.UserRole;
+import models.entity.UserRole;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;

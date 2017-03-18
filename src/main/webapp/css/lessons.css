@@ -18,3 +18,10 @@ body {
     height: 100%;
     overflow: auto;
 }
+
+#lesson-content {
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    height: auto;
+}

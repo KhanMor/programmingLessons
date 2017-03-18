@@ -3,9 +3,9 @@ package models.daoimpl.jdbcimpl;
 import common.exceptions.DAOException;
 import models.dao.UserAuthorizationDAO;
 import models.daoimpl.jdbcimpl.boxer.EntityBoxer;
-import models.pojo.Role;
-import models.pojo.User;
-import models.pojo.UserRole;
+import models.entity.Role;
+import models.entity.User;
+import models.entity.UserRole;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -48,7 +48,7 @@ public class UserAuthorizationDAOImpl implements UserAuthorizationDAO {
     }
 
     @Override
-    public User findUserByEmailAndPassword(String email, String password) throws DAOException {
+    public User findValidUser(String email, String password) throws DAOException {
         try(Connection conn = dataSource.getConnection();
             PreparedStatement preparedStatement = conn.prepareStatement(LOGIN_SQL)
         ) {
@@ -100,11 +100,10 @@ public class UserAuthorizationDAOImpl implements UserAuthorizationDAO {
     }
 
     @Override
-    public List<UserRole> getUserAllRoles(User user) throws DAOException {
+    public List<UserRole> getUserAllRoles(Integer user_id) throws DAOException {
         try(Connection conn = dataSource.getConnection();
             PreparedStatement preparedStatement = conn.prepareStatement(SELECT_USER_ALL_ROLES_SQL)
         ) {
-            Integer user_id = user.getId();
             preparedStatement.setInt(1, user_id);
             ResultSet resultSet = preparedStatement.executeQuery();
             List<UserRole> userRoles = new ArrayList<>();
@@ -120,12 +119,12 @@ public class UserAuthorizationDAOImpl implements UserAuthorizationDAO {
     }
 
     @Override
-    public Role findUserRole(User user, Role role) throws DAOException {
+    public Role findUserRole(Integer user_id, Integer role_id) throws DAOException {
         try(Connection conn = dataSource.getConnection();
             PreparedStatement preparedStatement = conn.prepareStatement(FIND_USER_ROLE_SQL))
         {
-            preparedStatement.setInt(1, user.getId());
-            preparedStatement.setInt(2, role.getId());
+            preparedStatement.setInt(1, user_id);
+            preparedStatement.setInt(2, role_id);
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
                 Role findedRole;

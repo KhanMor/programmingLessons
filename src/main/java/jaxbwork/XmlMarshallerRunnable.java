@@ -3,7 +3,7 @@ package jaxbwork;
 import common.exceptions.DAOException;
 import jaxbwork.jaxbwrappers.*;
 import models.dao.SuperDAO;
-import models.pojo.*;
+import models.entity.*;
 import org.apache.log4j.Logger;
 
 /**

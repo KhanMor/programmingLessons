@@ -1,4 +1,4 @@
-package models.pojo;
+package models.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -20,6 +20,7 @@ public class Course {
     private String name;
     private Double duration;
     private List<Lesson> lessons;
+    private Long version;
 
     public Course() {
     }
@@ -80,6 +81,15 @@ public class Course {
     @XmlTransient
     public void setLessons(List<Lesson> lessons) {
         this.lessons = lessons;
+    }
+
+    @Version
+    public Long getVersion() {
+        return version;
+    }
+
+    public void setVersion(Long version) {
+        this.version = version;
     }
 
     @Override

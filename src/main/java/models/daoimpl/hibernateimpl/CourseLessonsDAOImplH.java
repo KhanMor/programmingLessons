@@ -2,8 +2,7 @@ package models.daoimpl.hibernateimpl;
 
 import common.exceptions.DAOException;
 import models.dao.CourseLessonsDAO;
-import models.pojo.Lesson;
-import models.pojo.mini.MiniPojo;
+import models.entity.Lesson;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -13,11 +12,11 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by Mordr on 10.03.2017.
+ * Получение спика уроков конкретного курса
  */
 @Repository("courseLessonsDAO")
 public class CourseLessonsDAOImplH implements CourseLessonsDAO {
@@ -48,13 +47,13 @@ public class CourseLessonsDAOImplH implements CourseLessonsDAO {
             }
         }
     }
-
+/*
     private String formatLesson(Lesson lesson) {
         return lesson.getOrderNum() + ". " + lesson.getTheme() + " - " + lesson.getDuration();
     }
 
     @Override
-    public List<MiniPojo> courseLessonsListMini(Integer course_id) throws DAOException {
+    public List<MiniPOJO> courseLessonsListMini(Integer course_id) throws DAOException {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         try{
             CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
@@ -64,9 +63,9 @@ public class CourseLessonsDAOImplH implements CourseLessonsDAO {
             criteriaQuery.where(criteriaBuilder.and(criteriaBuilder.equal(root.get("course").get("id"), course_id)));
             criteriaQuery.orderBy(criteriaBuilder.asc(root.get("orderNum")));
             List<Lesson> lessons = entityManager.createQuery(criteriaQuery).getResultList();
-            List<MiniPojo> lessonsMini = new ArrayList<>();
+            List<MiniPOJO> lessonsMini = new ArrayList<>();
             for(Lesson lesson:lessons) {
-                MiniPojo lessonMini = new MiniPojo();
+                MiniPOJO lessonMini = new MiniPOJO();
                 lessonMini.setId(lesson.getId());
                 lessonMini.setName(formatLesson(lesson));
                 lessonsMini.add(lessonMini);
@@ -80,5 +79,5 @@ public class CourseLessonsDAOImplH implements CourseLessonsDAO {
                 entityManager.close();
             }
         }
-    }
+    }*/
 }

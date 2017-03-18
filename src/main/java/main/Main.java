@@ -1,20 +1,16 @@
 package main;
 
 import common.exceptions.DAOException;
-import models.connector.DatabaseConnector;
 import jaxbwork.InsertedWrapper;
 import jaxbwork.XmlMarshallerRunnable;
 import jaxbwork.XmlUnmarshallerRunnable;
 import models.dao.SuperDAO;
 import models.daoimpl.jdbcimpl.*;
-import models.pojo.*;
+import models.entity.*;
 import org.apache.log4j.Logger;
 import org.apache.log4j.xml.DOMConfigurator;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.File;
-import java.lang.annotation.RetentionPolicy;
-import java.sql.*;
 import java.util.HashSet;
 
 /**

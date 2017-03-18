@@ -1,9 +1,9 @@
 package services;
 
 import common.exceptions.ServiceException;
-import models.pojo.Role;
-import models.pojo.User;
-import models.pojo.UserRole;
+import models.pojo.RolePOJO;
+import models.pojo.UserPOJO;
+import models.pojo.UserRolePOJO;
 
 import java.util.List;
 
@@ -11,10 +11,9 @@ import java.util.List;
  * Created by Mordr on 27.02.2017.
  * Сервис для назначения пользователям ролей
  */
-@SuppressWarnings("unused")
 public interface UserRoleService {
-    void createUserRole(UserRole userRole) throws ServiceException;
+    void createUserRole(UserRolePOJO userRolePOJO) throws ServiceException;
     void clearUserRoles(Integer id) throws ServiceException;
-    List<UserRole> getUserRoles(User user) throws ServiceException;
-    boolean checkIfUserHasRole(User user, Role role) throws ServiceException;
+    List<UserRolePOJO> getUserRoles(UserPOJO userPOJO) throws ServiceException;
+    boolean checkIfUserHasRole(UserPOJO userPOJO, RolePOJO rolePOJO) throws ServiceException;
 }

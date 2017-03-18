@@ -2,7 +2,7 @@ package models.daoimpl.jdbcimpl.boxer;
 
 import common.exceptions.DAOException;
 import models.dao.SuperDAO;
-import models.pojo.*;
+import models.entity.*;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

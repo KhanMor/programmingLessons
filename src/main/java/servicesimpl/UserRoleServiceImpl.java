@@ -4,14 +4,17 @@ import common.exceptions.DAOException;
 import common.exceptions.ServiceException;
 import models.dao.SuperDAO;
 import models.dao.UserAuthorizationDAO;
-import models.pojo.Role;
-import models.pojo.User;
-import models.pojo.UserRole;
+import models.entity.Role;
+import models.entity.UserRole;
+import models.pojo.RolePOJO;
+import models.pojo.UserPOJO;
+import models.pojo.UserRolePOJO;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import services.UserRoleService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -35,8 +38,9 @@ public class UserRoleServiceImpl implements UserRoleService {
     }
 
     @Override
-    public void createUserRole(UserRole userRole) throws ServiceException {
+    public void createUserRole(UserRolePOJO userRolePOJO) throws ServiceException {
         try {
+            UserRole userRole = new UserRole(userRolePOJO);
             userRoleDAO.insert(userRole);
         } catch (DAOException e) {
             logger.error(e);
@@ -55,9 +59,16 @@ public class UserRoleServiceImpl implements UserRoleService {
     }
 
     @Override
-    public List<UserRole> getUserRoles(User user) throws ServiceException {
+    public List<UserRolePOJO> getUserRoles(UserPOJO userPOJO) throws ServiceException {
         try {
-            return userAuthorizationDAO.getUserAllRoles(user);
+            Integer user_id = userPOJO.getId();
+            List<UserRole> userRoles = userAuthorizationDAO.getUserAllRoles(user_id);
+            List<UserRolePOJO> userRolePOJOS = new ArrayList<>(userRoles.size());
+            for (UserRole userRole:userRoles) {
+                UserRolePOJO userRolePOJO = new UserRolePOJO(userRole);
+                userRolePOJOS.add(userRolePOJO);
+            }
+            return userRolePOJOS;
         } catch (DAOException e) {
             logger.error(e);
             throw new ServiceException(e);
@@ -65,9 +76,11 @@ public class UserRoleServiceImpl implements UserRoleService {
     }
 
     @Override
-    public boolean checkIfUserHasRole(User user, Role role) throws ServiceException {
+    public boolean checkIfUserHasRole(UserPOJO userPOJO, RolePOJO rolePOJO) throws ServiceException {
         try {
-            Role findedRole = userAuthorizationDAO.findUserRole(user, role);
+            Integer user_id = userPOJO.getId();
+            Integer role_id = rolePOJO.getId();
+            Role findedRole = userAuthorizationDAO.findUserRole(user_id, role_id);
             return findedRole != null;
         } catch (DAOException e) {
             logger.error(e);

@@ -74,6 +74,8 @@
                     </div>
                     <div class="modal-body">
                         <jsp:include page="course.details.jsp"></jsp:include>
+                        <div id = "error-response">
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary" id="saveCourseBtn">

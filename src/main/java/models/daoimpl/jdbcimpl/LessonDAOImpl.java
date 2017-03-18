@@ -3,7 +3,7 @@ package models.daoimpl.jdbcimpl;
 import common.exceptions.DAOException;
 import models.daoimpl.jdbcimpl.boxer.EntityBoxer;
 import models.dao.SuperDAO;
-import models.pojo.Lesson;
+import models.entity.Lesson;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 

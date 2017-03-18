@@ -1,8 +1,8 @@
 package models.dao;
 
 import common.exceptions.DAOException;
-import models.pojo.Lesson;
-import models.pojo.mini.MiniPojo;
+import models.entity.Lesson;
+import models.pojo.mini.MiniPOJO;
 
 import java.util.List;
 
@@ -11,5 +11,5 @@ import java.util.List;
  */
 public interface CourseLessonsDAO {
     List<Lesson> courseLessonsList(Integer course_id) throws DAOException;
-    List<MiniPojo> courseLessonsListMini(Integer course_id) throws DAOException;
+    //List<MiniPOJO> courseLessonsListMini(Integer course_id) throws DAOException;
 }

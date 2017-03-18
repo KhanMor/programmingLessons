@@ -1,8 +1,7 @@
 package models.pojo;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import models.entity.Role;
 
-import javax.persistence.*;
 import javax.xml.bind.annotation.*;
 import java.util.List;
 
@@ -13,18 +12,23 @@ import java.util.List;
  */
 @XmlRootElement
 @XmlType(propOrder = {"id", "role", "description"})
-@Entity
-public class Role {
+public class RolePOJO {
     private Integer id;
     private String role;
     private String description;
-    private List<UserRole> userRoles;
+    private List<UserRolePOJO> userRoles;
+    private Long version;
 
-    public Role() {
+    public RolePOJO() {
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public RolePOJO(Role role) {
+        this.id = role.getId();
+        this.role = role.getRole();
+        this.description = role.getDescription();
+        this.version = role.getVersion();
+    }
+
     public Integer getId() {
         return id;
     }
@@ -34,7 +38,6 @@ public class Role {
         this.id = id;
     }
 
-    @Column(unique = true, nullable = false)
     public String getRole() {
         return role;
     }
@@ -53,15 +56,21 @@ public class Role {
         this.description = description;
     }
 
-    @OneToMany(cascade={CascadeType.ALL}, orphanRemoval = true, fetch = FetchType.LAZY, mappedBy="role")
-    @JsonBackReference
-    public List<UserRole> getUserRoles() {
+    public List<UserRolePOJO> getUserRoles() {
         return userRoles;
     }
 
     @XmlTransient
-    public void setUserRoles(List<UserRole> userRoles) {
+    public void setUserRoles(List<UserRolePOJO> userRoles) {
         this.userRoles = userRoles;
+    }
+
+    public Long getVersion() {
+        return version;
+    }
+
+    public void setVersion(Long version) {
+        this.version = version;
     }
 
     @Override
@@ -69,16 +78,17 @@ public class Role {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Role role1 = (Role) o;
+        RolePOJO rolePOJO = (RolePOJO) o;
 
-        return id.equals(role1.id) && role.equals(role1.role) &&
-                (description != null ? description.equals(role1.description) : role1.description == null);
+        if (id != null ? !id.equals(rolePOJO.id) : rolePOJO.id != null) return false;
+        if (role != null ? !role.equals(rolePOJO.role) : rolePOJO.role != null) return false;
+        return description != null ? description.equals(rolePOJO.description) : rolePOJO.description == null;
     }
 
     @Override
     public int hashCode() {
-        int result = id.hashCode();
-        result = 31 * result + role.hashCode();
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (role != null ? role.hashCode() : 0);
         result = 31 * result + (description != null ? description.hashCode() : 0);
         return result;
     }

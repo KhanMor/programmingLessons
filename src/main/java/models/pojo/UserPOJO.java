@@ -1,9 +1,8 @@
 package models.pojo;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import jaxbwork.jaxbadapters.DateAdapter;
+import models.entity.User;
 
-import javax.persistence.*;
 import javax.xml.bind.annotation.*;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.sql.Date;
@@ -15,8 +14,7 @@ import java.util.List;
  */
 @XmlRootElement
 @XmlType(propOrder = {"id", "firstName", "surname", "patronymic", "birthday", "sex", "email", "password"})
-@Entity
-public class User {
+public class UserPOJO {
     private Integer id;
     private String firstName;
     private String surname;
@@ -25,25 +23,26 @@ public class User {
     private String sex;
     private String email;
     private String password;
-    private List<Course> coursesAuthor;
-    private List<UserRole> userRoles;
+    private List<CoursePOJO> coursesAuthor;
+    private List<UserRolePOJO> userRoles;
+    private Long version;
 
-    public User() {
+    public UserPOJO() {
 
     }
 
-    public User(String firstName, String surname, String patronymic, Date birthday, String sex, String email, String password) {
-        this.firstName = firstName;
-        this.surname = surname;
-        this.patronymic = patronymic;
-        this.birthday = birthday;
-        this.sex = sex;
-        this.email = email;
-        this.password = password;
+    public UserPOJO(User user) {
+        this.id = user.getId();
+        this.firstName = user.getFirstName();
+        this.surname = user.getSurname();
+        this.patronymic = user.getPatronymic();
+        this.birthday = user.getBirthday();
+        this.sex = user.getSex();
+        this.email = user.getEmail();
+        this.password = user.getPassword();
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     public Integer getId() {
         return id;
     }
@@ -99,7 +98,6 @@ public class User {
         this.sex = sex;
     }
 
-    @Column(unique = true, nullable = false)
     public String getEmail() {
         return email;
     }
@@ -109,7 +107,6 @@ public class User {
         this.email = email;
     }
 
-    @Column(nullable = false)
     public String getPassword() {
         return password;
     }
@@ -119,26 +116,30 @@ public class User {
         this.password = password;
     }
 
-    @OneToMany(cascade={CascadeType.ALL}, orphanRemoval = true, fetch = FetchType.LAZY, mappedBy="author")
-    @JsonBackReference
-    public List<Course> getCoursesAuthor() {
+    public List<CoursePOJO> getCoursesAuthor() {
         return coursesAuthor;
     }
 
     @XmlTransient
-    public void setCoursesAuthor(List<Course> coursesAuthor) {
+    public void setCoursesAuthor(List<CoursePOJO> coursesAuthor) {
         this.coursesAuthor = coursesAuthor;
     }
 
-    @OneToMany(cascade={CascadeType.ALL}, orphanRemoval = true, fetch = FetchType.LAZY, mappedBy="user")
-    @JsonBackReference
-    public List<UserRole> getUserRoles() {
+    public List<UserRolePOJO> getUserRoles() {
         return userRoles;
     }
 
     @XmlTransient
-    public void setUserRoles(List<UserRole> userRoles) {
+    public void setUserRoles(List<UserRolePOJO> userRoles) {
         this.userRoles = userRoles;
+    }
+
+    public Long getVersion() {
+        return version;
+    }
+
+    public void setVersion(Long version) {
+        this.version = version;
     }
 
     @Override
@@ -146,26 +147,28 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        User user = (User) o;
+        UserPOJO userPOJO = (UserPOJO) o;
 
-        return id.equals(user.id) && (firstName != null ? firstName.equals(user.firstName) :
-                user.firstName == null) && (surname != null ? surname.equals(user.surname) :
-                user.surname == null) && (patronymic != null ? patronymic.equals(user.patronymic) :
-                user.patronymic == null) && (birthday != null ? birthday.equals(user.birthday) :
-                user.birthday == null) && (sex != null ? sex.equals(user.sex) :
-                user.sex == null) && email.equals(user.email) && password.equals(user.password);
+        if (id != null ? !id.equals(userPOJO.id) : userPOJO.id != null) return false;
+        if (firstName != null ? !firstName.equals(userPOJO.firstName) : userPOJO.firstName != null) return false;
+        if (surname != null ? !surname.equals(userPOJO.surname) : userPOJO.surname != null) return false;
+        if (patronymic != null ? !patronymic.equals(userPOJO.patronymic) : userPOJO.patronymic != null) return false;
+        if (birthday != null ? !birthday.equals(userPOJO.birthday) : userPOJO.birthday != null) return false;
+        if (sex != null ? !sex.equals(userPOJO.sex) : userPOJO.sex != null) return false;
+        if (email != null ? !email.equals(userPOJO.email) : userPOJO.email != null) return false;
+        return password != null ? password.equals(userPOJO.password) : userPOJO.password == null;
     }
 
     @Override
     public int hashCode() {
-        int result = id.hashCode();
+        int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
         result = 31 * result + (surname != null ? surname.hashCode() : 0);
         result = 31 * result + (patronymic != null ? patronymic.hashCode() : 0);
         result = 31 * result + (birthday != null ? birthday.hashCode() : 0);
         result = 31 * result + (sex != null ? sex.hashCode() : 0);
-        result = 31 * result + email.hashCode();
-        result = 31 * result + password.hashCode();
+        result = 31 * result + (email != null ? email.hashCode() : 0);
+        result = 31 * result + (password != null ? password.hashCode() : 0);
         return result;
     }
 }

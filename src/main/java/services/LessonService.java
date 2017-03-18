@@ -1,8 +1,8 @@
 package services;
 
 import common.exceptions.ServiceException;
-import models.pojo.Lesson;
-import models.pojo.mini.MiniPojo;
+import models.pojo.LessonPOJO;
+import models.pojo.mini.MiniPOJO;
 
 import java.util.List;
 
@@ -12,11 +12,11 @@ import java.util.List;
  */
 @SuppressWarnings("unused")
 public interface LessonService {
-    List<Lesson> getAllLessons() throws ServiceException;
-    List<Lesson> getCourseLessons(Integer course_id) throws ServiceException;
-    List<MiniPojo> getCourseLessonsMini(Integer course_id) throws ServiceException;
-    Lesson getLesson(Integer id) throws ServiceException;
+    List<LessonPOJO> getAllLessons() throws ServiceException;
+    List<LessonPOJO> getCourseLessons(Integer course_id) throws ServiceException;
+    List<MiniPOJO> getCourseLessonsMini(Integer course_id) throws ServiceException;
+    LessonPOJO getLesson(Integer id) throws ServiceException;
     void createLesson(Integer course_id, Integer orderNum, String theme, Double duration, String content) throws ServiceException;
-    void updateLesson(Lesson lesson) throws ServiceException;
+    void updateLesson(LessonPOJO lessonPOJO) throws ServiceException;
     void deleteLesson(Integer id) throws ServiceException;
 }

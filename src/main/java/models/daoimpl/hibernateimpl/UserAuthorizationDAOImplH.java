@@ -2,9 +2,9 @@ package models.daoimpl.hibernateimpl;
 
 import common.exceptions.DAOException;
 import models.dao.UserAuthorizationDAO;
-import models.pojo.Role;
-import models.pojo.User;
-import models.pojo.UserRole;
+import models.entity.Role;
+import models.entity.User;
+import models.entity.UserRole;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -22,6 +22,7 @@ import java.util.List;
 @Repository("userAuthorizationDAO")
 public class UserAuthorizationDAOImplH implements UserAuthorizationDAO {
     private static final Logger logger = Logger.getLogger(UserAuthorizationDAOImplH.class);
+    private static final String BLOCKED_USER_ROLE_NAME = "blocked";
     private EntityManagerFactory entityManagerFactory;
     @Autowired
     public void setEntityManagerFactory(EntityManagerFactory entityManagerFactory) {
@@ -29,7 +30,7 @@ public class UserAuthorizationDAOImplH implements UserAuthorizationDAO {
     }
 
     @Override
-    public User findUserByEmailAndPassword(String email, String password) throws DAOException {
+    public User findValidUser(String email, String password) throws DAOException {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         try{
             CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
@@ -45,6 +46,16 @@ public class UserAuthorizationDAOImplH implements UserAuthorizationDAO {
             List<User> users = entityManager.createQuery(criteriaQuery).getResultList();
             if (users.isEmpty()) {
                 return null;
+            } else {
+                User user = users.get(0);
+                List<UserRole> userRoles = user.getUserRoles();
+                if(userRoles != null) {
+                    for (UserRole userRole : userRoles) {
+                        if(userRole.getRole().getRole().equals(BLOCKED_USER_ROLE_NAME)) {
+                            return null;
+                        }
+                    }
+                }
             }
             return users.get(0);
         }catch (Exception e) {
@@ -104,14 +115,14 @@ public class UserAuthorizationDAOImplH implements UserAuthorizationDAO {
     }
 
     @Override
-    public List<UserRole> getUserAllRoles(User user) throws DAOException {
+    public List<UserRole> getUserAllRoles(Integer user_id) throws DAOException {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         try{
             CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
             CriteriaQuery<UserRole> criteriaQuery = criteriaBuilder.createQuery(UserRole.class);
             Root<UserRole> root = criteriaQuery.from(UserRole.class);
             criteriaQuery.select(root);
-            criteriaQuery.where(criteriaBuilder.equal(root.get("user"), user));
+            criteriaQuery.where(criteriaBuilder.equal(root.get("user").get("id"), user_id));
             return entityManager.createQuery(criteriaQuery).getResultList();
         }catch (Exception e) {
             logger.error(e);
@@ -124,7 +135,7 @@ public class UserAuthorizationDAOImplH implements UserAuthorizationDAO {
     }
 
     @Override
-    public Role findUserRole(User user, Role role) throws DAOException {
+    public Role findUserRole(Integer user_id, Integer role_id) throws DAOException {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         try{
             CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
@@ -134,8 +145,8 @@ public class UserAuthorizationDAOImplH implements UserAuthorizationDAO {
             criteriaQuery.select(root);
             criteriaQuery.where(
                     criteriaBuilder.and(
-                            criteriaBuilder.equal(join.get("user"), user),
-                            criteriaBuilder.equal(join.get("role"), role)
+                            criteriaBuilder.equal(join.get("user").get("id"), user_id),
+                            criteriaBuilder.equal(join.get("role").get("id"), role_id)
                     )
             );
             List<Role> roles = entityManager.createQuery(criteriaQuery).getResultList();

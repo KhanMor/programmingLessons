@@ -1,9 +1,11 @@
 package controllers.mvc;
 
 import common.exceptions.ServiceException;
-import models.pojo.Course;
-import models.pojo.Lesson;
-import models.pojo.mini.MiniPojo;
+import models.entity.Course;
+import models.entity.Lesson;
+import models.pojo.CoursePOJO;
+import models.pojo.LessonPOJO;
+import models.pojo.mini.MiniPOJO;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -37,7 +39,7 @@ public class LessonsController {
     @RequestMapping(value = "/lessons/all", method = RequestMethod.GET)
     @PreAuthorize(PRE_POST_ADMIN_ROLE + " or " + PRE_POST_AUTHOR_ROLE + " or " + PRE_POST_STUDENT_ROLE)
     public String listAllLessons(Model model) throws ServiceException {
-        List<Lesson> lessons = lessonService.getAllLessons();
+        List<LessonPOJO> lessons = lessonService.getAllLessons();
         model.addAttribute("lessons", lessons);
 
         return "lessons";
@@ -45,8 +47,8 @@ public class LessonsController {
     @RequestMapping(value = "/lessons", method = RequestMethod.GET)
     @PreAuthorize(PRE_POST_ADMIN_ROLE + " or " + PRE_POST_AUTHOR_ROLE + " or " + PRE_POST_STUDENT_ROLE)
     public String listCourseLessons(@RequestParam Integer course_id, Model model) throws ServiceException {
-        List<MiniPojo> lessons = lessonService.getCourseLessonsMini(course_id);
-        Course course = courseService.getCourse(course_id);
+        List<MiniPOJO> lessons = lessonService.getCourseLessonsMini(course_id);
+        CoursePOJO course = courseService.getCourse(course_id);
         model.addAttribute("course", course);
         model.addAttribute("lessons", lessons);
         return "lessons";
@@ -54,7 +56,7 @@ public class LessonsController {
     @RequestMapping(value = "/lessons/get/{id}", method = RequestMethod.GET)
     @PreAuthorize(PRE_POST_ADMIN_ROLE + " or " + PRE_POST_AUTHOR_ROLE + " or " + PRE_POST_STUDENT_ROLE)
     public String viewLesson(@PathVariable Integer id, Model model) throws ServiceException {
-        Lesson lesson = lessonService.getLesson(id);
+        LessonPOJO lesson = lessonService.getLesson(id);
         model.addAttribute("lesson", lesson);
         return "lesson";
     }
@@ -80,7 +82,7 @@ public class LessonsController {
                                     @RequestParam Integer id, Model model) throws ServiceException {
         model.addAttribute("course_id", course_id);
         model.addAttribute("course_name", course_name);
-        Lesson lesson = lessonService.getLesson(id);
+        LessonPOJO lesson = lessonService.getLesson(id);
         model.addAttribute("lesson", lesson);
         return "lesson.edit";
     }
@@ -89,7 +91,7 @@ public class LessonsController {
     @PreAuthorize(PRE_POST_ADMIN_ROLE + " or " + PRE_POST_AUTHOR_ROLE)
     public String editLesson(@RequestParam Integer id, @RequestParam Integer course_id, @RequestParam Integer orderNum, @RequestParam String theme,
                             @RequestParam Double duration, @RequestParam String content) throws ServiceException {
-        Lesson lesson = lessonService.getLesson(id);
+        LessonPOJO lesson = lessonService.getLesson(id);
         lesson.setOrderNum(orderNum);
         lesson.setTheme(theme);
         lesson.setDuration(duration);

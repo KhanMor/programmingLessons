@@ -2,7 +2,7 @@ package models.daoimpl.hibernateimpl;
 
 import common.exceptions.DAOException;
 import models.dao.SuperDAO;
-import models.pojo.Role;
+import models.entity.Role;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;

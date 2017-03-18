@@ -1,7 +1,7 @@
 package services;
 
 import common.exceptions.ServiceException;
-import models.pojo.Role;
+import models.pojo.RolePOJO;
 
 import java.util.List;
 
@@ -11,6 +11,6 @@ import java.util.List;
  */
 @SuppressWarnings("unused")
 public interface RoleService {
-    Role createRoleIfNotFound(String roleName) throws ServiceException;
-    List<Role> getRoles() throws ServiceException;
+    RolePOJO createRoleIfNotFound(String roleName) throws ServiceException;
+    List<RolePOJO> getRoles() throws ServiceException;
 }

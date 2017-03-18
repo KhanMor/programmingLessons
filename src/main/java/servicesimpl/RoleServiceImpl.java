@@ -4,12 +4,14 @@ import common.exceptions.DAOException;
 import common.exceptions.ServiceException;
 import models.dao.SuperDAO;
 import models.dao.UserAuthorizationDAO;
-import models.pojo.Role;
+import models.entity.Role;
+import models.pojo.RolePOJO;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import services.RoleService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -33,7 +35,7 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
-    public Role createRoleIfNotFound(String roleName) throws ServiceException {
+    public RolePOJO createRoleIfNotFound(String roleName) throws ServiceException {
         try {
             Role role = userAuthorizationDAO.findRoleByName(roleName);
             if(role == null) {
@@ -41,7 +43,7 @@ public class RoleServiceImpl implements RoleService {
                 role.setRole(roleName);
                 roleDAO.insert(role);
             }
-            return role;
+            return new RolePOJO(role);
         } catch (DAOException e) {
             logger.trace(e);
             throw new ServiceException(e);
@@ -49,9 +51,15 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
-    public List<Role> getRoles() throws ServiceException {
+    public List<RolePOJO> getRoles() throws ServiceException {
         try {
-            return roleDAO.list();
+            List<Role> roles = roleDAO.list();
+            List<RolePOJO> rolePOJOS = new ArrayList<>(roles.size());
+            for (Role role:roles) {
+                RolePOJO rolePOJO = new RolePOJO(role);
+                rolePOJOS.add(rolePOJO);
+            }
+            return rolePOJOS;
         } catch (DAOException e) {
             logger.trace(e);
             throw new ServiceException(e);

@@ -1,7 +1,7 @@
 package services;
 
 import common.exceptions.ServiceException;
-import models.pojo.Course;
+import models.pojo.CoursePOJO;
 
 import java.util.List;
 
@@ -11,9 +11,9 @@ import java.util.List;
  */
 @SuppressWarnings("unused")
 public interface CourseService {
-    List<Course> getCourses() throws ServiceException;
-    Course getCourse(Integer id) throws ServiceException;
-    void createCourse(Course course) throws ServiceException;
-    void updateCourse(Course course) throws ServiceException;
+    List<CoursePOJO> getCourses() throws ServiceException;
+    CoursePOJO getCourse(Integer id) throws ServiceException;
+    void createCourse(CoursePOJO coursePOJO) throws ServiceException;
+    void updateCourse(CoursePOJO coursePOJO) throws ServiceException;
     void deleteCourse(Integer id) throws ServiceException;
 }

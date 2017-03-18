@@ -53,8 +53,13 @@ function updateSelectedCourse(course, course_id, course_name, course_duration, c
             courseModal.modal("hide");
         },
         success: function(data) {
-            course.find(".course-name").get(0).innerText = course_name.val();
-            course.find(".course-duration").get(0).innerText = course_duration.val();
+            if(isNumber(user_id)) {
+                course.find(".course-name").get(0).innerText = course_name.val();
+                course.find(".course-duration").get(0).innerText = course_duration.val();
+            } else {
+                $("#error-response").show("fast");
+                $("#error-response").html("<div class='label-danger' >Возникла ошибка! Проверьте правильность введенных данных!</div>");
+            }
         }
     });
 }
@@ -74,6 +79,7 @@ $(function(){
         course_global = course;
         viewSelectedCourseDetails(course, course_id, course_name, course_duration);
         courseModal.data().mode = "update";
+        $("#error-response").hide();
         courseModal.modal("show");
     });
 

@@ -9,13 +9,13 @@ import java.util.Collection;
  * Created by Mordr on 13.03.2017.
  */
 public class SecurityUser extends User {
-    private final models.pojo.User user;
-    public SecurityUser(String username, String password, Collection<? extends GrantedAuthority> authorities, models.pojo.User user) {
+    private final models.entity.User user;
+    public SecurityUser(String username, String password, Collection<? extends GrantedAuthority> authorities, models.entity.User user) {
         super(username, password, authorities);
         this.user = user;
     }
 
-    public models.pojo.User getUser() {
+    public models.entity.User getUser() {
         return user;
     }
 }

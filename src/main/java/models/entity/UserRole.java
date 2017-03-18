@@ -1,6 +1,7 @@
-package models.pojo;
+package models.entity;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import models.pojo.UserRolePOJO;
 
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlElement;
@@ -18,6 +19,7 @@ public class UserRole {
     private Integer id;
     private User user;
     private Role role;
+    private Long version;
 
     public UserRole() {
     }
@@ -25,6 +27,11 @@ public class UserRole {
     public UserRole(User user, Role role) {
         this.user = user;
         this.role = role;
+    }
+
+    public UserRole(UserRolePOJO userRolePOJO) {
+        this.user = new User(userRolePOJO.getUser());
+        this.role = new Role(userRolePOJO.getRole());
     }
 
     @Id
@@ -60,6 +67,15 @@ public class UserRole {
     @XmlElement
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    @Version
+    public Long getVersion() {
+        return version;
+    }
+
+    public void setVersion(Long version) {
+        this.version = version;
     }
 
     @Override

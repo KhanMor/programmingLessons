@@ -2,9 +2,9 @@ package spring.security.service;
 
 import common.exceptions.DAOException;
 import models.dao.UserAuthorizationDAO;
-import models.pojo.Role;
-import models.pojo.User;
-import models.pojo.UserRole;
+import models.entity.Role;
+import models.entity.User;
+import models.entity.UserRole;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -37,7 +37,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         try {
             User user = userAuthorizationDAO.findUserByEmail(username);
-            List<UserRole> userRoles = userAuthorizationDAO.getUserAllRoles(user);
+            List<UserRole> userRoles = userAuthorizationDAO.getUserAllRoles(user.getId());
             String password = user.getPassword();
             user.setUserRoles(userRoles);
             return new SecurityUser(username, password, getGrantedAuthorities(userRoles), user);
@@ -49,14 +49,19 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     private List<GrantedAuthority> getGrantedAuthorities(List<UserRole> userRoles) {
         List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
-        logger.trace("begin grant authorities process with roles count " + (userRoles != null ?  userRoles.size() : 0));
-        for(UserRole userRole:userRoles) {
-            Role role = userRole.getRole();
-            String roleName = "ROLE_" + role.getRole();
-            SimpleGrantedAuthority grantedAuthority = new SimpleGrantedAuthority(roleName);
-            logger.trace("granted authority " + roleName + " to user");
-            grantedAuthorities.add(grantedAuthority);
+        if (userRoles != null) {
+            logger.trace("begin grant authorities process with roles count " + userRoles.size());
+            for (UserRole userRole : userRoles) {
+                Role role = userRole.getRole();
+                String roleName = "ROLE_" + role.getRole();
+                SimpleGrantedAuthority grantedAuthority = new SimpleGrantedAuthority(roleName);
+                logger.trace("granted authority " + roleName + " to user");
+                grantedAuthorities.add(grantedAuthority);
+            }
+            return grantedAuthorities;
+        } else {
+            logger.trace("no authorities found for user");
+            return null;
         }
-        return grantedAuthorities;
     }
 }

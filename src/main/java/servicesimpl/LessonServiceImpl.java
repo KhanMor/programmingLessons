@@ -4,14 +4,16 @@ import common.exceptions.DAOException;
 import common.exceptions.ServiceException;
 import models.dao.CourseLessonsDAO;
 import models.dao.SuperDAO;
-import models.pojo.Course;
-import models.pojo.Lesson;
-import models.pojo.mini.MiniPojo;
+import models.entity.Course;
+import models.entity.Lesson;
+import models.pojo.LessonPOJO;
+import models.pojo.mini.MiniPOJO;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import services.LessonService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -39,9 +41,15 @@ public class LessonServiceImpl implements LessonService{
     }
 
     @Override
-    public List<Lesson> getAllLessons() throws ServiceException {
+    public List<LessonPOJO> getAllLessons() throws ServiceException {
         try {
-            return lessonDAO.list();
+            List<Lesson> lessons = lessonDAO.list();
+            List<LessonPOJO> lessonPOJOS = new ArrayList<>(lessons.size());
+            for (Lesson lesson:lessons) {
+                LessonPOJO lessonPOJO = new LessonPOJO(lesson);
+                lessonPOJOS.add(lessonPOJO);
+            }
+            return lessonPOJOS;
         } catch (DAOException e) {
             logger.error(e);
             throw new ServiceException(e);
@@ -49,9 +57,36 @@ public class LessonServiceImpl implements LessonService{
     }
 
     @Override
-    public List<Lesson> getCourseLessons(Integer course_id) throws ServiceException {
+    public List<LessonPOJO> getCourseLessons(Integer course_id) throws ServiceException {
         try {
-            return courseLessonsDAO.courseLessonsList(course_id);
+            List<Lesson> lessons = courseLessonsDAO.courseLessonsList(course_id);
+            List<LessonPOJO> lessonPOJOS = new ArrayList<>(lessons.size());
+            for (Lesson lesson:lessons) {
+                LessonPOJO lessonPOJO = new LessonPOJO(lesson);
+                lessonPOJOS.add(lessonPOJO);
+            }
+            return lessonPOJOS;
+        } catch (DAOException e) {
+            logger.error(e);
+            throw new ServiceException(e);
+        }
+    }
+
+    private String formatLesson(Lesson lesson) {
+        return lesson.getOrderNum() + ". " + lesson.getTheme() + " - " + lesson.getDuration();
+    }
+    @Override
+    public List<MiniPOJO> getCourseLessonsMini(Integer course_id) throws ServiceException {
+        try {
+            List<Lesson> lessons = courseLessonsDAO.courseLessonsList(course_id);
+            List<MiniPOJO> miniPOJOS = new ArrayList<>(lessons.size());
+            for (Lesson lesson:lessons) {
+                MiniPOJO miniPOJO = new MiniPOJO();
+                miniPOJO.setId(lesson.getId());
+                miniPOJO.setName(formatLesson(lesson));
+                miniPOJOS.add(miniPOJO);
+            }
+            return miniPOJOS;
         } catch (DAOException e) {
             logger.error(e);
             throw new ServiceException(e);
@@ -59,19 +94,10 @@ public class LessonServiceImpl implements LessonService{
     }
 
     @Override
-    public List<MiniPojo> getCourseLessonsMini(Integer course_id) throws ServiceException {
+    public LessonPOJO getLesson(Integer id) throws ServiceException {
         try {
-            return courseLessonsDAO.courseLessonsListMini(course_id);
-        } catch (DAOException e) {
-            logger.error(e);
-            throw new ServiceException(e);
-        }
-    }
-
-    @Override
-    public Lesson getLesson(Integer id) throws ServiceException {
-        try {
-            return lessonDAO.get(id);
+            Lesson lesson = lessonDAO.get(id);
+            return new LessonPOJO(lesson);
         } catch (DAOException e) {
             logger.error(e);
             throw new ServiceException(e);
@@ -96,8 +122,14 @@ public class LessonServiceImpl implements LessonService{
     }
 
     @Override
-    public void updateLesson(Lesson lesson) throws ServiceException {
+    public void updateLesson(LessonPOJO lessonPOJO) throws ServiceException {
         try {
+            Integer id = lessonPOJO.getId();
+            Lesson lesson = lessonDAO.get(id);
+            lesson.setOrderNum(lessonPOJO.getOrderNum());
+            lesson.setTheme(lessonPOJO.getTheme());
+            lesson.setDuration(lessonPOJO.getDuration());
+            lesson.setContent(lessonPOJO.getContent());
             lessonDAO.update(lesson);
         } catch (DAOException e) {
             logger.error(e);

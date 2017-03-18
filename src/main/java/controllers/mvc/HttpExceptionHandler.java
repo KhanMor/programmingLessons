@@ -8,6 +8,7 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 
 /**
  * Created by Mordr on 14.03.2017.
+ * Обработка ошибки 404
  */
 @ControllerAdvice
 public class HttpExceptionHandler {

@@ -2,9 +2,9 @@ package models.daoimpl.hibernateimpl;
 
 import common.exceptions.DAOException;
 import models.dao.SuperDAO;
-import models.pojo.Course;
-import models.pojo.Lesson;
-import models.pojo.User;
+import models.entity.Course;
+import models.entity.Lesson;
+import models.entity.User;
 import org.apache.log4j.Logger;
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
