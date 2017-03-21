@@ -5,6 +5,7 @@ import models.pojo.LessonPOJO;
 
 import javax.persistence.*;
 import javax.xml.bind.annotation.*;
+import java.io.Serializable;
 
 /**
  * Created by Mordr on 18.02.2017.
@@ -13,7 +14,7 @@ import javax.xml.bind.annotation.*;
 @XmlRootElement
 @XmlType(propOrder = {"id", "course", "orderNum", "theme", "duration", "content"})
 @Entity
-public class Lesson {
+public class Lesson implements Serializable {
     private Integer id;
     private Course course;
     private Integer orderNum;

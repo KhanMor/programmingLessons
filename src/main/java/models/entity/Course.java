@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import javax.xml.bind.annotation.*;
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -14,7 +15,7 @@ import java.util.List;
 @XmlRootElement
 @XmlType(propOrder = {"id", "author", "name", "duration"})
 @Entity
-public class Course {
+public class Course implements Serializable {
     private Integer id;
     private User author;
     private String name;

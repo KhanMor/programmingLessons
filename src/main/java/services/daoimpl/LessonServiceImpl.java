@@ -1,4 +1,4 @@
-package servicesimpl;
+package services.daoimpl;
 
 import common.exceptions.DAOException;
 import common.exceptions.ServiceException;
@@ -20,7 +20,8 @@ import java.util.List;
  * Created by Mordr on 03.03.2017.
  * Реализация сервиса работы с уроками
  */
-@Service
+//@Service
+@Deprecated
 public class LessonServiceImpl implements LessonService{
     private static final Logger logger = Logger.getLogger(LessonServiceImpl.class);
     private SuperDAO<Lesson> lessonDAO;

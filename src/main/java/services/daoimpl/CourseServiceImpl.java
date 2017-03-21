@@ -1,4 +1,4 @@
-package servicesimpl;
+package services.daoimpl;
 
 import common.exceptions.DAOException;
 import common.exceptions.ServiceException;
@@ -10,9 +10,8 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.stereotype.Service;
 import services.CourseService;
-import spring.security.SecurityUser;
+import springconfig.security.SecurityUser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +20,8 @@ import java.util.List;
  * Created by Mordr on 03.03.2017.
  * Реализация сервиса работы с курсами
  */
-@Service
+//@Service
+@Deprecated
 public class CourseServiceImpl implements CourseService {
     private static final Logger logger = Logger.getLogger(CourseServiceImpl.class);
     private SuperDAO<Course> courseDAO;

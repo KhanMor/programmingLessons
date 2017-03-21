@@ -1,4 +1,4 @@
-package spring;
+package springconfig;
 
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;

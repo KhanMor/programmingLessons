@@ -5,6 +5,7 @@ import models.pojo.RolePOJO;
 
 import javax.persistence.*;
 import javax.xml.bind.annotation.*;
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -15,7 +16,7 @@ import java.util.List;
 @XmlRootElement
 @XmlType(propOrder = {"id", "role", "description"})
 @Entity
-public class Role {
+public class Role implements Serializable {
     private Integer id;
     private String role;
     private String description;

@@ -1,4 +1,4 @@
-package spring;
+package springconfig;
 
 import org.apache.log4j.Logger;
 import org.springframework.web.servlet.ModelAndView;

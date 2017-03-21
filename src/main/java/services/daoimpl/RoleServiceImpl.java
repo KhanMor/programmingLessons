@@ -1,4 +1,4 @@
-package servicesimpl;
+package services.daoimpl;
 
 import common.exceptions.DAOException;
 import common.exceptions.ServiceException;
@@ -18,8 +18,8 @@ import java.util.List;
  * Created by Mordr on 01.03.2017.
  * Реализвация сервиса работы с ролями
  */
-@SuppressWarnings("unused")
-@Service
+//@Service
+@Deprecated
 public class RoleServiceImpl implements RoleService {
     private static final Logger logger = Logger.getLogger(RoleServiceImpl.class);
     private SuperDAO<Role> roleDAO;

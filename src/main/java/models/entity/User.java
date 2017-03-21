@@ -7,6 +7,7 @@ import models.pojo.UserPOJO;
 import javax.persistence.*;
 import javax.xml.bind.annotation.*;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import java.io.Serializable;
 import java.sql.Date;
 import java.util.List;
 
@@ -17,7 +18,7 @@ import java.util.List;
 @XmlRootElement
 @XmlType(propOrder = {"id", "firstName", "surname", "patronymic", "birthday", "sex", "email", "password"})
 @Entity
-public class User {
+public class User implements Serializable {
     private Integer id;
     private String firstName;
     private String surname;

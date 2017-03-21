@@ -1,4 +1,4 @@
-package spring.security;
+package springconfig.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -13,8 +13,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.csrf.CsrfFilter;
 import org.springframework.web.filter.CharacterEncodingFilter;
-import spring.security.service.CustomAccessDeniedHandler;
-import spring.security.service.CustomUserDetailsService;
+import springconfig.security.service.CustomAccessDeniedHandler;
+import springconfig.security.service.CustomUserDetailsService;
 
 /**
  * Created by Mordr on 13.03.2017.
@@ -22,7 +22,7 @@ import spring.security.service.CustomUserDetailsService;
  */
 @Configuration
 @EnableWebSecurity
-@ComponentScan("spring.security.service")
+@ComponentScan("springconfig.security.service")
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityApplicationConfig extends WebSecurityConfigurerAdapter {
     private CustomAccessDeniedHandler accessDeniedHandler;

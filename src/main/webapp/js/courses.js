@@ -53,7 +53,7 @@ function updateSelectedCourse(course, course_id, course_name, course_duration, c
             courseModal.modal("hide");
         },
         success: function(data) {
-            if(isNumber(user_id)) {
+            if(isNumber(data)) {
                 course.find(".course-name").get(0).innerText = course_name.val();
                 course.find(".course-duration").get(0).innerText = course_duration.val();
             } else {

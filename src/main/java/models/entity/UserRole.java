@@ -7,6 +7,7 @@ import javax.persistence.*;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+import java.io.Serializable;
 
 /**
  * Created by Mordr on 18.02.2017.
@@ -15,7 +16,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement
 @XmlType(propOrder = {"id", "user", "role"})
 @Entity
-public class UserRole {
+public class UserRole implements Serializable {
     private Integer id;
     private User user;
     private Role role;

@@ -20,9 +20,6 @@ import java.util.HashSet;
 public class Main {
 
     private static final Logger logger = Logger.getLogger(Main.class);
-    static  {
-        DOMConfigurator.configure("src/main/resources/log4j.xml");
-    }
     private static final SuperDAO USER_DAO = new UserDAOImpl();
     private static final SuperDAO ROLE_DAO = new RoleDAOImpl();
     private static final SuperDAO USER_ROLE_DAO = new UserRoleDAOImpl();

@@ -14,7 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import services.UserRoleService;
 import services.UserService;
-import spring.security.SecurityUser;
+import springconfig.security.SecurityUser;
 
 import java.security.NoSuchAlgorithmException;
 import java.sql.Date;

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import spring.security.SecurityUser;
+import springconfig.security.SecurityUser;
 
 /**
  * Created by Mordr on 07.03.2017.

@@ -1,12 +1,13 @@
-package spring;
+package springconfig;
 
 import org.apache.log4j.Logger;
-import org.apache.log4j.xml.DOMConfigurator;
 import org.apache.tomcat.jdbc.pool.DataSourceFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
@@ -15,8 +16,9 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.JstlView;
 import org.springframework.web.servlet.view.UrlBasedViewResolver;
-import spring.security.SecurityApplicationConfig;
+import springconfig.security.SecurityApplicationConfig;
 
+import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 import java.util.Properties;
 
@@ -25,14 +27,12 @@ import java.util.Properties;
  * Конфигурация
  */
 @Configuration
-@ComponentScan({"servicesimpl", "models.daoimpl", "controllers.mvc"})
+@EnableJpaRepositories(basePackages = "models.springdata")
+@ComponentScan({"services.daoimpl", "models.daoimpl", "controllers.mvc", "services.springdataimpl"})
 @EnableWebMvc
 @Import(SecurityApplicationConfig.class)
 public class ApplicationConfig extends WebMvcConfigurerAdapter {
     private static final Logger logger = Logger.getLogger(ApplicationConfig.class);
-    static {
-        DOMConfigurator.configure("log4j.xml");
-    }
 
     @Bean
     @Deprecated
@@ -73,13 +73,19 @@ public class ApplicationConfig extends WebMvcConfigurerAdapter {
         return properties;
     }
     @Bean
-    public LocalContainerEntityManagerFactoryBean getEntityManagerFactoryBean(/*DataSource dataSource*/) {
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean container = new LocalContainerEntityManagerFactoryBean();
         JpaVendorAdapter jpaVendorAdapter = new HibernateJpaVendorAdapter();
         container.setJpaProperties(getHibernateProperties());
         container.setPackagesToScan("models.entity");
         container.setJpaVendorAdapter(jpaVendorAdapter);
         return container;
+    }
+    @Bean
+    public JpaTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
+        JpaTransactionManager transactionManager = new JpaTransactionManager();
+        transactionManager.setEntityManagerFactory(entityManagerFactory);
+        return transactionManager;
     }
     @Bean
     public UrlBasedViewResolver getViewResolver() {

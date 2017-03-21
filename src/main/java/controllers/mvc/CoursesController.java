@@ -56,10 +56,11 @@ public class CoursesController {
     }
     @PostMapping(value = "/courses/update")
     @PreAuthorize(PRE_POST_ADMIN_ROLE + " or " + PRE_POST_AUTHOR_ROLE)
-    public @ResponseBody void updateCourse(@Valid CoursePOJO course, Principal principal) throws ServiceException {
+    public @ResponseBody Integer updateCourse(@Valid CoursePOJO course, Principal principal) throws ServiceException {
         Integer id = course.getId();
         logger.trace("course with id = " + id + " was updated by user " + principal.getName());
         courseService.updateCourse(course);
+        return id;
     }
     @DeleteMapping(value = "/courses/delete/{id}")
     @PreAuthorize(PRE_POST_ADMIN_ROLE + " or " + PRE_POST_AUTHOR_ROLE)

@@ -1,4 +1,4 @@
-package servicesimpl;
+package services.daoimpl;
 
 import common.exceptions.DAOException;
 import common.exceptions.ServiceException;
@@ -11,7 +11,6 @@ import models.pojo.UserPOJO;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Service;
 import services.UserService;
 
 import java.sql.Date;
@@ -22,8 +21,8 @@ import java.util.List;
  * Created by Mordr on 01.03.2017.
  * Реализация сервиса работы с пользователями
  */
-@SuppressWarnings("unused")
-@Service
+//@Service
+@Deprecated
 public class UserServiceImpl implements UserService {
     private static final Logger logger = Logger.getLogger(UserRoleServiceImpl.class);
     private UserAuthorizationDAO userAuthorizationDAO;

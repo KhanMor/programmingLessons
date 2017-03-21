@@ -1,8 +1,6 @@
 package controllers.mvc;
 
 import common.exceptions.ServiceException;
-import models.entity.Course;
-import models.entity.Lesson;
 import models.pojo.CoursePOJO;
 import models.pojo.LessonPOJO;
 import models.pojo.mini.MiniPOJO;
