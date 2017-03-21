@@ -4,9 +4,6 @@ import models.pojo.CoursePOJO;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import services.CourseService;
-import servicesimpl.CourseServiceImpl;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Created by Mordr on 17.03.2017.
